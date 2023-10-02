@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://chrprxbkm1u8n"]
+
+[ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="1"]
+[ext_resource type="Script" path="res://Scripts/Button_Back_to_title.gd" id="2"]
+
+[node name="Panel" type="Panel"]
+offset_right = 1024.0
+offset_bottom = 600.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 37.0
+offset_right = 688.0
+offset_bottom = 109.0
+theme_override_fonts/font = ExtResource("1")
+text = "설정"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 155.0
+offset_right = 87.0
+offset_bottom = 179.0
+theme_override_fonts/font = ExtResource("1")
+text = "안녕"
+
+[node name="Button_Back_to_title" type="Button" parent="."]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 283.0
+offset_right = 559.0
+offset_bottom = 313.0
+theme_override_fonts/font = ExtResource("1")
+text = "뒤로가기"
+script = ExtResource("2")
+
+[connection signal="button_up" from="Button_Back_to_title" to="Button_Back_to_title" method="_on_Button_Back_to_title_button_up"]

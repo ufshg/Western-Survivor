@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://n71pj44frlcy"]
+
+[ext_resource type="Texture2D" uid="uid://cly3xf5m2w7nc" path="res://assets/img/player1_right.png" id="1"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/Player.gd" id="2"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_x62no")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(584, 458)
+script = ExtResource("2")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1")
+
+[connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
