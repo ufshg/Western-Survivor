@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dgd2i2sofldg8" path="res://assets/img/bullet.png" id="2_bn30b"]
 
 [node name="Bullet" type="Area2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_f7kyj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_bn30b")

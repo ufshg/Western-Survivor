@@ -1,14 +1,19 @@
 extends Node2D
 
+var fire_count = 0
+var fire_count_box
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
+	fire_count_box = get_node("Panel/Fire_count")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _add_score():
+	fire_count_box.text = str(int(fire_count_box.text) + 1)
 
 
 func _on_player_shoot(Bullet, direction, location):
@@ -16,6 +21,5 @@ func _on_player_shoot(Bullet, direction, location):
 	add_child(bullet)
 	bullet.rotation = get_angle_to(direction)
 	bullet.position = location
-	print(bullet.velocity)
 	bullet.velocity = direction * 500
-	print(bullet.velocity)
+	_add_score()
