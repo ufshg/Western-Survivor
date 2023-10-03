@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0xi2lfqb27ov"]
+[gd_scene load_steps=9 format=3 uid="uid://b0xi2lfqb27ov"]
 
-[ext_resource type="FontFile" uid="uid://blqrt522681dx" path="res://assets/NotoSansKR-Black.otf" id="1"]
+[ext_resource type="FontFile" uid="uid://dtp7bik3kegoc" path="res://assets/NotoSansKR-Black.otf" id="1"]
 [ext_resource type="Script" path="res://Scripts/Start.gd" id="2"]
 [ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="3"]
 [ext_resource type="Script" path="res://Scripts/Button4.gd" id="4"]
 [ext_resource type="Script" path="res://Scripts/display.gd" id="5"]
-[ext_resource type="Script" path="res://Scenes/Button3.gd" id="6"]
+[ext_resource type="Texture2D" uid="uid://cth248vugochy" path="res://assets/img/sky.png" id="7_4jwf3"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("1")])
@@ -2760,10 +2760,37 @@ cache/0/51/0/kerning_overrides/49/0 = Vector2(0, 0)
 cache/0/51/0/kerning_overrides/50/0 = Vector2(0, 0)
 cache/0/51/0/kerning_overrides/51/0 = Vector2(0, 0)
 
+[sub_resource type="GDScript" id="GDScript_wunwe"]
+script/source = "extends Button
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Button3_button_up():
+	get_tree().change_scene_to_file(\"res://Scenes/Option.tscn\")
+	pass # Replace with function body.
+"
+
 [node name="Start" type="Panel"]
 offset_right = 1920.0
 offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("2")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -2789,41 +2816,47 @@ script = ExtResource("5")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 393.0
-offset_top = 259.0
-offset_right = 633.0
-offset_bottom = 289.0
+offset_left = 569.0
+offset_top = 271.0
+offset_right = 809.0
+offset_bottom = 303.0
 theme_override_fonts/font = ExtResource("3")
 text = "게임 시작"
 
 [node name="Button4" type="Button" parent="."]
 layout_mode = 0
-offset_left = 394.0
-offset_top = 454.0
-offset_right = 634.0
-offset_bottom = 484.0
+offset_left = 573.0
+offset_top = 481.0
+offset_right = 813.0
+offset_bottom = 513.0
 theme_override_fonts/font = ExtResource("3")
 text = "종료하기"
 script = ExtResource("4")
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 394.0
-offset_top = 312.0
-offset_right = 634.0
-offset_bottom = 342.0
+offset_left = 570.0
+offset_top = 339.0
+offset_right = 810.0
+offset_bottom = 371.0
 theme_override_fonts/font = ExtResource("3")
 text = "-1"
 
 [node name="Button3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 393.0
-offset_top = 361.0
-offset_right = 633.0
-offset_bottom = 391.0
+offset_left = 573.0
+offset_top = 413.0
+offset_right = 813.0
+offset_bottom = 445.0
 theme_override_fonts/font = ExtResource("3")
 text = "옵션"
-script = ExtResource("6")
+script = SubResource("GDScript_wunwe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(960, 540)
+scale = Vector2(14.9844, 8.4375)
+texture = ExtResource("7_4jwf3")
 
 [connection signal="button_up" from="Button" to="display" method="_on_Button_button_up"]
 [connection signal="button_up" from="Button2" to="display" method="_on_Button2_button_up"]
