@@ -1,11 +1,12 @@
 extends Node2D
 
-var fire_count = 0
+var fire_count
 var fire_count_box
 var temp
 
 
 func _ready():
+	fire_count = 0
 	fire_count_box = get_node("Panel/Fire_count")
 	temp = get_node("Node2D/Sprite2D")
 
