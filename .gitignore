@@ -15,6 +15,5 @@ data_*/
 mono_crash.*.json
 
 .DS_Store
-project.godot
 default_env.tres
 *.import
