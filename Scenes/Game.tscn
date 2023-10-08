@@ -24,7 +24,7 @@ texture = ExtResource("1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CapsuleShape2D_rkorq")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="UI" type="Panel" parent="."]
 top_level = true
 offset_left = 74.0
 offset_top = 73.0
@@ -32,16 +32,16 @@ offset_right = 671.0
 offset_bottom = 212.0
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Hp_text" type="Label" parent="UI"]
 layout_mode = 0
 offset_right = 227.0
 offset_bottom = 139.0
 theme_override_font_sizes/font_size = 40
-text = "Fire count"
+text = "Hp"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Fire_count" type="Label" parent="Panel"]
+[node name="Hp_display" type="Label" parent="UI"]
 layout_mode = 0
 offset_left = 239.0
 offset_right = 597.0

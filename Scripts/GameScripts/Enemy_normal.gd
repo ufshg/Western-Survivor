@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal normal_enemy_collide(vector)
+
 var player
 var speed
 var vector
@@ -23,7 +25,9 @@ func _enemy_move(delta):
 		get_node("Sprite2D").set_flip_h(vector.x < 0)
 	
 	# move without collide between enemy - enemy
-	move_and_collide(vector * speed * delta)
+	var collision_info = move_and_collide(vector * speed * delta)
+	if collision_info:
+		normal_enemy_collide.emit(vector)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
