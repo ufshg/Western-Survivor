@@ -1,21 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://n71pj44frlcy"]
+[gd_scene load_steps=6 format=3 uid="uid://n71pj44frlcy"]
 
 [ext_resource type="Texture2D" uid="uid://12vhwbc85r20" path="res://assets/img/player1_right.png" id="1"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/Player.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bk0pv4xob8u6s" path="res://assets/img/cactus.png" id="4_jkdj0"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkorq"]
+radius = 21.0
+height = 58.0
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_x62no")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(584, 458)
+position = Vector2(582, 458)
+collision_mask = 2
 script = ExtResource("2")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_rkorq")
 
 [node name="Panel" type="Panel" parent="."]
 top_level = true

@@ -14,7 +14,7 @@ func _ready():
 	vel = Vector2.ZERO
 	speed = 200
 	fire_timer = 0
-	fire_duration = 0.1
+	fire_duration = 0.5
 	player_hp = 100
 
 
