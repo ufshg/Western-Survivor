@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=5 format=3 uid="uid://n71pj44frlcy"]
-=======
 [gd_scene load_steps=3 format=3 uid="uid://n71pj44frlcy"]
->>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
 [ext_resource type="Texture2D" uid="uid://bk0pv4xob8u6s" path="res://assets/img/cactus.png" id="4_jkdj0"]
@@ -10,20 +6,7 @@
 [node name="World" type="Node2D"]
 script = ExtResource("1_x62no")
 
-<<<<<<< Updated upstream
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(584, 458)
-script = ExtResource("2")
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1")
-
-[node name="Panel" type="Panel" parent="."]
-=======
 [node name="UI" type="Panel" parent="."]
->>>>>>> Stashed changes
 top_level = true
 offset_left = 74.0
 offset_top = 73.0
@@ -31,16 +14,16 @@ offset_right = 671.0
 offset_bottom = 212.0
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Hp_text" type="Label" parent="UI"]
 layout_mode = 0
 offset_right = 227.0
 offset_bottom = 139.0
 theme_override_font_sizes/font_size = 40
-text = "Fire count"
+text = "Hp"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Fire_count" type="Label" parent="Panel"]
+[node name="Hp_display" type="Label" parent="UI"]
 layout_mode = 0
 offset_left = 239.0
 offset_right = 597.0

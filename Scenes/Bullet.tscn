@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl0e310fkjgt5"]
+[gd_scene load_steps=4 format=3 uid="uid://dl0e310fkjgt5"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Bullet.gd" id="1_f7kyj"]
 [ext_resource type="Texture2D" uid="uid://broly521y3grt" path="res://assets/img/bullet.png" id="2_bn30b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx63n"]
+size = Vector2(9.33333, 4)
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(3, 3)
@@ -11,3 +14,6 @@ script = ExtResource("1_f7kyj")
 rotation = 1.5708
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_bn30b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wx63n")

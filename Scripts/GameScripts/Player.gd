@@ -3,18 +3,11 @@ extends CharacterBody2D
 # var about player
 var vel
 var speed
-var player_hp
 
 
 func _ready():
 	vel = Vector2.ZERO
 	speed = 200
-<<<<<<< Updated upstream
-	fire_timer = 0
-	fire_duration = 0.1
-=======
->>>>>>> Stashed changes
-	player_hp = 100
 
 
 # 플레이어 이동 제어 함수
@@ -35,7 +28,7 @@ func _player_move(delta):
 		vel = Vector2.ZERO
 	
 	move_and_collide(vel * delta * speed)
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	_player_move(delta)
