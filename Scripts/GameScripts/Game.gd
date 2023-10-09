@@ -3,11 +3,14 @@ extends Node2D
 var rng = RandomNumberGenerator.new()
 var player_hp
 var player_hp_box
+var fire_timer
+var fire_duration
 var game_time
 var monster_gen_duration
 var temp
 var player
 var normal_enemy
+var Bullet
 var player_collide_vector
 
 
@@ -17,19 +20,33 @@ func _ready():
 	player_hp_box = get_node("UI/Hp_display")
 	player_hp_box.text = str(player_hp)
 	
+	# player instantiate
+	player = preload("res://Scenes/Player.tscn").instantiate()
+	player.position = Vector2(960, 540)
+	add_child(player)
+	
+	fire_timer = 0
+	fire_duration = 2
+	
 	game_time = 0
 	monster_gen_duration = 2
 	temp = get_node("Node2D/Sprite2D")
-	player = get_node("Player")
 	normal_enemy = preload("res://Scenes/Enemy_normal.tscn")
+	
+	Bullet = preload("res://Scenes/Bullet.tscn")
 
 
 func _process(delta):
 	game_time += delta
+	fire_timer += delta
 	
 	if game_time >= monster_gen_duration:
 		game_time = 0
 		_add_normal_enemy(player)
+		
+	if fire_timer >= fire_duration:
+		fire_timer -= fire_duration
+		_player_shoot()
 	
 	# 마우스 커서 임시 
 	temp.position = get_global_mouse_position()
@@ -58,13 +75,14 @@ func _player_damage(damage):
 	#fire_count_box.text = str(int(fire_count_box.text) + 1)
 
 
-func _on_player_shoot(Bullet, direction, location):
+func _player_shoot():
 	var bullet = Bullet.instantiate()
+	var bullet_angle = get_angle_to(get_global_mouse_position() - player.position)
 	add_child(bullet)
-	bullet.rotation = get_angle_to(direction)
-	bullet.position = location
+	bullet.rotation = bullet_angle
+	bullet.position = player.position
 	# direction x bullet speed
-	bullet.velocity = direction * 200
+	bullet.velocity = Vector2(1, 0).rotated(bullet_angle) * 200
 
 
 func _normal_enemy_collide(vector):

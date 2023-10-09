@@ -1,21 +1,13 @@
 extends CharacterBody2D
 
-signal shoot(bullet, direction, location)
-
 # var about player
 var vel
 var speed
-var fire_timer
-var fire_duration
-var player_hp
 
 
 func _ready():
 	vel = Vector2.ZERO
 	speed = 200
-	fire_timer = 0
-	fire_duration = 0.5
-	player_hp = 100
 
 
 # 플레이어 이동 제어 함수
@@ -36,22 +28,7 @@ func _player_move(delta):
 		vel = Vector2.ZERO
 	
 	move_and_collide(vel * delta * speed)
-	
-
-var Bullet = preload("res://Scenes/Bullet.tscn")
-
-# 플레이어 총알 발사 함수
-func _gun_fire(delta):
-	fire_timer += delta
-	
-	if fire_timer >= fire_duration:
-		fire_timer = 0
-		print("fire")
-		var mouse = get_global_mouse_position()
-		# bullet, player -> mouse direction, player now position
-		shoot.emit(Bullet, Vector2(mouse.x - position.x, mouse.y - position.y).normalized(), position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	_player_move(delta)
-	_gun_fire(delta)
