@@ -3,6 +3,7 @@ extends Node2D
 var rng = RandomNumberGenerator.new()
 var player_hp
 var player_hp_box
+var player_atk
 var fire_timer
 var fire_duration
 var game_time
@@ -19,6 +20,8 @@ func _ready():
 	player_hp = 100
 	player_hp_box = get_node("UI/Hp_display")
 	player_hp_box.text = str(player_hp)
+	
+	player_atk = 5
 	
 	# player instantiate
 	player = preload("res://Scenes/Player.tscn").instantiate()
@@ -58,6 +61,7 @@ func _add_normal_enemy(Player):
 	enemy.normal_enemy_collide.connect(_normal_enemy_collide)
 	add_child(enemy)
 	enemy.player = Player
+	enemy.hp = 10
 	enemy.position = Vector2(rng.randf_range(0, 1920), rng.randf_range(0, 1080))
 
 
@@ -78,14 +82,26 @@ func _player_damage(damage):
 func _player_shoot():
 	var bullet = Bullet.instantiate()
 	var bullet_angle = get_angle_to(get_global_mouse_position() - player.position)
+	bullet.player_bullet_collide.connect(_player_bullet_collide)
 	add_child(bullet)
 	bullet.rotation = bullet_angle
 	bullet.position = player.position
 	# direction x bullet speed
-	bullet.velocity = Vector2(1, 0).rotated(bullet_angle) * 200
+	bullet.velocity = Vector2(1, 0).rotated(bullet_angle) * 500
 
 
 func _normal_enemy_collide(vector):
 	player.position += vector * 50
 	_player_damage(10)
 	print("hi")
+
+
+func _player_bullet_collide(bullet_id, target_id):
+	remove_child(instance_from_id(bullet_id))
+	var temp_enemy = instance_from_id(target_id)
+	temp_enemy.hp -= player_atk
+	
+	if temp_enemy.hp <= 0:
+		remove_child(temp_enemy)
+	
+	pass
