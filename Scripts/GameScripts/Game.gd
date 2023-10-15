@@ -1,5 +1,9 @@
 extends Node2D
 
+var player_tex1 = preload("res://assets/img/player1_right.png")
+var player_tex2 = preload("res://assets/img/player2_right.png")
+var player_tex3 = preload("res://assets/img/player3_right.png")
+
 var rng = RandomNumberGenerator.new()
 var player_hp
 var player_hp_box
@@ -15,21 +19,34 @@ var Bullet
 var player_collide_vector
 
 
-func _ready():
-	# set player hp
-	player_hp = 100
-	player_hp_box = get_node("UI/Hp_display")
-	player_hp_box.text = str(player_hp)
-	
-	player_atk = 5
-	
-	# player instantiate
+func _init_player():
 	player = preload("res://Scenes/Player.tscn").instantiate()
 	player.position = Vector2(960, 540)
-	add_child(player)
-	
 	fire_timer = 0
-	fire_duration = 2
+	
+	if Global.player_type == 1:
+		player_hp = 100
+		player_atk = 5
+		player.speed = 200
+		fire_duration = 2
+	elif Global.player_type == 2:
+		player_hp = 50
+		player_atk = 4
+		player.speed = 400
+		fire_duration = 1
+		player.get_node("Sprite2D").set_texture(player_tex2)
+	
+	add_child(player)
+
+
+func _ready():
+	# set player hp
+	_init_player()
+	
+	player_hp_box = get_node("UI/Hp_display")
+	player_hp_box.text = str(player_hp)
+
+	get_node("Camera2D").player = player
 	
 	game_time = 0
 	monster_gen_duration = 2

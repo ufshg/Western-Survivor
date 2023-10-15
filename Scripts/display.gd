@@ -24,11 +24,13 @@ func _get_this_text_to_int():
 
 
 func _on_Button_button_up():
+	Global.player_type = 1
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	pass # Replace with function body.
 
 
 func _on_Button2_button_up():
-	_get_this().text = str(int(_get_this_text_to_int()) - 1)
+	Global.player_type = 2
+	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	pass # Replace with function body.
 

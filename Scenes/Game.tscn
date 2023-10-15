@@ -1,21 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://n71pj44frlcy"]
+[gd_scene load_steps=5 format=3 uid="uid://n71pj44frlcy"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/Camera2D.gd" id="3_lcjqh"]
+[ext_resource type="Texture2D" uid="uid://x8gwfmixkflv" path="res://assets/img/background.png" id="4_7moch"]
 [ext_resource type="Texture2D" uid="uid://bk0pv4xob8u6s" path="res://assets/img/cactus.png" id="4_jkdj0"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_x62no")
 
-[node name="UI" type="Panel" parent="."]
-top_level = true
-offset_left = 74.0
-offset_top = 73.0
-offset_right = 671.0
-offset_bottom = 212.0
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("4_jkdj0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+script = ExtResource("3_lcjqh")
+metadata/_edit_group_ = true
+
+[node name="UI" type="CanvasLayer" parent="."]
 metadata/_edit_group_ = true
 
 [node name="Hp_text" type="Label" parent="UI"]
-layout_mode = 0
 offset_right = 227.0
 offset_bottom = 139.0
 theme_override_font_sizes/font_size = 40
@@ -24,7 +32,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Hp_display" type="Label" parent="UI"]
-layout_mode = 0
 offset_left = 239.0
 offset_right = 597.0
 offset_bottom = 139.0
@@ -33,9 +40,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(2.08165e-12, 2.08165e-12)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("4_jkdj0")
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(6924, 582)
+scale = Vector2(7.60453, 13.1553)
+texture = ExtResource("4_7moch")

@@ -7,7 +7,6 @@ var speed
 
 func _ready():
 	vel = Vector2.ZERO
-	speed = 200
 
 
 # 플레이어 이동 제어 함수
