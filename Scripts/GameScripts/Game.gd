@@ -20,27 +20,43 @@ var Bullet
 var player_collide_vector
 var UI
 
-
 func _init_player():
 	player = preload("res://Scenes/Player.tscn").instantiate()
 	player.position = Vector2(960, 540)
 	fire_timer = 0
 	score = 0
 	
+	
 	if Global.player_type == 1:
 		player_hp = 100
 		player_atk = 5
 		player.speed = 200
-		fire_duration = 2
+		fire_duration = float(2)
 	elif Global.player_type == 2:
 		player_hp = 50
 		player_atk = 4
-		player.speed = 400
-		fire_duration = 1
+		player.speed = 300
+		fire_duration = float(1)
 		player.get_node("Sprite2D").set_texture(player_tex2)
+	elif Global.player_type == 3:
+		pass
 	
 	add_child(player)
 	get_node("Camera2D").player = player
+
+
+func _set_UI(name):
+	if name == "Hp":
+		UI[name].text = str(player_hp)
+	elif name == "Atk":
+		UI[name].text = str(player_atk)
+	elif name == "Speed":
+		var s = str(player.speed)
+		UI[name].text = s[0] + "." + s[1]
+	elif name == "Firetime":
+		UI[name].text = str(fire_duration)
+	elif name == "Score":
+		UI[name].text = str(score)
 
 
 func _init_UI():
@@ -50,12 +66,8 @@ func _init_UI():
 	
 	for name in ["Hp", "Atk", "Speed", "Firetime", "Score"]:
 		UI[name] = get_node(front + name + back)
-	
-	UI["Hp"].text = str(player_hp)
-	UI["Atk"].text = str(player_atk)
-	UI["Speed"].text = str(player.speed/100)
-	UI["Firetime"].text = str(fire_duration)
-	UI["Score"].text = str(score)
+		_set_UI(name)
+
 
 func _ready():
 	# set player hp
@@ -98,7 +110,7 @@ func _add_normal_enemy(Player):
 
 func _player_damage(damage):
 	player_hp -= damage
-	UI["Hp"].text = str(player_hp)
+	_set_UI("Hp")
 	
 	if player_hp <= 0:
 		# game over
@@ -106,8 +118,6 @@ func _player_damage(damage):
 		
 		# go to game over scene TODO
 		get_tree().change_scene_to_file("res://Scenes/Start.tscn")
-	
-	#fire_count_box.text = str(int(fire_count_box.text) + 1)
 
 
 func _player_shoot():
@@ -135,6 +145,6 @@ func _player_bullet_collide(bullet_id, target_id):
 	if temp_enemy.hp <= 0:
 		remove_child(temp_enemy)
 		score += 1
-		UI["Score"].text = str(score)
+		_set_UI("Score")
 	
 	pass
