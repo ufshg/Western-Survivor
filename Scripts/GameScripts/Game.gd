@@ -10,6 +10,7 @@ var player_hp_box
 var player_atk
 var fire_timer
 var fire_duration
+var score
 var game_time
 var monster_gen_duration
 var temp
@@ -17,12 +18,14 @@ var player
 var normal_enemy
 var Bullet
 var player_collide_vector
+var UI
 
 
 func _init_player():
 	player = preload("res://Scenes/Player.tscn").instantiate()
 	player.position = Vector2(960, 540)
 	fire_timer = 0
+	score = 0
 	
 	if Global.player_type == 1:
 		player_hp = 100
@@ -37,22 +40,33 @@ func _init_player():
 		player.get_node("Sprite2D").set_texture(player_tex2)
 	
 	add_child(player)
+	get_node("Camera2D").player = player
 
+
+func _init_UI():
+	UI = {}
+	var front = "UI/Panel/"
+	var back = "_display"
+	
+	for name in ["Hp", "Atk", "Speed", "Firetime", "Score"]:
+		UI[name] = get_node(front + name + back)
+	
+	UI["Hp"].text = str(player_hp)
+	UI["Atk"].text = str(player_atk)
+	UI["Speed"].text = str(player.speed/100)
+	UI["Firetime"].text = str(fire_duration)
+	UI["Score"].text = str(score)
 
 func _ready():
 	# set player hp
 	_init_player()
-	
-	player_hp_box = get_node("UI/Hp_display")
-	player_hp_box.text = str(player_hp)
-
-	get_node("Camera2D").player = player
+	# UI 초기화 
+	_init_UI()
 	
 	game_time = 0
 	monster_gen_duration = 2
 	temp = get_node("Node2D/Sprite2D")
 	normal_enemy = preload("res://Scenes/Enemy_normal.tscn")
-	
 	Bullet = preload("res://Scenes/Bullet.tscn")
 
 
@@ -84,7 +98,7 @@ func _add_normal_enemy(Player):
 
 func _player_damage(damage):
 	player_hp -= damage
-	player_hp_box.text = str(player_hp)
+	UI["Hp"].text = str(player_hp)
 	
 	if player_hp <= 0:
 		# game over
@@ -120,5 +134,7 @@ func _player_bullet_collide(bullet_id, target_id):
 	
 	if temp_enemy.hp <= 0:
 		remove_child(temp_enemy)
+		score += 1
+		UI["Score"].text = str(score)
 	
 	pass

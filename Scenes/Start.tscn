@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://b0xi2lfqb27ov"]
 
-[ext_resource type="FontFile" uid="uid://dtp7bik3kegoc" path="res://assets/NotoSansKR-Black.otf" id="1"]
+[ext_resource type="FontFile" uid="uid://blqrt522681dx" path="res://assets/NotoSansKR-Black.otf" id="1"]
 [ext_resource type="Script" path="res://Scripts/Start.gd" id="2"]
 [ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="3"]
 [ext_resource type="Script" path="res://Scripts/Button4.gd" id="4"]
 [ext_resource type="Script" path="res://Scripts/display.gd" id="5"]
-[ext_resource type="Texture2D" uid="uid://cth248vugochy" path="res://assets/img/sky.png" id="7_4jwf3"]
+[ext_resource type="Texture2D" uid="uid://c4jsf3sv4t0ox" path="res://assets/img/sky.png" id="7_4jwf3"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("1")])
