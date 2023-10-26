@@ -39,7 +39,11 @@ func _init_player():
 		fire_duration = float(1)
 		player.get_node("Sprite2D").set_texture(player_tex2)
 	elif Global.player_type == 3:
-		pass
+		player_hp = 150
+		player_atk = 3
+		player.speed = 150
+		fire_duration = float(3)
+		player.get_node("Sprite2D").set_texture(player_tex3)
 	
 	add_child(player)
 	get_node("Camera2D").player = player

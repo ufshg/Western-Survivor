@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/Camera2D.gd" id="3_lcjqh"]
-[ext_resource type="Texture2D" uid="uid://bo33rewx8ucdb" path="res://assets/img/background.png" id="4_7moch"]
-[ext_resource type="Texture2D" uid="uid://pjwp74caud4q" path="res://assets/img/cactus.png" id="4_jkdj0"]
+[ext_resource type="Texture2D" uid="uid://x8gwfmixkflv" path="res://assets/img/background.png" id="4_7moch"]
+[ext_resource type="Texture2D" uid="uid://bk0pv4xob8u6s" path="res://assets/img/cactus.png" id="4_jkdj0"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_x62no")
@@ -28,6 +28,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="Hp_text" type="Label" parent="UI/Panel"]
+layout_mode = 0
 offset_left = 14.0
 offset_right = 86.0
 offset_bottom = 180.0
@@ -37,6 +38,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Hp_display" type="Label" parent="UI/Panel"]
+layout_mode = 0
 offset_left = 90.0
 offset_right = 210.0
 offset_bottom = 180.0
@@ -46,6 +48,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Atk_text" type="Label" parent="UI/Panel"]
+layout_mode = 0
 offset_left = 259.0
 offset_top = -2.0
 offset_right = 331.0
@@ -57,6 +60,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Atk_display" type="Label" parent="UI/Panel"]
+layout_mode = 0
 offset_left = 363.0
 offset_top = 2.0
 offset_right = 435.0
@@ -67,6 +71,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Speed_text" type="Label" parent="UI/Panel"]
+layout_mode = 0
 offset_left = 494.0
 offset_top = 2.0
 offset_right = 566.0
@@ -77,6 +82,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Speed_display" type="Label" parent="UI/Panel"]
+layout_mode = 0
 offset_left = 665.0
 offset_right = 737.0
 offset_bottom = 180.0
@@ -86,6 +92,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Firetime_text" type="Label" parent="UI/Panel"]
+layout_mode = 0
 offset_left = 799.0
 offset_right = 973.0
 offset_bottom = 180.0
@@ -96,6 +103,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Firetime_display" type="Label" parent="UI/Panel"]
+layout_mode = 0
 offset_left = 1011.0
 offset_top = 2.0
 offset_right = 1083.0
@@ -106,6 +114,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Score_text" type="Label" parent="UI/Panel"]
+layout_mode = 0
 offset_left = 1243.0
 offset_right = 1356.0
 offset_bottom = 180.0
@@ -115,6 +124,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Score_display" type="Label" parent="UI/Panel"]
+layout_mode = 0
 offset_left = 1452.0
 offset_top = 2.0
 offset_right = 1524.0
