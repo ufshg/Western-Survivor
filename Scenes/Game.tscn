@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://n71pj44frlcy"]
+[gd_scene load_steps=8 format=3 uid="uid://n71pj44frlcy"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/Camera2D.gd" id="3_lcjqh"]
 [ext_resource type="Texture2D" uid="uid://x8gwfmixkflv" path="res://assets/img/background.png" id="4_7moch"]
 [ext_resource type="Texture2D" uid="uid://bk0pv4xob8u6s" path="res://assets/img/cactus.png" id="4_jkdj0"]
+[ext_resource type="Texture2D" uid="uid://cv7lfl7a4dfj4" path="res://assets/img/background_.jpg" id="5_y2lg4"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qle7m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsai3"]
+size = Vector2(3000, 100)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_x62no")
@@ -139,3 +145,31 @@ visible = false
 position = Vector2(6578, 474)
 scale = Vector2(7.60453, 13.1553)
 texture = ExtResource("4_7moch")
+
+[node name="Background2" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_qle7m")
+position = Vector2(960, 540)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_y2lg4")
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2400, 545)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_wsai3")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-482, 707)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_wsai3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(985, 1382)
+shape = SubResource("RectangleShape2D_wsai3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(959, -293)
+shape = SubResource("RectangleShape2D_wsai3")

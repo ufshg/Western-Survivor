@@ -10,7 +10,7 @@ func _ready():
 
 
 # 플레이어 이동 제어 함수
-func _player_move(delta):
+func _player_move():
 	var vector = Vector2.ZERO
 	vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -22,12 +22,13 @@ func _player_move(delta):
 		get_node("Sprite2D").set_flip_h(vector.x < 0)
 		
 	if vector != Vector2.ZERO:
-		vel = vector
+		velocity = vector  * speed
 	else:
-		vel = Vector2.ZERO
+		velocity = Vector2.ZERO
 	
-	move_and_collide(vel * delta * speed)
+	#move_and_collide(vel * delta * speed)
+	move_and_slide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	_player_move(delta)
+func _physics_process(_delta):
+	_player_move()
