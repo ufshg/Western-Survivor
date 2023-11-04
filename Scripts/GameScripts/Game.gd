@@ -5,18 +5,28 @@ var player_tex2 = preload("res://assets/img/player2_right.png")
 var player_tex3 = preload("res://assets/img/player3_right.png")
 
 var rng = RandomNumberGenerator.new()
+# player info
 var player_hp
 var player_hp_box
 var player_atk
-var fire_timer
 var fire_duration
+var fire_timer
+var player
+var Bullet
+
+# player skill info
+var player_shield
+var player_shield_timer
+var player_shield_timer_MAX
+var player3_bullet
+
+
+# game info
 var score
 var game_time
 var monster_gen_duration
 var temp
-var player
 var normal_enemy
-var Bullet
 var player_collide_vector
 var UI
 
@@ -26,6 +36,18 @@ func _init_player():
 	fire_timer = 0
 	score = 0
 	
+	'''
+	player_shield
+	0 => None
+	1 => player2
+	2 => shield active
+	'''
+	player_shield = 0
+	player_shield_timer_MAX = 5
+	player_shield_timer = 5
+	
+	# 1 => player3 unique bullet
+	player3_bullet = false
 	
 	if Global.player_type == 1:
 		player_hp = 100
@@ -36,12 +58,14 @@ func _init_player():
 		player_hp = 50
 		player_atk = 4
 		player.speed = 300
+		player_shield = 1
 		fire_duration = float(1)
 		player.get_node("Sprite2D").set_texture(player_tex2)
 	elif Global.player_type == 3:
 		player_hp = 150
 		player_atk = 3
 		player.speed = 150
+		player3_bullet = true
 		fire_duration = float(3)
 		player.get_node("Sprite2D").set_texture(player_tex3)
 	
@@ -61,14 +85,22 @@ func _set_UI(name):
 		UI[name].text = str(fire_duration)
 	elif name == "Score":
 		UI[name].text = str(score)
-
+	elif name == "Shield":
+		if Global.player_type != 2:
+			get_node("UI/Panel/Shield_display").visible = false
+			get_node("UI/Panel/Shield_text").visible = false
+		if player_shield_timer > 0:
+			UI[name].text = "%.1f" % player_shield_timer
+		else:
+			UI[name].text = "Active"
+			
 
 func _init_UI():
 	UI = {}
 	var front = "UI/Panel/"
 	var back = "_display"
 	
-	for name in ["Hp", "Atk", "Speed", "Firetime", "Score"]:
+	for name in ["Hp", "Atk", "Speed", "Firetime", "Score", "Shield"]:
 		UI[name] = get_node(front + name + back)
 		_set_UI(name)
 
@@ -98,6 +130,12 @@ func _process(delta):
 		fire_timer -= fire_duration
 		_player_shoot()
 	
+	if player_shield == 1 and player_shield_timer > 0:
+		player_shield_timer -= delta
+		if player_shield_timer <= 0:
+			player_shield = 2
+		_set_UI("Shield")
+	
 	# 마우스 커서 임시 
 	temp.position = get_global_mouse_position()
 	pass
@@ -113,8 +151,14 @@ func _add_normal_enemy(Player):
 
 
 func _player_damage(damage):
-	player_hp -= damage
-	_set_UI("Hp")
+	if player_shield != 2:
+		player_hp -= damage
+		_set_UI("Hp")
+	else:
+		player_shield = 1
+		_set_UI("Shield")
+		
+	player_shield_timer = player_shield_timer_MAX
 	
 	if player_hp <= 0:
 		# game over
