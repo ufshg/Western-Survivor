@@ -186,7 +186,9 @@ func _normal_enemy_collide(vector):
 
 
 func _player_bullet_collide(bullet_id, target_id):
-	remove_child(instance_from_id(bullet_id))
+	if not player3_bullet:
+		remove_child(instance_from_id(bullet_id))
+	
 	var temp_enemy = instance_from_id(target_id)
 	temp_enemy.hp -= player_atk
 	
