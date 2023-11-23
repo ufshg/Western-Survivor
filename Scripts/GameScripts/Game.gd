@@ -10,7 +10,6 @@ var player_hp
 var player_hp_box
 var player_atk
 var fire_duration
-var fire_timer
 var player
 var Bullet
 
@@ -20,20 +19,25 @@ var player_shield_timer
 var player_shield_timer_MAX
 var player3_bullet
 
-
 # game info
 var score
 var game_time
-var monster_gen_duration
 var temp
 var normal_enemy
 var player_collide_vector
 var UI
 
+# timer
+var FireTimer
+var NormalMonsterGenTimer
+
+# progress bar
+@onready var hp_bar = $UI/Hp_bar
+
 func _init_player():
 	player = preload("res://Scenes/Player.tscn").instantiate()
 	player.position = Vector2(960, 540)
-	fire_timer = 0
+	FireTimer = get_node("FireTimer")
 	score = 0
 	
 	'''
@@ -69,6 +73,7 @@ func _init_player():
 		fire_duration = float(3)
 		player.get_node("Sprite2D").set_texture(player_tex3)
 	
+	FireTimer.wait_time = fire_duration
 	add_child(player)
 	get_node("Camera2D").player = player
 
@@ -104,7 +109,6 @@ func _init_UI():
 		UI[name] = get_node(front + name + back)
 		_set_UI(name)
 
-
 func _ready():
 	# set player hp
 	_init_player()
@@ -112,7 +116,13 @@ func _ready():
 	_init_UI()
 	
 	game_time = 0
-	monster_gen_duration = 2
+	hp_bar.max_value = player_hp
+	hp_bar.value = player_hp
+	
+	# init about normal monster gen duration
+	NormalMonsterGenTimer = get_node("NormalMonsterGenTimer")
+	NormalMonsterGenTimer.wait_time = 2
+	
 	temp = get_node("Node2D/Sprite2D")
 	normal_enemy = preload("res://Scenes/Enemy_normal.tscn")
 	Bullet = preload("res://Scenes/Bullet.tscn")
@@ -120,15 +130,8 @@ func _ready():
 
 func _process(delta):
 	game_time += delta
-	fire_timer += delta
 	
-	if game_time >= monster_gen_duration:
-		game_time = 0
-		_add_normal_enemy(player)
-		
-	if fire_timer >= fire_duration:
-		fire_timer -= fire_duration
-		_player_shoot()
+	hp_bar.value = player_hp
 	
 	if player_shield == 1 and player_shield_timer > 0:
 		player_shield_timer -= delta
@@ -140,12 +143,13 @@ func _process(delta):
 	temp.position = get_global_mouse_position()
 	pass
 
+# add_normal_enemy
 
-func _add_normal_enemy(Player):
+func _on_normal_monster_gen_timer_timeout():
 	var enemy = normal_enemy.instantiate()
 	enemy.normal_enemy_collide.connect(_normal_enemy_collide)
 	add_child(enemy)
-	enemy.player = Player
+	enemy.player = self.player
 	enemy.hp = 10
 	enemy.position = Vector2(rng.randf_range(0, 1920), rng.randf_range(0, 1080))
 
@@ -167,8 +171,8 @@ func _player_damage(damage):
 		# go to game over scene TODO
 		get_tree().change_scene_to_file("res://Scenes/Start.tscn")
 
-
-func _player_shoot():
+# player_shoot()
+func _on_fire_timer_timeout():
 	var bullet = Bullet.instantiate()
 	var bullet_angle = get_angle_to(get_global_mouse_position() - player.position)
 	bullet.player_bullet_collide.connect(_player_bullet_collide)
@@ -196,5 +200,3 @@ func _player_bullet_collide(bullet_id, target_id):
 		remove_child(temp_enemy)
 		score += 1
 		_set_UI("Score")
-	
-	pass
