@@ -23,7 +23,7 @@ func _enemy_move(delta):
 	
 	# image flip
 	if vector.x:
-		get_node("Sprite2D").set_flip_h(vector.x < 0)
+		get_node("Sprite2D").set_flip_h(vector.x > 0)
 	
 	# move without collide between enemy - enemy
 	var collision_info = move_and_collide(vector * speed * delta)

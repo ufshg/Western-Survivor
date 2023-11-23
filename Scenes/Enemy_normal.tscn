@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cw1qjyympq0cs"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Enemy_normal.gd" id="1_4euik"]
-[ext_resource type="Texture2D" uid="uid://c8wqitxdc84c5" path="res://assets/img/recovery.png" id="1_mujo7"]
+[ext_resource type="Texture2D" uid="uid://bnyfpsmle5atr" path="res://assets/img/monster_rat.png" id="2_3nc2b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15rv0"]
-size = Vector2(90, 41)
+size = Vector2(65, 36)
 
 [node name="Enemy_normal" type="CharacterBody2D"]
 collision_layer = 2
@@ -12,8 +12,10 @@ script = ExtResource("1_4euik")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_mujo7")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_3nc2b")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(12.5, -2)
 shape = SubResource("RectangleShape2D_15rv0")

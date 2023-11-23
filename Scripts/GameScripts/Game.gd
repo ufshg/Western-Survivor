@@ -150,7 +150,7 @@ func _on_normal_monster_gen_timer_timeout():
 	enemy.normal_enemy_collide.connect(_normal_enemy_collide)
 	add_child(enemy)
 	enemy.player = self.player
-	enemy.hp = 10
+	enemy.hp = 3
 	enemy.position = Vector2(rng.randf_range(0, 1920), rng.randf_range(0, 1080))
 
 
