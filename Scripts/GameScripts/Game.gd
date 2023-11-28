@@ -7,7 +7,6 @@ var player_tex3 = preload("res://assets/img/player3_right.png")
 var rng = RandomNumberGenerator.new()
 # player info
 var player_hp
-var player_hp_box
 var player_atk
 var fire_duration
 var player
@@ -24,15 +23,12 @@ var game_time
 var temp
 var normal_enemy
 var player_collide_vector
-var UI
 
 # timer
 var FireTimer
 var NormalMonsterGenTimer
 var PlayerShieldTimer
 
-# progress bar
-@onready var hp_bar = $UI/Hp_bar
 
 func _init_player():
 	player = preload("res://Scenes/Player.tscn").instantiate()
@@ -78,46 +74,10 @@ func _init_player():
 	get_node("Camera2D").player = player
 
 
-func _set_UI(name):
-	if name == "Hp":
-		UI[name].text = str(player_hp)
-	elif name == "Atk":
-		UI[name].text = str(player_atk)
-	elif name == "Speed":
-		var s = str(player.speed)
-		UI[name].text = s[0] + "." + s[1]
-	elif name == "Firetime":
-		UI[name].text = str(fire_duration)
-	elif name == "Score":
-		UI[name].text = str(score)
-	elif name == "Shield":
-		if Global.player_type != 2:
-			get_node("UI/Panel/Shield_display").visible = false
-			get_node("UI/Panel/Shield_text").visible = false
-		if not player_shield_active:
-			UI[name].text = "%.1f" % PlayerShieldTimer.get_time_left()
-		else:
-			UI[name].text = "Active"
-			
-
-func _init_UI():
-	UI = {}
-	var front = "UI/Panel/"
-	var back = "_display"
-	
-	for name in ["Hp", "Atk", "Speed", "Firetime", "Score", "Shield"]:
-		UI[name] = get_node(front + name + back)
-		_set_UI(name)
-
 func _ready():
-	# set player hp
 	_init_player()
-	# UI 초기화 
-	_init_UI()
 	
 	game_time = 0
-	hp_bar.max_value = player_hp
-	hp_bar.value = player_hp
 	
 	# init about normal monster gen duration
 	NormalMonsterGenTimer = get_node("NormalMonsterGenTimer")
@@ -130,10 +90,6 @@ func _ready():
 
 func _process(delta):
 	game_time += delta
-	
-	hp_bar.value = player_hp
-	
-	_set_UI("Shield")
 	
 	# 마우스 커서 임시 
 	temp.position = get_global_mouse_position()
@@ -160,9 +116,6 @@ func _player_damage(damage):
 		else:
 			player_hp -= damage
 			PlayerShieldTimer.start(player_shield_timer_MAX)
-	
-	_set_UI("HP")
-	_set_UI("Shield")
 	
 	if player_hp <= 0:
 		# game over
@@ -199,8 +152,6 @@ func _player_bullet_collide(bullet_id, target_id):
 	if temp_enemy.hp <= 0:
 		remove_child(temp_enemy)
 		score += 1
-		_set_UI("Score")
-
 
 func _on_player_shield_timer_timeout():
 	self.player_shield_active = true
