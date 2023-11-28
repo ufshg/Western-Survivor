@@ -204,5 +204,9 @@ autostart = true
 [node name="NormalMonsterGenTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="PlayerShieldTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
 [connection signal="timeout" from="NormalMonsterGenTimer" to="." method="_on_normal_monster_gen_timer_timeout"]
+[connection signal="timeout" from="PlayerShieldTimer" to="." method="_on_player_shield_timer_timeout"]

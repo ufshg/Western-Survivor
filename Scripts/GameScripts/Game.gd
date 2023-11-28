@@ -14,9 +14,8 @@ var player
 var Bullet
 
 # player skill info
-var player_shield
-var player_shield_timer
 var player_shield_timer_MAX
+var player_shield_active
 var player3_bullet
 
 # game info
@@ -30,6 +29,7 @@ var UI
 # timer
 var FireTimer
 var NormalMonsterGenTimer
+var PlayerShieldTimer
 
 # progress bar
 @onready var hp_bar = $UI/Hp_bar
@@ -46,9 +46,9 @@ func _init_player():
 	1 => player2
 	2 => shield active
 	'''
-	player_shield = 0
+	PlayerShieldTimer = $PlayerShieldTimer
+	player_shield_active = false
 	player_shield_timer_MAX = 5
-	player_shield_timer = 5
 	
 	# 1 => player3 unique bullet
 	player3_bullet = false
@@ -62,7 +62,7 @@ func _init_player():
 		player_hp = 50
 		player_atk = 4
 		player.speed = 300
-		player_shield = 1
+		PlayerShieldTimer.start(player_shield_timer_MAX)
 		fire_duration = float(1)
 		player.get_node("Sprite2D").set_texture(player_tex2)
 	elif Global.player_type == 3:
@@ -94,8 +94,8 @@ func _set_UI(name):
 		if Global.player_type != 2:
 			get_node("UI/Panel/Shield_display").visible = false
 			get_node("UI/Panel/Shield_text").visible = false
-		if player_shield_timer > 0:
-			UI[name].text = "%.1f" % player_shield_timer
+		if not player_shield_active:
+			UI[name].text = "%.1f" % PlayerShieldTimer.get_time_left()
 		else:
 			UI[name].text = "Active"
 			
@@ -133,11 +133,7 @@ func _process(delta):
 	
 	hp_bar.value = player_hp
 	
-	if player_shield == 1 and player_shield_timer > 0:
-		player_shield_timer -= delta
-		if player_shield_timer <= 0:
-			player_shield = 2
-		_set_UI("Shield")
+	_set_UI("Shield")
 	
 	# 마우스 커서 임시 
 	temp.position = get_global_mouse_position()
@@ -155,14 +151,18 @@ func _on_normal_monster_gen_timer_timeout():
 
 
 func _player_damage(damage):
-	if player_shield != 2:
+	if Global.player_type != 2:
 		player_hp -= damage
-		_set_UI("Hp")
 	else:
-		player_shield = 1
-		_set_UI("Shield")
-		
-	player_shield_timer = player_shield_timer_MAX
+		if player_shield_active:
+			player_shield_active = false
+			PlayerShieldTimer.start(player_shield_timer_MAX)
+		else:
+			player_hp -= damage
+			PlayerShieldTimer.start(player_shield_timer_MAX)
+	
+	_set_UI("HP")
+	_set_UI("Shield")
 	
 	if player_hp <= 0:
 		# game over
@@ -200,3 +200,8 @@ func _player_bullet_collide(bullet_id, target_id):
 		remove_child(temp_enemy)
 		score += 1
 		_set_UI("Score")
+
+
+func _on_player_shield_timer_timeout():
+	self.player_shield_active = true
+	
