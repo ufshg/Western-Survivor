@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://n71pj44frlcy"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
-[ext_resource type="Texture2D" uid="uid://cqqpd4xug2w7v" path="res://assets/img/sandtile.png" id="2_0dn8h"]
+[ext_resource type="Texture2D" uid="uid://drtmsa1xt6qi" path="res://assets/img/sandtile.png" id="2_0dn8h"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/UI.gd" id="3_2nbfl"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/Camera2D.gd" id="3_lcjqh"]
-[ext_resource type="Texture2D" uid="uid://bk0pv4xob8u6s" path="res://assets/img/cactus.png" id="4_jkdj0"]
+[ext_resource type="Texture2D" uid="uid://cqk7ctdyqbc4f" path="res://assets/img/aim.png" id="4_tu6ce"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rk0bl"]
 bg_color = Color(0.247059, 0.670588, 0.992157, 1)
@@ -223,7 +223,8 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("4_jkdj0")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_tu6ce")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
