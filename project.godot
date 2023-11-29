@@ -18,6 +18,8 @@ config/icon="res://assets/icon.png"
 [autoload]
 
 Global="*res://Scripts/global.gd"
+Bgm="*res://Scenes/Bgm.tscn"
+ClickSound="*res://Scenes/ClickSound.tscn"
 
 [display]
 

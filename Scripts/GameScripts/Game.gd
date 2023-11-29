@@ -87,6 +87,10 @@ func _ready():
 	temp = get_node("Node2D/Sprite2D")
 	normal_enemy = preload("res://Scenes/Enemy_normal.tscn")
 	Bullet = preload("res://Scenes/Bullet.tscn")
+	
+	Bgm.stop()
+	Bgm.stream = load("res://assets/sound/lost_saga.mp3")
+	Bgm.play()
 
 
 func _process(delta):
@@ -137,11 +141,13 @@ func _on_fire_timer_timeout():
 	bullet.position = player.position
 	# direction x bullet speed
 	bullet.velocity = Vector2(1, 0).rotated(bullet_angle) * 500
+	$GunSound.play()
 
 
 func _normal_enemy_collide(vector):
 	player.position += vector * 50
 	_player_damage(10)
+	$HitSound.play()
 	print("hi")
 
 

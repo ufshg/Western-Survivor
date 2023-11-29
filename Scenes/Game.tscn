@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://n71pj44frlcy"]
+
+[gd_scene load_steps=11 format=3 uid="uid://n71pj44frlcy"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
 [ext_resource type="Texture2D" uid="uid://cqqpd4xug2w7v" path="res://assets/img/sandtile.png" id="2_0dn8h"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/UI.gd" id="3_2nbfl"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/Camera2D.gd" id="3_lcjqh"]
-[ext_resource type="Texture2D" uid="uid://cg8sf4swog66w" path="res://assets/img/aim.png" id="4_tu6ce"]
+[ext_resource type="Texture2D" uid="uid://cqk7ctdyqbc4f" path="res://assets/img/aim.png" id="4_tu6ce"]
+[ext_resource type="AudioStream" uid="uid://mqefpd1c2mxm" path="res://assets/sound/gunfire.mp3" id="6_8i1q1"]
+[ext_resource type="AudioStream" uid="uid://b7abus5lh4s4w" path="res://assets/sound/damage.mp3" id="7_r0myw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rk0bl"]
 bg_color = Color(0.247059, 0.670588, 0.992157, 1)
@@ -36,7 +39,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsai3"]
-size = Vector2(3000, 100)
+size = Vector2(3000, 537)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_x62no")
@@ -170,11 +173,20 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(-1542, -1247)
+texture = ExtResource("2_0dn8h")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 5000, 4000)
+
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+z_index = 1
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_tu6ce")
 
@@ -192,7 +204,7 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_wsai3")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-482, 707)
+position = Vector2(-700.5, 706.999)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_wsai3")
 
@@ -212,6 +224,14 @@ autostart = true
 
 [node name="PlayerShieldTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="GunSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8i1q1")
+volume_db = -20.0
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_r0myw")
+volume_db = -10.0
 
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
 [connection signal="timeout" from="NormalMonsterGenTimer" to="." method="_on_normal_monster_gen_timer_timeout"]
