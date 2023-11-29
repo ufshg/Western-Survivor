@@ -75,6 +75,7 @@ func _init_player():
 
 
 func _ready():
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	_init_player()
 	
 	game_time = 0
@@ -119,6 +120,7 @@ func _player_damage(damage):
 	
 	if player_hp <= 0:
 		# game over
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		queue_free()
 		
 		# go to game over scene TODO
