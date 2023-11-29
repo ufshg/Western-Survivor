@@ -1,7 +1,8 @@
+
 [gd_scene load_steps=11 format=3 uid="uid://n71pj44frlcy"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
-[ext_resource type="Texture2D" uid="uid://drtmsa1xt6qi" path="res://assets/img/sandtile.png" id="2_0dn8h"]
+[ext_resource type="Texture2D" uid="uid://cqqpd4xug2w7v" path="res://assets/img/sandtile.png" id="2_0dn8h"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/UI.gd" id="3_2nbfl"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/Camera2D.gd" id="3_lcjqh"]
 [ext_resource type="Texture2D" uid="uid://cqk7ctdyqbc4f" path="res://assets/img/aim.png" id="4_tu6ce"]
@@ -15,8 +16,23 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ye7ee"]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ebyot"]
 bg_color = Color(0, 0.807843, 0.364706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2qb8d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lovd"]
+bg_color = Color(0.815686, 0.815686, 0.815686, 0.501961)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -28,137 +44,63 @@ size = Vector2(3000, 537)
 [node name="World" type="Node2D"]
 script = ExtResource("1_x62no")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(-1017, -838)
+texture = ExtResource("2_0dn8h")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 4000, 3000)
+
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("3_2nbfl")
 metadata/_edit_group_ = true
 
-[node name="Panel" type="Panel" parent="UI"]
-offset_top = 900.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="Hp_text" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 14.0
-offset_right = 86.0
-offset_bottom = 180.0
-theme_override_font_sizes/font_size = 40
-text = "Hp"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Hp_display" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 90.0
-offset_right = 210.0
-offset_bottom = 180.0
-theme_override_font_sizes/font_size = 40
+[node name="SCORE" type="Label" parent="UI"]
+offset_left = 960.0
+offset_top = 120.0
+offset_right = 1129.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 50
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Atk_text" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 259.0
-offset_top = -2.0
-offset_right = 331.0
-offset_bottom = 178.0
-theme_override_font_sizes/font_size = 40
-text = "Atk
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Atk_display" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 363.0
-offset_top = 2.0
-offset_right = 435.0
-offset_bottom = 182.0
-theme_override_font_sizes/font_size = 40
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Speed_text" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 494.0
-offset_top = 2.0
-offset_right = 566.0
-offset_bottom = 182.0
-theme_override_font_sizes/font_size = 40
-text = "Speed"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Speed_display" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 665.0
-offset_right = 737.0
-offset_bottom = 180.0
-theme_override_font_sizes/font_size = 40
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Shield_text" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 1185.0
-offset_right = 1359.0
-offset_bottom = 180.0
-theme_override_font_sizes/font_size = 40
-text = "Shield"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Firetime_text" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 799.0
-offset_right = 973.0
-offset_bottom = 180.0
-theme_override_font_sizes/font_size = 40
-text = "Fire
-duration"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Shield_display" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 1397.0
-offset_right = 1469.0
-offset_bottom = 180.0
-theme_override_font_sizes/font_size = 40
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Firetime_display" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 1011.0
-offset_top = 2.0
-offset_right = 1083.0
-offset_bottom = 182.0
-theme_override_font_sizes/font_size = 40
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Score_text" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 1631.0
-offset_right = 1744.0
-offset_bottom = 180.0
-theme_override_font_sizes/font_size = 40
+[node name="SCORE_text" type="Label" parent="UI"]
+offset_left = 800.0
+offset_top = 120.0
+offset_right = 969.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 50
 text = "Score"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Score_display" type="Label" parent="UI/Panel"]
-layout_mode = 0
-offset_left = 1798.0
-offset_right = 1870.0
-offset_bottom = 180.0
-theme_override_font_sizes/font_size = 40
+[node name="COLON" type="Label" parent="UI"]
+offset_left = 900.0
+offset_top = 20.0
+offset_right = 1020.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 80
+text = ":"
+horizontal_alignment = 1
+
+[node name="SECOND" type="Label" parent="UI"]
+offset_left = 975.0
+offset_top = 20.0
+offset_right = 1095.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 80
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MINUTE" type="Label" parent="UI"]
+offset_left = 825.0
+offset_top = 20.0
+offset_right = 945.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 80
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -176,41 +118,57 @@ offset_left = 160.0
 offset_top = 56.0
 offset_right = 560.0
 offset_bottom = 116.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ye7ee")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ebyot")
 show_percentage = false
 
+[node name="Shield_bar" type="ProgressBar" parent="UI"]
+visible = false
+offset_left = 160.0
+offset_top = 56.0
+offset_right = 560.0
+offset_bottom = 116.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_2qb8d")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8lovd")
+max_value = 5.0
+show_percentage = false
+
 [node name="ATK_text" type="Label" parent="UI"]
-offset_left = 35.0
-offset_top = 190.0
-offset_right = 75.0
-offset_bottom = 217.0
+offset_left = 25.0
+offset_top = 180.0
+offset_right = 82.0
+offset_bottom = 227.0
+theme_override_font_sizes/font_size = 30
 text = "ATK"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ATK" type="Label" parent="UI"]
-offset_left = 95.0
-offset_top = 190.0
-offset_right = 135.0
-offset_bottom = 217.0
+offset_left = 100.0
+offset_top = 180.0
+offset_right = 160.0
+offset_bottom = 227.0
+theme_override_font_sizes/font_size = 30
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SPD_text" type="Label" parent="UI"]
-offset_left = 35.0
+offset_left = 23.0
 offset_top = 220.0
-offset_right = 75.0
-offset_bottom = 247.0
+offset_right = 85.0
+offset_bottom = 267.0
+theme_override_font_sizes/font_size = 30
 text = "SPD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SPD" type="Label" parent="UI"]
-offset_left = 95.0
+offset_left = 100.0
 offset_top = 220.0
-offset_right = 135.0
-offset_bottom = 247.0
+offset_right = 160.0
+offset_bottom = 267.0
+theme_override_font_sizes/font_size = 30
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
