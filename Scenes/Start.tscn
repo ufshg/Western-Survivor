@@ -1,22 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0xi2lfqb27ov"]
+[gd_scene load_steps=13 format=3 uid="uid://b0xi2lfqb27ov"]
 
 [ext_resource type="Script" path="res://Scripts/Start.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://cpt1cnxof1jli" path="res://assets/img/sky_background.png" id="2_2yfk0"]
+[ext_resource type="Texture2D" uid="uid://cr6nhldv0c0v4" path="res://assets/img/sky_background.png" id="2_2yfk0"]
 [ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="3"]
 [ext_resource type="Script" path="res://Scripts/Button4.gd" id="4"]
-[ext_resource type="Texture2D" uid="uid://dbgott5hpdvgy" path="res://assets/img/house1_background.png" id="6_8mk54"]
-[ext_resource type="Texture2D" uid="uid://cbfobdmfk6lv0" path="res://assets/img/house2_background.png" id="7_dgkfm"]
-[ext_resource type="Texture2D" uid="uid://ujjylkuwckij" path="res://assets/img/start_button.png" id="8_fankt"]
-[ext_resource type="Texture2D" uid="uid://biwy60ddr6ujy" path="res://assets/img/house3_background.png" id="8_lmhxx"]
-[ext_resource type="Texture2D" uid="uid://dh3wyl4jtb28u" path="res://assets/img/title.png" id="9_8kypq"]
+[ext_resource type="Texture2D" uid="uid://jovsegfbhxyv" path="res://assets/img/house1_background.png" id="6_8mk54"]
+[ext_resource type="Texture2D" uid="uid://ujy7u43q32lm" path="res://assets/img/house2_background.png" id="7_dgkfm"]
+[ext_resource type="Texture2D" uid="uid://bn1jytrstcyxo" path="res://assets/img/start_button.png" id="8_fankt"]
+[ext_resource type="Texture2D" uid="uid://cp2ldvchsocep" path="res://assets/img/house3_background.png" id="8_lmhxx"]
+[ext_resource type="Texture2D" uid="uid://bwe3akhfgxqlp" path="res://assets/img/title.png" id="9_8kypq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghxuv"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chpdi"]
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gv3w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_48il5"]
 
 [node name="Start" type="Panel"]
 offset_right = 1920.0
@@ -61,7 +59,8 @@ offset_bottom = 958.0
 scale = Vector2(0.4, 0.4)
 theme_override_fonts/font = ExtResource("3")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_chpdi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
 icon = ExtResource("8_fankt")
 icon_alignment = 1
 

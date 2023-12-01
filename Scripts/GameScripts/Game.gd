@@ -1,10 +1,11 @@
 extends Node2D
 
+var rng = RandomNumberGenerator.new()
+
 var player_tex1 = preload("res://assets/img/player1_right.png")
 var player_tex2 = preload("res://assets/img/player2_right.png")
 var player_tex3 = preload("res://assets/img/player3_right.png")
 
-var rng = RandomNumberGenerator.new()
 # player info
 var player_hp
 var player_atk
@@ -21,19 +22,20 @@ var player3_bullet
 var score
 var game_time
 var temp
-var normal_enemy
+var monster
 var player_collide_vector
+var player_exp
 
 # timer
-var FireTimer
-var NormalMonsterGenTimer
-var PlayerShieldTimer
+@onready var FireTimer = $FireTimer
+@onready var PlayerShieldTimer = $PlayerShieldTimer
+@onready var MonsterLv1GenTimer = $Monster_Lv1_GenTimer
+@onready var MonsterLv2GenTimer = $Monster_Lv2_GenTimer
 
 
 func _init_player():
 	player = preload("res://Scenes/Player.tscn").instantiate()
 	player.position = Vector2(960, 540)
-	FireTimer = get_node("FireTimer")
 	score = 0
 	
 	'''
@@ -42,7 +44,6 @@ func _init_player():
 	1 => player2
 	2 => shield active
 	'''
-	PlayerShieldTimer = $PlayerShieldTimer
 	player_shield_active = false
 	player_shield_timer_MAX = 5
 	
@@ -79,13 +80,16 @@ func _ready():
 	_init_player()
 	
 	game_time = 0
+	player_exp = 0
 	
 	# init about normal monster gen duration
-	NormalMonsterGenTimer = get_node("NormalMonsterGenTimer")
-	NormalMonsterGenTimer.wait_time = 2
+	#MonsterLv1GenTimer.wait_time = 2
+	MonsterLv1GenTimer.start(2)
+	#MonsterLv2GenTimer.wait_time = 5
+	MonsterLv2GenTimer.start(5)
 	
 	temp = get_node("Node2D/Sprite2D")
-	normal_enemy = preload("res://Scenes/Enemy_normal.tscn")
+	monster = preload("res://Scenes/Monster.tscn")
 	Bullet = preload("res://Scenes/Bullet.tscn")
 	
 	Bgm.stop()
@@ -98,19 +102,21 @@ func _process(delta):
 	
 	# 마우스 커서 임시 
 	temp.position = get_global_mouse_position()
-	pass
 
-# add_normal_enemy
-
-func _on_normal_monster_gen_timer_timeout():
-	var enemy = normal_enemy.instantiate()
-	enemy.normal_enemy_collide.connect(_normal_enemy_collide)
+func _on_monster_lv1_gen_timer_timeout():
+	var enemy = monster.instantiate()
+	# init( monster level, self.player )
+	enemy.init(1, self.player)
+	enemy.enemy_collide.connect(enemy_collide)
 	add_child(enemy)
-	enemy.player = self.player
-	enemy.hp = 3
-	enemy.position = player.position + Vector2(1200, 0).rotated(rng.randf_range(0, 360))
-	#enemy.position = Vector2(rng.randf_range(0, 1920), rng.randf_range(0, 1080))
 
+
+func _on_monster_lv2_gen_timer_timeout():
+	var enemy = monster.instantiate()
+	enemy.init(2, self.player)
+	enemy.enemy_collide.connect(enemy_collide)
+	add_child(enemy)
+	
 
 func _player_damage(damage):
 	if Global.player_type != 2:
@@ -123,6 +129,8 @@ func _player_damage(damage):
 			player_hp -= damage
 			PlayerShieldTimer.start(player_shield_timer_MAX)
 	
+	print('hp %d' % player_hp)
+	
 	if player_hp <= 0:
 		# game over
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
@@ -130,6 +138,7 @@ func _player_damage(damage):
 		
 		# go to game over scene TODO
 		get_tree().change_scene_to_file("res://Scenes/Start.tscn")
+
 
 # player_shoot()
 func _on_fire_timer_timeout():
@@ -144,11 +153,10 @@ func _on_fire_timer_timeout():
 	$GunSound.play()
 
 
-func _normal_enemy_collide(vector):
+func enemy_collide(vector, atk):
 	player.position += vector * 50
-	_player_damage(10)
+	_player_damage(atk)
 	$HitSound.play()
-	print("hi")
 
 
 func _player_bullet_collide(bullet_id, target_id):
@@ -165,3 +173,4 @@ func _player_bullet_collide(bullet_id, target_id):
 func _on_player_shield_timer_timeout():
 	self.player_shield_active = true
 	
+

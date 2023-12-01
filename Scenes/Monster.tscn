@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://cw1qjyympq0cs"]
 
-[ext_resource type="Script" path="res://Scripts/GameScripts/Enemy_normal.gd" id="1_4euik"]
-[ext_resource type="Texture2D" uid="uid://dr1rpp0n51nrn" path="res://assets/img/monster_rat.png" id="2_3nc2b"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/Enemy_normal.gd" id="1_4becm"]
+[ext_resource type="Texture2D" uid="uid://bnyfpsmle5atr" path="res://assets/img/monster_rat.png" id="2_kxpkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15rv0"]
 size = Vector2(65, 36)
 
 [node name="Enemy_normal" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_4euik")
+script = ExtResource("1_4becm")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_3nc2b")
+texture = ExtResource("2_kxpkn")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

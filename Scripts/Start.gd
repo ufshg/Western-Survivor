@@ -32,10 +32,12 @@ func _on_texture_button_button_up():
 
 
 func _on_start_btn_mouse_entered():
-	$StartBtn.set_scale(Vector2(0.41, 0.41))
+	$StartBtn.set_scale(Vector2(0.42, 0.42))
+	$StartBtn.position += Vector2(-6, -3)
 	pass # Replace with function body.
 	
 	
 func _on_start_btn_mouse_exited():
 	$StartBtn.set_scale(Vector2(0.4, 0.4))
+	$StartBtn.position += Vector2(6, 3)
 	pass # Replace with function body.

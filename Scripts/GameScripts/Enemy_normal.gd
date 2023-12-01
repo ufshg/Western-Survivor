@@ -1,16 +1,40 @@
 extends CharacterBody2D
 
-signal normal_enemy_collide(vector)
+var monster_tex1 = preload("res://assets/img/monster_rat.png")
+var monster_tex2 = preload("res://assets/img/monster_snake.png")
+
+signal enemy_collide(vector)
+
+var rng = RandomNumberGenerator.new()
 
 var player
 var speed
 var vector
 var hp
+var atk
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	speed = 100
 	pass # Replace with function body.
+
+
+func init(level, Player):
+	player = Player
+	$Sprite2D.set_scale(Vector2(0.4, 0.4))
+	position = player.position + Vector2(1200, 0).rotated(rng.randf_range(0, 360))	
+	
+	# rat
+	if level == 1:
+		atk = 2
+		speed = 100
+		hp = 3
+		$Sprite2D.set_texture(monster_tex1)
+	# snake
+	elif level == 2:
+		atk = 5
+		speed = 250
+		hp = 6
+		$Sprite2D.set_texture(monster_tex2)
 
 
 func _enemy_move(delta):
@@ -23,12 +47,12 @@ func _enemy_move(delta):
 	
 	# image flip
 	if vector.x:
-		get_node("Sprite2D").set_flip_h(vector.x > 0)
+		$Sprite2D.set_flip_h(vector.x > 0)
 	
 	# move without collide between enemy - enemy
 	var collision_info = move_and_collide(vector * speed * delta)
 	if collision_info:
-		normal_enemy_collide.emit(vector)
+		enemy_collide.emit(vector, atk)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
