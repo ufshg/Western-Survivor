@@ -70,6 +70,7 @@ icon_alignment = 1
 
 [node name="QuitBtn" type="Button" parent="."]
 texture_repeat = 2
+layout_mode = 0
 offset_left = 626.0
 offset_top = 861.0
 offset_right = 1241.0
@@ -82,7 +83,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
 icon = ExtResource("8_fankt")
 icon_alignment = 1
 
-[node name="TextEdit" type="LineEdit" parent="."]
+[node name="InputBox" type="LineEdit" parent="."]
 layout_mode = 0
 offset_left = 810.0
 offset_top = 640.0
@@ -103,3 +104,4 @@ expand_to_text_length = true
 [connection signal="button_up" from="QuitBtn" to="." method="_on_quit_btn_button_up"]
 [connection signal="mouse_entered" from="QuitBtn" to="." method="_on_quit_btn_mouse_entered"]
 [connection signal="mouse_exited" from="QuitBtn" to="." method="_on_quit_btn_mouse_exited"]
+[connection signal="text_changed" from="InputBox" to="." method="_on_input_box_text_changed"]

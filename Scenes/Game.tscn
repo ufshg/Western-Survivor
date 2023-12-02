@@ -38,7 +38,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsai3"]
-size = Vector2(3000, 537)
+size = Vector2(9393, 537)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_x62no")
@@ -174,11 +174,11 @@ vertical_alignment = 1
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(-1542, -1247)
+position = Vector2(-4112, -4336)
 texture = ExtResource("2_0dn8h")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 5000, 4000)
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 10000, 10000)
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
@@ -198,21 +198,21 @@ collision_layer = 16
 collision_mask = 3
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2400, 545)
+position = Vector2(5008, 683)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_wsai3")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-700.5, 706.999)
+position = Vector2(-3160, 707)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_wsai3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(985, 1382)
+position = Vector2(953, 4817)
 shape = SubResource("RectangleShape2D_wsai3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(959, -293)
+position = Vector2(911, -3428)
 shape = SubResource("RectangleShape2D_wsai3")
 
 [node name="FireTimer" type="Timer" parent="."]

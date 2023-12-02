@@ -20,10 +20,12 @@ func _ready():
 
 
 func _on_start_btn_button_up():
+	if not player_name:
+		return
+	Global.player_name = player_name
 	ClickSound.stream = load("res://assets/sound/reload2.wav")
 	ClickSound.play()
 	Global.player_type = 1
-	Global.player_name = player_name
 	get_tree().change_scene_to_file("res://Scenes/Select.tscn")
 	pass # Replace with function body.
 
