@@ -1,5 +1,9 @@
 extends CanvasLayer
 
+var p1 = preload("res://assets/img/portrait1.png")
+var p2 = preload("res://assets/img/portrait2.png")
+var p3 = preload("res://assets/img/portrait3.png")
+
 var gametime
 var game
 var minute
@@ -18,6 +22,8 @@ var second
 func _ready():
 	await get_tree().get_root().get_node("World").ready
 	game = get_tree().get_root().get_node("World")
+	
+	$portrait.set_texture([p1, p2, p3][Global.player_type - 1])
 	
 	HP.max_value = game.player_hp
 	EXP.max_value = game.player_need_exp

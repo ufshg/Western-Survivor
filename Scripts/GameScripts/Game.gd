@@ -6,9 +6,6 @@ var player_tex1 = preload("res://assets/img/player1_right.png")
 var player_tex2 = preload("res://assets/img/player2_right.png")
 var player_tex3 = preload("res://assets/img/player3_right.png")
 
-var portrait_tex1 = preload("res://assets/img/portrait1.png")
-var portrait_tex2 = preload("res://assets/img/portrait2.png")
-var portrait_tex3 = preload("res://assets/img/portrait3.png")
 
 # player info
 var player_hp
@@ -66,7 +63,6 @@ func _init_player():
 		player_atk = 5
 		player.speed = 200
 		fire_duration = float(2)
-		$UI/portrait.set_texture(portrait_tex1)
 	elif Global.player_type == 2:
 		player_hp = 50
 		player_atk = 4
@@ -74,7 +70,6 @@ func _init_player():
 		PlayerShieldTimer.start(player_shield_timer_MAX)
 		fire_duration = float(1)
 		player.get_node("Sprite2D").set_texture(player_tex2)
-		$UI/portrait.set_texture(portrait_tex2)
 	elif Global.player_type == 3:
 		player_hp = 150
 		player_atk = 3
@@ -82,7 +77,6 @@ func _init_player():
 		player3_bullet = true
 		fire_duration = float(3)
 		player.get_node("Sprite2D").set_texture(player_tex3)
-		$UI/portrait.set_texture(portrait_tex3)
 	
 	player_max_hp = player_hp
 	
