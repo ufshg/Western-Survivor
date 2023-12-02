@@ -7,6 +7,7 @@ var second
 @onready var HP = $Hp_bar
 @onready var EXP = $Exp_bar
 @onready var SHIELD = $Shield_bar
+@onready var HPV = $HP
 @onready var ATK = $ATK
 @onready var SPD = $SPD
 @onready var MINUTE = $MINUTE
@@ -38,6 +39,7 @@ func _process(delta):
 	
 	SECOND.text = "%02d" % second
 	MINUTE.text = "%02d" % minute
+	HPV.text = str(game.player_hp) + "/" + str(game.player_max_hp)
 	
 	LEVEL.text = str(game.player_level)
 	EXP.max_value = game.player_need_exp

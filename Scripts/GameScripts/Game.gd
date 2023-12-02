@@ -8,6 +8,7 @@ var player_tex3 = preload("res://assets/img/player3_right.png")
 
 # player info
 var player_hp
+var player_max_hp
 var player_atk
 var fire_duration
 var player
@@ -71,6 +72,8 @@ func _init_player():
 		player3_bullet = true
 		fire_duration = float(3)
 		player.get_node("Sprite2D").set_texture(player_tex3)
+	
+	player_max_hp = player_hp
 	
 	FireTimer.wait_time = fire_duration
 	add_child(player)
