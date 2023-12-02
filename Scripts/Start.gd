@@ -52,12 +52,17 @@ func _on_input_box_text_changed(new_text):
 
 
 func _on_quit_btn_mouse_entered():
+	$QuitBtn.set_scale(Vector2(0.42, 0.42))
+	$QuitBtn.position += Vector2(-6, -3)
 	pass # Replace with function body.
 
 
 func _on_quit_btn_mouse_exited():
+	$QuitBtn.set_scale(Vector2(0.4, 0.4))
+	$QuitBtn.position += Vector2(6, 3)
 	pass # Replace with function body.
 
 
 func _on_quit_btn_button_up():
+	JavaScriptBridge.eval("window.close()")
 	pass # Replace with function body.
