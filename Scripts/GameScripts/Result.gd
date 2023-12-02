@@ -7,6 +7,8 @@ var t3 = preload("res://assets/img/player3_right.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Bgm.stream = load("res://assets/sound/gameover.mp3")
+	Bgm.play()
 	$Character.set_texture([t1, t2, t3][Global.player_type - 1])
 	#$PlayerName.text = Global.player_name
 	$Time.text = Global.result_time
