@@ -159,11 +159,14 @@ func _player_damage(damage):
 	
 	if player_hp <= 0:
 		# game over
+		Global.result_time = get_node("UI")._result()
+		Global.result_score = str(score)
+		
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		queue_free()
 		
 		# go to game over scene TODO
-		get_tree().change_scene_to_file("res://Scenes/Start.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Result.tscn")
 
 
 # player_shoot()

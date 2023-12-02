@@ -1,14 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://b0xi2lfqb27ov"]
+[gd_scene load_steps=12 format=3 uid="uid://b0xi2lfqb27ov"]
 
 [ext_resource type="Script" path="res://Scripts/Start.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://j4qlfwskesix" path="res://assets/img/background.png" id="2_k55b5"]
+[ext_resource type="Texture2D" uid="uid://x8gwfmixkflv" path="res://assets/img/background.png" id="2_k55b5"]
 [ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="3"]
-[ext_resource type="Texture2D" uid="uid://dbgott5hpdvgy" path="res://assets/img/house1_background.png" id="6_8mk54"]
-[ext_resource type="Texture2D" uid="uid://cbfobdmfk6lv0" path="res://assets/img/house2_background.png" id="7_dgkfm"]
-[ext_resource type="Texture2D" uid="uid://ujjylkuwckij" path="res://assets/img/start_button.png" id="8_fankt"]
-[ext_resource type="Texture2D" uid="uid://biwy60ddr6ujy" path="res://assets/img/house3_background.png" id="8_lmhxx"]
-[ext_resource type="Texture2D" uid="uid://dh3wyl4jtb28u" path="res://assets/img/title.png" id="9_8kypq"]
-[ext_resource type="Texture2D" uid="uid://corkwk80pr74" path="res://assets/img/quit_button.png" id="9_k88v4"]
+[ext_resource type="Texture2D" uid="uid://bn1jytrstcyxo" path="res://assets/img/start_button.png" id="8_fankt"]
+[ext_resource type="Texture2D" uid="uid://bwe3akhfgxqlp" path="res://assets/img/title.png" id="9_8kypq"]
+[ext_resource type="Texture2D" uid="uid://swd4a8qrfriu" path="res://assets/img/quit_button.png" id="9_k88v4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghxuv"]
 
@@ -28,26 +25,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(959, 540)
-scale = Vector2(1.998, 1.125)
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.341176, 0.341176, 0.341176, 1)
+position = Vector2(983, 533)
+scale = Vector2(1, 1.12524)
 texture = ExtResource("2_k55b5")
-
-[node name="House1Background" type="Sprite2D" parent="."]
-position = Vector2(154, 885)
-scale = Vector2(4, 4)
-texture = ExtResource("6_8mk54")
-
-[node name="House2Background" type="Sprite2D" parent="."]
-position = Vector2(669, 887)
-scale = Vector2(4, 4)
-texture = ExtResource("7_dgkfm")
-
-[node name="House3Background" type="Sprite2D" parent="."]
-position = Vector2(1698, 834)
-scale = Vector2(5, 5)
-texture = ExtResource("8_lmhxx")
 
 [node name="Title2" type="Sprite2D" parent="."]
 position = Vector2(960, 480)

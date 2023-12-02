@@ -49,3 +49,7 @@ func _process(delta):
 	SCORE.text = str(game.score)
 	
 	SHIELD.value = game.player_shield_timer_MAX - game.PlayerShieldTimer.get_time_left()
+
+
+func _result():
+	return MINUTE.text + " : " + SECOND.text
