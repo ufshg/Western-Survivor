@@ -198,6 +198,7 @@ func _player_bullet_collide(bullet_id, target_id):
 		add_exp(temp_enemy.exp)
 		remove_child(temp_enemy)
 		score += 1
+		$MonsterSound.play()
 		print(player_exp, "/", player_need_exp)
 
 func _on_player_shield_timer_timeout():

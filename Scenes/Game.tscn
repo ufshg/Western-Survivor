@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://n71pj44frlcy"]
+[gd_scene load_steps=15 format=3 uid="uid://n71pj44frlcy"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
 [ext_resource type="Texture2D" uid="uid://drtmsa1xt6qi" path="res://assets/img/sandtile.png" id="2_0dn8h"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cqk7ctdyqbc4f" path="res://assets/img/aim.png" id="4_tu6ce"]
 [ext_resource type="AudioStream" uid="uid://mqefpd1c2mxm" path="res://assets/sound/gunfire.mp3" id="6_8i1q1"]
 [ext_resource type="AudioStream" uid="uid://b7abus5lh4s4w" path="res://assets/sound/damage.mp3" id="7_r0myw"]
+[ext_resource type="AudioStream" uid="uid://cs5ls8u0p6c2c" path="res://assets/sound/monster_death.mp3" id="7_rx1i3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rk0bl"]
 bg_color = Color(0.247059, 0.670588, 0.992157, 1)
@@ -273,6 +274,10 @@ one_shot = true
 [node name="GunSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_8i1q1")
 volume_db = -20.0
+
+[node name="MonsterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_rx1i3")
+volume_db = -5.0
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_r0myw")
