@@ -1,6 +1,7 @@
 extends Node
 
 var player_type
+var player_name
 
 
 # Called when the node enters the scene tree for the first time.

@@ -5,6 +5,7 @@ extends Node
 # var a = 2
 # var b = "text"
 var startBtn
+var player_name
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,12 +23,12 @@ func _on_start_btn_button_up():
 	ClickSound.stream = load("res://assets/sound/reload2.wav")
 	ClickSound.play()
 	Global.player_type = 1
+	Global.player_name = player_name
 	get_tree().change_scene_to_file("res://Scenes/Select.tscn")
 	pass # Replace with function body.
 
 
 func _on_texture_button_button_up():
-	print('hi')
 	pass # Replace with function body.
 
 
@@ -40,4 +41,21 @@ func _on_start_btn_mouse_entered():
 func _on_start_btn_mouse_exited():
 	$StartBtn.set_scale(Vector2(0.4, 0.4))
 	$StartBtn.position += Vector2(6, 3)
+	pass # Replace with function body.
+
+
+func _on_input_box_text_changed(new_text):
+	player_name = new_text
+	print(player_name)
+
+
+func _on_quit_btn_mouse_entered():
+	pass # Replace with function body.
+
+
+func _on_quit_btn_mouse_exited():
+	pass # Replace with function body.
+
+
+func _on_quit_btn_button_up():
 	pass # Replace with function body.

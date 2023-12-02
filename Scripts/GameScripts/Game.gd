@@ -77,6 +77,8 @@ func _init_player():
 
 func _ready():
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+	print("Welcome to Our Game")
+	print("Your name is " + Global.player_name)
 	_init_player()
 	
 	game_time = 0

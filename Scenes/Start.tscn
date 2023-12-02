@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0xi2lfqb27ov"]
+[gd_scene load_steps=14 format=3 uid="uid://b0xi2lfqb27ov"]
 
 [ext_resource type="Script" path="res://Scripts/Start.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://cr6nhldv0c0v4" path="res://assets/img/sky_background.png" id="2_2yfk0"]
 [ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="3"]
-[ext_resource type="Script" path="res://Scripts/Button4.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://jovsegfbhxyv" path="res://assets/img/house1_background.png" id="6_8mk54"]
 [ext_resource type="Texture2D" uid="uid://ujy7u43q32lm" path="res://assets/img/house2_background.png" id="7_dgkfm"]
 [ext_resource type="Texture2D" uid="uid://bn1jytrstcyxo" path="res://assets/img/start_button.png" id="8_fankt"]
@@ -15,6 +14,11 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gv3w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_48il5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urau4"]
+bg_color = Color(1, 1, 1, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixu3j"]
 
 [node name="Start" type="Panel"]
 offset_right = 1920.0
@@ -52,9 +56,9 @@ texture = ExtResource("9_8kypq")
 [node name="StartBtn" type="Button" parent="."]
 texture_repeat = 2
 layout_mode = 0
-offset_left = 835.0
+offset_left = 837.0
 offset_top = 725.0
-offset_right = 1450.0
+offset_right = 1452.0
 offset_bottom = 958.0
 scale = Vector2(0.4, 0.4)
 theme_override_fonts/font = ExtResource("3")
@@ -64,18 +68,38 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
 icon = ExtResource("8_fankt")
 icon_alignment = 1
 
-[node name="Exit" type="Button" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 836.0
-offset_top = 696.0
-offset_right = 1076.0
-offset_bottom = 763.0
+[node name="QuitBtn" type="Button" parent="."]
+texture_repeat = 2
+offset_left = 626.0
+offset_top = 861.0
+offset_right = 1241.0
+offset_bottom = 1094.0
+scale = Vector2(0.4, 0.4)
 theme_override_fonts/font = ExtResource("3")
-theme_override_font_sizes/font_size = 40
-text = "종료"
-script = ExtResource("4")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
+icon = ExtResource("8_fankt")
+icon_alignment = 1
+
+[node name="TextEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 810.0
+offset_top = 640.0
+offset_right = 1110.0
+offset_bottom = 700.0
+theme_override_colors/font_placeholder_color = Color(0.490196, 0.490196, 0.490196, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_urau4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ixu3j")
+placeholder_text = "YOUR NAME"
+alignment = 1
+max_length = 20
+expand_to_text_length = true
 
 [connection signal="button_up" from="StartBtn" to="." method="_on_start_btn_button_up"]
 [connection signal="mouse_entered" from="StartBtn" to="." method="_on_start_btn_mouse_entered"]
 [connection signal="mouse_exited" from="StartBtn" to="." method="_on_start_btn_mouse_exited"]
+[connection signal="button_up" from="QuitBtn" to="." method="_on_quit_btn_button_up"]
+[connection signal="mouse_entered" from="QuitBtn" to="." method="_on_quit_btn_mouse_entered"]
+[connection signal="mouse_exited" from="QuitBtn" to="." method="_on_quit_btn_mouse_exited"]
