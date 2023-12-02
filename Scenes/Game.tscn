@@ -260,6 +260,9 @@ shape = SubResource("RectangleShape2D_wsai3")
 [node name="FireTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="DamageTimer" type="Timer" parent="."]
+autostart = true
+
 [node name="Monster_Lv1_GenTimer" type="Timer" parent="."]
 
 [node name="Monster_Lv2_GenTimer" type="Timer" parent="."]
@@ -276,6 +279,7 @@ stream = ExtResource("7_r0myw")
 volume_db = -10.0
 
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
 [connection signal="timeout" from="Monster_Lv1_GenTimer" to="." method="_on_monster_lv1_gen_timer_timeout"]
 [connection signal="timeout" from="Monster_Lv2_GenTimer" to="." method="_on_monster_lv2_gen_timer_timeout"]
 [connection signal="timeout" from="PlayerShieldTimer" to="." method="_on_player_shield_timer_timeout"]
