@@ -43,7 +43,16 @@ size = Vector2(9393, 537)
 [node name="World" type="Node2D"]
 script = ExtResource("1_x62no")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(-4025, -4380)
+texture = ExtResource("2_0dn8h")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 10000, 10000)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture_repeat = 2
 position = Vector2(-1017, -838)
 texture = ExtResource("2_0dn8h")
@@ -172,13 +181,25 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-texture_repeat = 2
-position = Vector2(-4112, -4336)
-texture = ExtResource("2_0dn8h")
-centered = false
-region_enabled = true
-region_rect = Rect2(2.08165e-12, 2.08165e-12, 10000, 10000)
+[node name="Lv_text" type="Label" parent="UI"]
+offset_left = 25.0
+offset_top = 140.0
+offset_right = 85.0
+offset_bottom = 187.0
+theme_override_font_sizes/font_size = 30
+text = "Lv"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lv" type="Label" parent="UI"]
+offset_left = 100.0
+offset_top = 140.0
+offset_right = 160.0
+offset_bottom = 187.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)

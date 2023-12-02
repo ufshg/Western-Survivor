@@ -12,6 +12,7 @@ var speed
 var vector
 var hp
 var atk
+var exp
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,12 +29,14 @@ func init(level, Player):
 		atk = 2
 		speed = 100
 		hp = 3
+		exp = 2
 		$Sprite2D.set_texture(monster_tex1)
 	# snake
 	elif level == 2:
 		atk = 5
 		speed = 250
 		hp = 6
+		exp = 5
 		$Sprite2D.set_texture(monster_tex2)
 
 

@@ -25,6 +25,8 @@ var temp
 var monster
 var player_collide_vector
 var player_exp
+var player_need_exp
+var player_level
 
 # timer
 @onready var FireTimer = $FireTimer
@@ -82,7 +84,11 @@ func _ready():
 	_init_player()
 	
 	game_time = 0
+	
+	# about player exp
 	player_exp = 0
+	player_level = 1
+	player_need_exp = 10
 	
 	# init about normal monster gen duration
 	#MonsterLv1GenTimer.wait_time = 2
@@ -104,6 +110,7 @@ func _process(delta):
 	
 	# 마우스 커서 임시 
 	temp.position = get_global_mouse_position()
+	
 
 func _on_monster_lv1_gen_timer_timeout():
 	var enemy = monster.instantiate()
@@ -161,6 +168,14 @@ func enemy_collide(vector, atk):
 	$HitSound.play()
 
 
+func add_exp(monster_exp):
+	player_exp += monster_exp
+	if player_exp >= player_need_exp:
+		player_level += 1
+		player_exp -= player_need_exp
+		player_need_exp = player_level * 10
+
+
 func _player_bullet_collide(bullet_id, target_id):
 	if not player3_bullet:
 		remove_child(instance_from_id(bullet_id))
@@ -169,8 +184,10 @@ func _player_bullet_collide(bullet_id, target_id):
 	temp_enemy.hp -= player_atk
 	
 	if temp_enemy.hp <= 0:
+		add_exp(temp_enemy.exp)
 		remove_child(temp_enemy)
 		score += 1
+		print(player_exp, "/", player_need_exp)
 
 func _on_player_shield_timer_timeout():
 	self.player_shield_active = true
