@@ -30,7 +30,6 @@ var player_collide_vector
 var player_exp
 var player_need_exp
 var player_level
-var player_invincible
 
 # timer
 @onready var FireTimer = $FireTimer
@@ -44,8 +43,6 @@ func _init_player():
 	player = preload("res://Scenes/Player.tscn").instantiate()
 	player.position = Vector2(960, 540)
 	score = 0
-	
-	player_invincible = false
 	
 	'''
 	player_shield
@@ -147,8 +144,7 @@ func _player_damage(damage):
 		else:
 			player_hp -= damage
 			PlayerShieldTimer.start(player_shield_timer_MAX)
-	player_invincible = true
-	# 1s invincible after hit with enemy
+	player.set_collision_layer_value(1, false)
 	DamageTimer.start(1)
 	player.get_node("AnimationPlayer").play("damage")
 	
@@ -180,10 +176,9 @@ func _on_fire_timer_timeout():
 
 
 func enemy_collide(vector, atk):
-	if not player_invincible:
-		player.position += vector * 50
-		_player_damage(atk)
-		$HitSound.play()
+	player.position += vector * 50
+	_player_damage(atk)
+	$HitSound.play()
 
 
 func add_exp(monster_exp):
@@ -236,4 +231,4 @@ func _on_player_shield_timer_timeout():
 
 
 func _on_damage_timer_timeout():
-	self.player_invincible = false
+	player.set_collision_layer_value(1, true)
