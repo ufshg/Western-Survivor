@@ -20,16 +20,16 @@ func _ready():
 	arr = []
 	
 	arr.append(
-		[preload("res://assets/img/attack_power.png"), 1.5, "총알", "ATK 1 증가\n줄바꿈되나?"]
+		[preload("res://assets/img/attack_power.png"), 1.5, "총알", "\"강력해진 대화 수단\"\n\n\n\n공격력 1 증가"]
 	)
 	arr.append(
-		[preload("res://assets/img/speed_up.png"), 1.5, "장화", "SPD 0.2 증가"]
+		[preload("res://assets/img/speed_up.png"), 1.5, "장화", "\"가볍고 질긴 가죽부츠\"\n\n\n\n이동속도 0.2 증가"]
 	)
 	arr.append(
-		[preload("res://assets/img/stew.png"), 0.6, "스튜", "최대 Hp 20 증가\n줄 바 꿈 되 냐?"]
+		[preload("res://assets/img/stew.png"), 0.6, "스튜", "\"따뜻한 스튜 한 그릇\"\n\n\n\n최대 체력 20 증가"]
 	)
 	arr.append(
-		[preload("res://assets/img/item_whisky.png"), 0.6, "위스키", "발사 주기 감소"]
+		[preload("res://assets/img/item_whisky.png"), 0.6, "위스키", "\"위스키, 언제나 좋은 친구\"\n\n\n\n발사 주기 감소"]
 	)
 	
 	btn = []

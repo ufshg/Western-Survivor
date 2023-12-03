@@ -251,6 +251,7 @@ func _item_select_handler(number):
 	elif number == 2:
 		print("Hp Up")
 		player_max_hp += 20
+		player_hp += 20
 	elif number == 3:
 		print("duration Up")
 		fire_duration = max(fire_duration - 0.1, 0.1)
