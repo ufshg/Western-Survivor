@@ -68,8 +68,8 @@ region_rect = Rect2(2.08165e-12, 2.08165e-12, 10000, 10000)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(-3373, -3282)
-scale = Vector2(0.763, 0.7708)
+position = Vector2(-2892, -3160)
+scale = Vector2(0.7633, 0.7709)
 texture = ExtResource("2_0dn8h")
 centered = false
 region_enabled = true
