@@ -189,6 +189,7 @@ func add_exp(monster_exp):
 	if player_exp >= player_need_exp:
 		player_level += 1
 		player_exp -= player_need_exp
+		player_hp = player_max_hp
 		player_need_exp = player_level * 10
 
 
