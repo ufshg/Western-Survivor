@@ -219,7 +219,7 @@ func _player_bullet_collide(bullet_id, target_id):
 	var temp_enemy = instance_from_id(target_id)
 	temp_enemy.hp -= player_atk
 	temp_enemy.position -= temp_enemy.vector * 50
-	temp_enemy.get_node("AnimationPlayer").play("damage")
+	#temp_enemy.get_node("AnimationPlayer").play("damage")
 	
 	if temp_enemy.hp <= 0:
 		add_exp(temp_enemy.exp)
