@@ -168,7 +168,7 @@ func _on_fire_timer_timeout():
 	bullet.rotation = bullet_angle
 	bullet.position = player.position
 	# direction x bullet speed
-	bullet.velocity = Vector2(1, 0).rotated(bullet_angle) * 500
+	bullet.velocity = Vector2(1, 0).rotated(bullet_angle) * 800
 	$GunSound.play()
 
 

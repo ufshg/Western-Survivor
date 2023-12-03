@@ -16,6 +16,7 @@ var exp
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	vector = Vector2.ZERO
 	pass # Replace with function body.
 
 

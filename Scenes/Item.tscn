@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://8prsvok8oj0h"]
 
-[ext_resource type="Texture2D" uid="uid://bvd5sjn50cmxe" path="res://assets/img/recovery.png" id="1_2dygu"]
+[ext_resource type="Texture2D" uid="uid://c8wqitxdc84c5" path="res://assets/img/recovery.png" id="1_2dygu"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/Item.gd" id="1_33cmw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjca3"]
