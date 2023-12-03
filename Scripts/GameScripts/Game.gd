@@ -148,6 +148,7 @@ func _player_damage(damage):
 	player_invincible = true
 	# 1s invincible after hit with enemy
 	DamageTimer.start(1)
+	#player.get_node("AnimationPlayer").play("damage")
 	
 	print('hp %d' % player_hp)
 	

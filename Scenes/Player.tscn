@@ -1,11 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://bntjaapovkpt8"]
+[gd_scene load_steps=9 format=3 uid="uid://bntjaapovkpt8"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Player.gd" id="1_ivi22"]
-[ext_resource type="Texture2D" uid="uid://12vhwbc85r20" path="res://assets/img/player1_right.png" id="2_mtoho"]
+[ext_resource type="Texture2D" uid="uid://ctaukpmjbmgx4" path="res://assets/img/player1_right.png" id="2_mtoho"]
+[ext_resource type="Shader" path="res://Scenes/Player.gdshader" id="2_yq6ou"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2rm2"]
+shader = ExtResource("2_yq6ou")
+shader_parameter/quantity = 0.607
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkorq"]
 radius = 26.0
 height = 80.0
+
+[sub_resource type="Animation" id="Animation_me2cp"]
+resource_name = "new_animation"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/quantity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.607, 0.607, 0.0, 0.0, 0.607, 0.607, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_81vkj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/quantity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.607]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5hyws"]
+_data = {
+"RESET": SubResource("Animation_81vkj"),
+"damage": SubResource("Animation_me2cp")
+}
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(582, 458)
@@ -13,9 +56,15 @@ collision_mask = 18
 script = ExtResource("1_ivi22")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_f2rm2")
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("2_mtoho")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_rkorq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5hyws")
+}
