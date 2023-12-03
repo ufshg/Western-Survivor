@@ -1,0 +1,154 @@
+[gd_scene load_steps=7 format=3 uid="uid://cktv55xct7neb"]
+
+[ext_resource type="Script" path="res://Scenes/Select.gd" id="1_p3e5o"]
+[ext_resource type="Texture2D" uid="uid://12vhwbc85r20" path="res://assets/img/player1_right.png" id="2_aaf3h"]
+[ext_resource type="Texture2D" uid="uid://sakber4n0eqe" path="res://assets/img/player2_right.png" id="3_ehj2o"]
+[ext_resource type="Texture2D" uid="uid://oixy6xn1537p" path="res://assets/img/player3_right.png" id="4_qc186"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_er8jt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdq87"]
+
+[node name="ItemSelect" type="Node2D"]
+script = ExtResource("1_p3e5o")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0, 0, 0, 0.203922)
+material = SubResource("CanvasItemMaterial_er8jt")
+offset_right = 1920.0
+offset_bottom = 960.0
+scale = Vector2(1, 1.12524)
+theme_override_styles/panel = SubResource("StyleBoxFlat_pdq87")
+
+[node name="Player1" type="Button" parent="."]
+offset_left = 180.0
+offset_top = 240.0
+offset_right = 580.0
+offset_bottom = 840.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1"]
+position = Vector2(198, 167)
+texture = ExtResource("2_aaf3h")
+
+[node name="Panel" type="Label" parent="Player1"]
+clip_contents = true
+layout_mode = 0
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 350.0
+offset_bottom = 550.0
+theme_override_font_sizes/font_size = 20
+text = "레드
+
+기본형
+
+
+
+
+
+
+
+장점
+모든 수치가 균형잡힘
+
+
+
+
+
+단점
+X
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2" type="Button" parent="."]
+offset_left = 740.0
+offset_top = 240.0
+offset_right = 1140.0
+offset_bottom = 840.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2"]
+position = Vector2(198, 167)
+texture = ExtResource("3_ehj2o")
+
+[node name="Panel" type="Label" parent="Player2"]
+clip_contents = true
+layout_mode = 0
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 350.0
+offset_bottom = 550.0
+theme_override_font_sizes/font_size = 20
+text = "블루
+
+속도형
+
+
+
+
+
+
+
+장점
+빠른 이동/연사속도 
+
+
+
+
+
+단점
+매우 낮은 체력, 약간 낮은 공격력
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3" type="Button" parent="."]
+offset_left = 1320.0
+offset_top = 240.0
+offset_right = 1720.0
+offset_bottom = 840.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player3"]
+position = Vector2(198, 167)
+texture = ExtResource("4_qc186")
+
+[node name="Panel" type="Label" parent="Player3"]
+clip_contents = true
+layout_mode = 0
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 350.0
+offset_bottom = 550.0
+theme_override_font_sizes/font_size = 20
+text = "그린
+
+탱커형
+
+
+
+
+
+
+
+장점
+높은 체력, 공격이 적을 관통함
+
+
+
+
+
+단점
+느린 이동/연사속도, 낮은 공격력
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="Player1" to="." method="_on_player_1_button_up"]
+[connection signal="button_up" from="Player2" to="." method="_on_player_2_button_up"]
+[connection signal="button_up" from="Player3" to="." method="_on_player_3_button_up"]

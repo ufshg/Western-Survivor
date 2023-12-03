@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://n71pj44frlcy"]
+[gd_scene load_steps=26 format=3 uid="uid://n71pj44frlcy"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
 [ext_resource type="Texture2D" uid="uid://cqqpd4xug2w7v" path="res://assets/img/sandtile.png" id="2_0dn8h"]
@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://broly521y3grt" path="res://assets/img/bullet.png" id="6_nvu4c"]
 [ext_resource type="AudioStream" uid="uid://beg6qkh80budn" path="res://assets/sound/damage.mp3" id="7_r0myw"]
 [ext_resource type="AudioStream" uid="uid://b0ec1u0ytp2dn" path="res://assets/sound/monster_death.mp3" id="7_rx1i3"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/ItemSelect.gd" id="9_7d473"]
+[ext_resource type="Texture2D" uid="uid://bxv52e78a0gd5" path="res://assets/img/attack_power.png" id="10_8bso2"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/Cursor.gd" id="10_ghl0c"]
+[ext_resource type="Texture2D" uid="uid://cr3u5xrkboc1x" path="res://assets/img/speed_up.png" id="11_giffw"]
+[ext_resource type="Texture2D" uid="uid://ckt3y2ls0ur1a" path="res://assets/img/item_whisky.png" id="12_4rj51"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6uark"]
 blend_mode = 4
@@ -61,6 +66,7 @@ corner_radius_bottom_left = 8
 size = Vector2(9393, 537)
 
 [node name="World" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_x62no")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
@@ -89,6 +95,18 @@ texture = ExtResource("2_0dn8h")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 4000, 3000)
+
+[node name="Cursor" type="Node2D" parent="."]
+process_mode = 3
+position = Vector2(2.08165e-12, 2.08165e-12)
+script = ExtResource("10_ghl0c")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Cursor"]
+process_mode = 3
+z_index = 1
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_tu6ce")
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("3_2nbfl")
@@ -272,14 +290,144 @@ rotation = 1.5708
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_nvu4c")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(2.08165e-12, 2.08165e-12)
+[node name="ItemSelect" type="Panel" parent="UI"]
+process_mode = 2
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("9_7d473")
+
+[node name="Item1" type="Button" parent="UI/ItemSelect"]
+offset_left = 180.0
+offset_top = 240.0
+offset_right = 580.0
+offset_bottom = 840.0
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-z_index = 1
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_tu6ce")
+[node name="Sprite2D" type="Sprite2D" parent="UI/ItemSelect/Item1"]
+position = Vector2(198, 167)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_8bso2")
+
+[node name="Panel" type="Label" parent="UI/ItemSelect/Item1"]
+clip_contents = true
+layout_mode = 0
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 350.0
+offset_bottom = 550.0
+theme_override_font_sizes/font_size = 20
+text = "레드
+
+기본형
+
+
+
+
+
+
+
+장점
+모든 수치가 균형잡힘
+
+
+
+
+
+단점
+X
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item2" type="Button" parent="UI/ItemSelect"]
+offset_left = 740.0
+offset_top = 240.0
+offset_right = 1140.0
+offset_bottom = 840.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ItemSelect/Item2"]
+position = Vector2(198, 167)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("11_giffw")
+
+[node name="Panel" type="Label" parent="UI/ItemSelect/Item2"]
+clip_contents = true
+layout_mode = 0
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 350.0
+offset_bottom = 550.0
+theme_override_font_sizes/font_size = 20
+text = "블루
+
+속도형
+
+
+
+
+
+
+
+장점
+빠른 이동/연사속도 
+
+
+
+
+
+단점
+매우 낮은 체력, 약간 낮은 공격력
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item3" type="Button" parent="UI/ItemSelect"]
+offset_left = 1320.0
+offset_top = 240.0
+offset_right = 1720.0
+offset_bottom = 840.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/ItemSelect/Item3"]
+position = Vector2(198, 167)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("12_4rj51")
+
+[node name="Panel" type="Label" parent="UI/ItemSelect/Item3"]
+clip_contents = true
+layout_mode = 0
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 350.0
+offset_bottom = 550.0
+theme_override_font_sizes/font_size = 20
+text = "그린
+
+탱커형
+
+
+
+
+
+
+
+장점
+높은 체력, 공격이 적을 관통함
+
+
+
+
+
+단점
+느린 이동/연사속도, 낮은 공격력
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -332,6 +480,9 @@ volume_db = -5.0
 stream = ExtResource("7_r0myw")
 volume_db = -10.0
 
+[connection signal="button_up" from="UI/ItemSelect/Item1" to="UI/ItemSelect" method="_on_item_1_button_up"]
+[connection signal="button_up" from="UI/ItemSelect/Item2" to="UI/ItemSelect" method="_on_item_2_button_up"]
+[connection signal="button_up" from="UI/ItemSelect/Item3" to="UI/ItemSelect" method="_on_item_3_button_up"]
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
 [connection signal="timeout" from="Monster_Lv1_GenTimer" to="." method="_on_monster_lv1_gen_timer_timeout"]

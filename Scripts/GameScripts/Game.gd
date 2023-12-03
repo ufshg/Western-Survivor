@@ -11,6 +11,7 @@ var player_tex3 = preload("res://assets/img/player3_right.png")
 var player_hp
 var player_max_hp
 var player_atk
+var player_speed
 var fire_duration
 var player
 var Bullet
@@ -23,7 +24,6 @@ var player3_bullet
 # game info
 var score
 var game_time
-var temp
 var monster
 var Item
 var player_collide_vector
@@ -59,24 +59,25 @@ func _init_player():
 	if Global.player_type == 1:
 		player_hp = 100
 		player_atk = 5
-		player.speed = 200
+		player_speed = 200
 		fire_duration = float(2)
 	elif Global.player_type == 2:
 		player_hp = 50
 		player_atk = 4
-		player.speed = 300
+		player_speed = 300
 		PlayerShieldTimer.start(player_shield_timer_MAX)
 		fire_duration = float(1)
 		player.get_node("Sprite2D").set_texture(player_tex2)
 	elif Global.player_type == 3:
 		player_hp = 150
 		player_atk = 3
-		player.speed = 150
+		player_speed = 150
 		player3_bullet = true
 		fire_duration = float(3)
 		player.get_node("Sprite2D").set_texture(player_tex3)
 	
 	player_max_hp = player_hp
+	player.speed = player_speed
 	
 	FireTimer.wait_time = fire_duration
 	add_child(player)
@@ -102,7 +103,6 @@ func _ready():
 	#MonsterLv2GenTimer.wait_time = 5
 	MonsterLv2GenTimer.start(5)
 	
-	temp = get_node("Node2D/Sprite2D")
 	monster = preload("res://Scenes/Monster.tscn")
 	Item = preload("res://Scenes/Item.tscn")
 	Bullet = preload("res://Scenes/Bullet.tscn")
@@ -114,10 +114,7 @@ func _ready():
 
 func _process(delta):
 	game_time += delta
-	
-	# 마우스 커서 임시 
-	temp.position = get_global_mouse_position()
-	
+
 
 func _on_monster_lv1_gen_timer_timeout():
 	var enemy = monster.instantiate()
@@ -188,6 +185,15 @@ func add_exp(monster_exp):
 		player_exp -= player_need_exp
 		player_hp = player_max_hp
 		player_need_exp = player_level * 10
+		show_ItemSelect()
+		get_tree().paused = true
+
+
+func show_ItemSelect():
+	# 4개중 제외할 아이템 번호 
+	var randnumber = rng.randi_range(0, 3)
+	$UI/ItemSelect.init(randnumber)
+	$UI/ItemSelect.visible = true
 
 
 func _drop_item(pos):
@@ -232,3 +238,23 @@ func _on_player_shield_timer_timeout():
 
 func _on_damage_timer_timeout():
 	player.set_collision_layer_value(1, true)
+
+
+func _item_select_handler(number):
+	if number == 0:
+		print("Atk Up")
+		player_atk += 1
+	elif number == 1:
+		print("Speed Up")
+		player_speed += 20
+		player.speed = player_speed
+	elif number == 2:
+		print("Hp Up")
+		player_max_hp += 20
+	elif number == 3:
+		print("duration Up")
+		fire_duration = max(fire_duration - 0.1, 0.1)
+		FireTimer.start(fire_duration)
+	
+	$UI/ItemSelect.visible = false
+	get_tree().paused = false

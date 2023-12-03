@@ -31,7 +31,7 @@ func _ready():
 	FIRE.max_value = game.fire_duration
 	LEVEL.text = str(game.player_level)
 	ATK.text = str(game.player_atk)
-	SPD.text = "%.1f" % (game.player.speed / 100)
+	SPD.text = "%.1f" % (game.player_speed * 0.01)
 	gametime = 0
 	
 	if Global.player_type == 2:
@@ -49,10 +49,15 @@ func _process(delta):
 	MINUTE.text = "%02d" % minute
 	HPV.text = str(game.player_hp) + "/" + str(game.player_max_hp)
 	
+	ATK.text = str(game.player_atk)
+	SPD.text = "%.1f" % (game.player_speed * 0.01)
+	
 	LEVEL.text = str(game.player_level)
 	EXP.max_value = game.player_need_exp
 	
 	HP.value = game.player_hp
+	HP.max_value = game.player_max_hp
+	
 	EXP.value = game.player_exp
 	SCORE.text = str(game.score)
 	

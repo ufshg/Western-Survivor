@@ -29,14 +29,14 @@ func init(level, Player):
 		atk = 2
 		speed = 100
 		hp = 3
-		exp = 2
+		exp = 10
 		$Sprite2D.set_texture(monster_tex1)
 	# snake
 	elif level == 2:
 		atk = 5
 		speed = 250
 		hp = 6
-		exp = 5
+		exp = 10
 		$Sprite2D.set_texture(monster_tex2)
 
 
