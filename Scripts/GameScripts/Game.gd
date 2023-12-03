@@ -25,6 +25,7 @@ var score
 var game_time
 var temp
 var monster
+var Item
 var player_collide_vector
 var player_exp
 var player_need_exp
@@ -106,6 +107,7 @@ func _ready():
 	
 	temp = get_node("Node2D/Sprite2D")
 	monster = preload("res://Scenes/Monster.tscn")
+	Item = preload("res://Scenes/Item.tscn")
 	Bullet = preload("res://Scenes/Bullet.tscn")
 	
 	Bgm.stop()
@@ -193,6 +195,23 @@ func add_exp(monster_exp):
 		player_need_exp = player_level * 10
 
 
+func _drop_item(pos):
+	var prob = rng.randi_range(1, 10)
+	print("prob result :", str(prob))
+	# prob > 20%
+	if prob > 2:return
+	print("success")
+	var item = Item.instantiate()
+	item.player_item_collide.connect(player_item_collide)
+	item.position = pos
+	add_child(item)
+
+
+func player_item_collide(id):
+	remove_child(instance_from_id(id))
+	player_hp = min(player_hp + 20, player_max_hp)
+
+
 func _player_bullet_collide(bullet_id, target_id):
 	if not player3_bullet:
 		remove_child(instance_from_id(bullet_id))
@@ -203,7 +222,9 @@ func _player_bullet_collide(bullet_id, target_id):
 	
 	if temp_enemy.hp <= 0:
 		add_exp(temp_enemy.exp)
+		var temp_pos = temp_enemy.position
 		remove_child(temp_enemy)
+		_drop_item(temp_pos)
 		score += 1
 		$MonsterSound.play()
 		print(player_exp, "/", player_need_exp)
