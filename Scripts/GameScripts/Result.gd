@@ -10,7 +10,7 @@ func _ready():
 	Bgm.stream = load("res://assets/sound/gameover.mp3")
 	Bgm.play()
 	$Character.set_texture([t1, t2, t3][Global.player_type - 1])
-	#$PlayerName.text = Global.player_name
+	$PlayerName.text = Global.player_name
 	$Time.text = Global.result_time
 	$Score.text = Global.result_score
 	pass # Replace with function body.
