@@ -218,6 +218,7 @@ func _player_bullet_collide(bullet_id, target_id):
 	
 	var temp_enemy = instance_from_id(target_id)
 	temp_enemy.hp -= player_atk
+	temp_enemy.position -= temp_enemy.vector * 50
 	temp_enemy.get_node("AnimationPlayer").play("damage")
 	
 	if temp_enemy.hp <= 0:
@@ -228,6 +229,7 @@ func _player_bullet_collide(bullet_id, target_id):
 		score += 1
 		$MonsterSound.play()
 		print(player_exp, "/", player_need_exp)
+
 
 func _on_player_shield_timer_timeout():
 	self.player_shield_active = true
