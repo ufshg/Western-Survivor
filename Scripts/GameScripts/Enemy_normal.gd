@@ -55,8 +55,8 @@ func _enemy_move(delta):
 	# move without collide between enemy - enemy
 	var collision_info = move_and_collide(vector * speed * delta)
 	if collision_info:
-		position -= vector * 50
 		enemy_collide.emit(vector, atk)
+		position -= vector * 50
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

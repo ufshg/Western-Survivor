@@ -11,6 +11,7 @@ var second
 @onready var HP = $Hp_bar
 @onready var EXP = $Exp_bar
 @onready var SHIELD = $Shield_bar
+@onready var FIRE = $Fire_bar
 @onready var HPV = $HP
 @onready var ATK = $ATK
 @onready var SPD = $SPD
@@ -27,6 +28,7 @@ func _ready():
 	
 	HP.max_value = game.player_hp
 	EXP.max_value = game.player_need_exp
+	FIRE.max_value = game.fire_duration
 	LEVEL.text = str(game.player_level)
 	ATK.text = str(game.player_atk)
 	SPD.text = "%.1f" % (game.player.speed / 100)
@@ -53,6 +55,9 @@ func _process(delta):
 	HP.value = game.player_hp
 	EXP.value = game.player_exp
 	SCORE.text = str(game.score)
+	
+	FIRE.max_value = game.fire_duration
+	FIRE.value = game.fire_duration - game.FireTimer.get_time_left()
 	
 	SHIELD.value = game.player_shield_timer_MAX - game.PlayerShieldTimer.get_time_left()
 
