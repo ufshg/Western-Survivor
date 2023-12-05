@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 var monster_tex1 = preload("res://assets/img/monster_rat.png")
 var monster_tex2 = preload("res://assets/img/monster_snake.png")
+var monster_tex3 = preload("res://assets/img/monster_robber.png")
+var monster_tex4 = preload("res://assets/img/monster_coyote.png")
 
 signal enemy_collide(vector)
 
@@ -39,6 +41,20 @@ func init(level, Player):
 		hp = 6
 		exp = 10
 		$Sprite2D.set_texture(monster_tex2)
+	# robber
+	elif level == 3:
+		atk = 20
+		speed = 250
+		hp = 6
+		exp = 10
+		$Sprite2D.set_texture(monster_tex3)
+	# coyote
+	elif level == 4:
+		atk = 20
+		speed = 250
+		hp = 6
+		exp = 10
+		$Sprite2D.set_texture(monster_tex4)
 
 
 func _enemy_move(delta):

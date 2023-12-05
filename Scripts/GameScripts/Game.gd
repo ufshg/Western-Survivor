@@ -36,6 +36,8 @@ var player_level
 @onready var PlayerShieldTimer = $PlayerShieldTimer
 @onready var MonsterLv1GenTimer = $Monster_Lv1_GenTimer
 @onready var MonsterLv2GenTimer = $Monster_Lv2_GenTimer
+@onready var MonsterLv3GenTimer = $Monster_Lv3_GenTimer
+@onready var MonsterLv4GenTimer = $Monster_Lv4_GenTimer
 @onready var DamageTimer = $DamageTimer
 
 
@@ -102,6 +104,10 @@ func _ready():
 	MonsterLv1GenTimer.start(2)
 	#MonsterLv2GenTimer.wait_time = 5
 	MonsterLv2GenTimer.start(5)
+	#MonsterLv3GenTimer.wait_time = 7
+	MonsterLv3GenTimer.start(7)
+	#MonsterLv4GenTimer.wait_time = 3
+	MonsterLv4GenTimer.start(3)
 	
 	monster = preload("res://Scenes/Monster.tscn")
 	Item = preload("res://Scenes/Item.tscn")
@@ -123,13 +129,24 @@ func _on_monster_lv1_gen_timer_timeout():
 	enemy.enemy_collide.connect(enemy_collide)
 	add_child(enemy)
 
-
 func _on_monster_lv2_gen_timer_timeout():
 	var enemy = monster.instantiate()
 	enemy.init(2, self.player)
 	enemy.enemy_collide.connect(enemy_collide)
 	add_child(enemy)
 	
+func _on_monster_lv_3_gen_timer_timeout():
+	var enemy = monster.instantiate()
+	enemy.init(3, self.player)
+	enemy.enemy_collide.connect(enemy_collide)
+	add_child(enemy)
+
+func _on_monster_lv_4_gen_timer_timeout():
+	var enemy = monster.instantiate()
+	enemy.init(4, self.player)
+	enemy.enemy_collide.connect(enemy_collide)
+	add_child(enemy)
+
 
 func _player_damage(damage):
 	if Global.player_type != 2:
@@ -219,7 +236,7 @@ func _player_bullet_collide(bullet_id, target_id):
 	
 	var temp_enemy = instance_from_id(target_id)
 	temp_enemy.hp -= player_atk
-	temp_enemy.position -= temp_enemy.vector * 50
+	temp_enemy.position -= temp_enemy.vector * 150
 	#temp_enemy.get_node("AnimationPlayer").play("damage")
 	
 	if temp_enemy.hp <= 0:
@@ -261,3 +278,8 @@ func _item_select_handler(number):
 	$UI._slot_set(number)
 	$UI/ItemSelect.visible = false
 	get_tree().paused = false
+
+
+
+
+
