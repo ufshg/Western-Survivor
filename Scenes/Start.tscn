@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0xi2lfqb27ov"]
+[gd_scene load_steps=13 format=3 uid="uid://b0xi2lfqb27ov"]
 
 [ext_resource type="Script" path="res://Scripts/Start.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://j4qlfwskesix" path="res://assets/img/background.png" id="2_k55b5"]
 [ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="3"]
+[ext_resource type="Texture2D" uid="uid://2ktq1qu8mdia" path="res://assets/img/ranking_button.png" id="7_v387s"]
 [ext_resource type="Texture2D" uid="uid://ujjylkuwckij" path="res://assets/img/start_button.png" id="8_fankt"]
 [ext_resource type="Texture2D" uid="uid://dh3wyl4jtb28u" path="res://assets/img/title.png" id="9_8kypq"]
 [ext_resource type="Texture2D" uid="uid://corkwk80pr74" path="res://assets/img/quit_button.png" id="9_k88v4"]
@@ -54,6 +55,20 @@ icon_alignment = 1
 [node name="QuitBtn" type="Button" parent="."]
 texture_repeat = 2
 layout_mode = 0
+offset_left = 1080.0
+offset_top = 881.0
+offset_right = 1386.0
+offset_bottom = 1077.0
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
+icon = ExtResource("9_k88v4")
+icon_alignment = 1
+
+[node name="RankingBtn" type="Button" parent="."]
+texture_repeat = 2
 offset_left = 705.0
 offset_top = 881.0
 offset_right = 1011.0
@@ -63,7 +78,7 @@ theme_override_fonts/font = ExtResource("3")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
-icon = ExtResource("9_k88v4")
+icon = ExtResource("7_v387s")
 icon_alignment = 1
 
 [node name="InputBox" type="LineEdit" parent="."]
@@ -87,4 +102,7 @@ expand_to_text_length = true
 [connection signal="button_up" from="QuitBtn" to="." method="_on_quit_btn_button_up"]
 [connection signal="mouse_entered" from="QuitBtn" to="." method="_on_quit_btn_mouse_entered"]
 [connection signal="mouse_exited" from="QuitBtn" to="." method="_on_quit_btn_mouse_exited"]
+[connection signal="button_up" from="RankingBtn" to="." method="_on_ranking_btn_button_up"]
+[connection signal="mouse_entered" from="RankingBtn" to="." method="_on_ranking_btn_mouse_entered"]
+[connection signal="mouse_exited" from="RankingBtn" to="." method="_on_ranking_btn_mouse_exited"]
 [connection signal="text_changed" from="InputBox" to="." method="_on_input_box_text_changed"]

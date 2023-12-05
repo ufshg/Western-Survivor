@@ -66,3 +66,20 @@ func _on_quit_btn_mouse_exited():
 func _on_quit_btn_button_up():
 	JavaScriptBridge.eval("window.close()")
 	pass # Replace with function body.
+
+
+func _on_ranking_btn_mouse_entered():
+	$RankingBtn.set_scale(Vector2(0.42, 0.42))
+	$RankingBtn.position += Vector2(-6, -3)
+	pass # Replace with function body.
+
+
+func _on_ranking_btn_mouse_exited():
+	$RankingBtn.set_scale(Vector2(0.4, 0.4))
+	$RankingBtn.position += Vector2(6, 3)
+	pass # Replace with function body.
+
+
+func _on_ranking_btn_button_up():
+	print("랭킹창")
+	pass # Replace with function body.
