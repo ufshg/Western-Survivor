@@ -11,9 +11,9 @@ var select_item
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player_type = 0
-	player_name = ""
-	result_time = ""
-	result_score = ""
+	player_name = "heyimmaimM-jaTalmo"
+	result_time = "48:21"
+	result_score = 1557
 	pass # Replace with function body.
 
 

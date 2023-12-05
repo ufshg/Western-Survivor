@@ -170,7 +170,7 @@ func _player_damage(damage):
 	if player_hp <= 0:
 		# game over
 		Global.result_time = get_node("UI")._result()
-		Global.result_score = str(score)
+		Global.result_score = score
 		
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		queue_free()
