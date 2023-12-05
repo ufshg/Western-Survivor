@@ -6,6 +6,9 @@ var player_tex1 = preload("res://assets/img/player1_right.png")
 var player_tex2 = preload("res://assets/img/player2_right.png")
 var player_tex3 = preload("res://assets/img/player3_right.png")
 
+var sand_day = preload("res://assets/img/sandtile.png")
+var sand_sunset = preload("res://assets/img/sandtile_sunset.png")
+var sand_night = preload("res://assets/img/sandtile_night.png")
 
 # player info
 var player_hp
@@ -125,25 +128,25 @@ func _process(delta):
 func _on_monster_lv1_gen_timer_timeout():
 	var enemy = monster.instantiate()
 	# init( monster level, self.player )
-	enemy.init(1, self.player)
+	enemy.init(1, self.player, self.player_level)
 	enemy.enemy_collide.connect(enemy_collide)
 	add_child(enemy)
 
 func _on_monster_lv2_gen_timer_timeout():
 	var enemy = monster.instantiate()
-	enemy.init(2, self.player)
+	enemy.init(2, self.player, self.player_level)
 	enemy.enemy_collide.connect(enemy_collide)
 	add_child(enemy)
 	
 func _on_monster_lv_3_gen_timer_timeout():
 	var enemy = monster.instantiate()
-	enemy.init(3, self.player)
+	enemy.init(3, self.player, self.player_level)
 	enemy.enemy_collide.connect(enemy_collide)
 	add_child(enemy)
 
 func _on_monster_lv_4_gen_timer_timeout():
 	var enemy = monster.instantiate()
-	enemy.init(4, self.player)
+	enemy.init(4, self.player, self.player_level)
 	enemy.enemy_collide.connect(enemy_collide)
 	add_child(enemy)
 
@@ -199,12 +202,21 @@ func add_exp(monster_exp):
 	player_exp += monster_exp
 	if player_exp >= player_need_exp:
 		player_level += 1
+		change_tile()
 		player_exp -= player_need_exp
 		player_hp = player_max_hp
 		player_need_exp = player_level * 10
 		show_ItemSelect()
 		get_tree().paused = true
 
+func change_tile():
+	var temp = (player_level - 1) / 5
+	if temp & 1:
+		$Sprite2D2.set_texture(sand_sunset)
+		$Sprite2D3.set_texture(sand_night)
+	else:
+		$Sprite2D2.set_texture(sand_day)
+		$Sprite2D3.set_texture(sand_sunset)
 
 func show_ItemSelect():
 	# 4개중 제외할 아이템 번호 

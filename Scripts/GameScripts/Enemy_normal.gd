@@ -4,6 +4,10 @@ var monster_tex1 = preload("res://assets/img/monster_rat.png")
 var monster_tex2 = preload("res://assets/img/monster_snake.png")
 var monster_tex3 = preload("res://assets/img/monster_robber.png")
 var monster_tex4 = preload("res://assets/img/monster_coyote.png")
+var monster_tex1_night = preload("res://assets/img/monster_shade.png")
+var monster_tex2_night = preload("res://assets/img/monster_trace.png")
+var monster_tex3_night = preload("res://assets/img/monster_wraith.png")
+var monster_tex4_night = preload("res://assets/img/monster_shadow.png")
 
 signal enemy_collide(vector)
 
@@ -22,39 +26,51 @@ func _ready():
 	pass # Replace with function body.
 
 
-func init(level, Player):
+func init(level, Player, player_level):
 	player = Player
 	$Sprite2D.set_scale(Vector2(0.4, 0.4))
 	position = player.position + Vector2(1200, 0).rotated(rng.randf_range(0, 360))	
-	
+	var temp = (player_level - 1) / 5
 	# rat
 	if level == 1:
 		atk = 2
 		speed = 100
 		hp = 3
 		exp = 10
-		$Sprite2D.set_texture(monster_tex1)
+		if temp & 1:
+			$Sprite2D.set_texture(monster_tex1_night)
+		else:
+			$Sprite2D.set_texture(monster_tex1)
 	# snake
 	elif level == 2:
 		atk = 5
 		speed = 250
 		hp = 6
 		exp = 10
-		$Sprite2D.set_texture(monster_tex2)
+		if temp & 1:
+			$Sprite2D.set_texture(monster_tex2_night)
+		else:
+			$Sprite2D.set_texture(monster_tex2)
 	# robber
 	elif level == 3:
 		atk = 20
 		speed = 250
 		hp = 6
 		exp = 10
-		$Sprite2D.set_texture(monster_tex3)
+		if temp & 1:
+			$Sprite2D.set_texture(monster_tex3_night)
+		else:
+			$Sprite2D.set_texture(monster_tex3)
 	# coyote
 	elif level == 4:
 		atk = 20
 		speed = 250
 		hp = 6
 		exp = 10
-		$Sprite2D.set_texture(monster_tex4)
+		if temp & 1:
+			$Sprite2D.set_texture(monster_tex4_night)
+		else:
+			$Sprite2D.set_texture(monster_tex4)
 
 
 func _enemy_move(delta):
