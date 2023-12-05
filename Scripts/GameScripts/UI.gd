@@ -4,10 +4,17 @@ var p1 = preload("res://assets/img/portrait1.png")
 var p2 = preload("res://assets/img/portrait2.png")
 var p3 = preload("res://assets/img/portrait3.png")
 
+var s1 = preload("res://assets/img/attack_icon.png")
+var s2 = preload("res://assets/img/speed_icon.png")
+var s3 = preload("res://assets/img/stew_icon.png")
+var s4 = preload("res://assets/img/whisky_icon.png")
+
 var gametime
 var game
 var minute
 var second
+var slotarr
+var slottex
 @onready var HP = $Hp_bar
 @onready var EXP = $Exp_bar
 @onready var SHIELD = $Shield_bar
@@ -19,6 +26,11 @@ var second
 @onready var SECOND = $SECOND
 @onready var SCORE = $SCORE
 @onready var LEVEL = $Lv
+
+@onready var SLOT1 = $Slot1
+@onready var SLOT2 = $Slot2
+@onready var SLOT3 = $Slot3
+@onready var SLOT4 = $Slot4
 
 func _ready():
 	await get_tree().get_root().get_node("World").ready
@@ -33,6 +45,8 @@ func _ready():
 	ATK.text = str(game.player_atk)
 	SPD.text = "%.1f" % (game.player_speed * 0.01)
 	gametime = 0
+	slotarr = []
+	slottex = [s1, s2, s3, s4]
 	
 	if Global.player_type == 2:
 		SHIELD.visible = true
@@ -69,3 +83,23 @@ func _process(delta):
 
 func _result():
 	return MINUTE.text + " : " + SECOND.text
+	
+
+func _slot_set(number):
+	# is the number of item already exist?
+	if number in slotarr:
+		return
+		
+	var temp = [SLOT1, SLOT2, SLOT3, SLOT4]
+	
+	# slot index = slotarr length before add number
+	var idx = len(slotarr)
+	slotarr.append(number)
+	
+	temp[idx].set_texture(slottex[number])
+	
+	# if item is stew, y pos += 1
+	if number == 2:
+		temp[idx].position += Vector2(0, 1)
+	
+	temp[idx].visible = true

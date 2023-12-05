@@ -257,5 +257,7 @@ func _item_select_handler(number):
 		fire_duration = max(fire_duration - 0.1, 0.1)
 		FireTimer.start(fire_duration)
 	
+	
+	$UI._slot_set(number)
 	$UI/ItemSelect.visible = false
 	get_tree().paused = false

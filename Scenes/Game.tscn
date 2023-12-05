@@ -164,7 +164,7 @@ vertical_alignment = 1
 [node name="Exp_bar" type="ProgressBar" parent="UI"]
 offset_left = 160.0
 offset_top = 130.0
-offset_right = 560.0
+offset_right = 610.0
 offset_bottom = 170.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_rk0bl")
 show_percentage = false
@@ -172,16 +172,16 @@ show_percentage = false
 [node name="Hp_bar" type="ProgressBar" parent="UI"]
 offset_left = 160.0
 offset_top = 56.0
-offset_right = 560.0
+offset_right = 610.0
 offset_bottom = 116.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ye7ee")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ebyot")
 show_percentage = false
 
 [node name="Fire_bar" type="ProgressBar" parent="UI"]
-offset_left = 240.0
+offset_left = 232.0
 offset_top = 193.0
-offset_right = 340.0
+offset_right = 332.0
 offset_bottom = 213.0
 theme_override_styles/background = SubResource("StyleBoxFlat_wj02v")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cdue2")
@@ -239,9 +239,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Lv_text" type="Label" parent="UI"]
-offset_left = 310.0
+offset_left = 337.0
 offset_top = 126.0
-offset_right = 350.0
+offset_right = 377.0
 offset_bottom = 173.0
 theme_override_font_sizes/font_size = 30
 text = "Lv"
@@ -249,9 +249,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Lv" type="Label" parent="UI"]
-offset_left = 350.0
+offset_left = 377.0
 offset_top = 126.0
-offset_right = 410.0
+offset_right = 437.0
 offset_bottom = 173.0
 theme_override_font_sizes/font_size = 30
 text = "0"
@@ -259,9 +259,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HP_text" type="Label" parent="UI"]
-offset_left = 236.0
+offset_left = 261.0
 offset_top = 55.0
-offset_right = 309.0
+offset_right = 334.0
 offset_bottom = 117.0
 theme_override_font_sizes/font_size = 40
 text = "HP
@@ -270,9 +270,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HP" type="Label" parent="UI"]
-offset_left = 323.0
+offset_left = 348.0
 offset_top = 55.0
-offset_right = 482.0
+offset_right = 507.0
 offset_bottom = 117.0
 theme_override_font_sizes/font_size = 40
 text = "100/100"
@@ -289,6 +289,26 @@ position = Vector2(196, 203)
 rotation = 1.5708
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_nvu4c")
+
+[node name="Slot1" type="Sprite2D" parent="UI"]
+visible = false
+position = Vector2(375, 203)
+scale = Vector2(0.1, 0.1)
+
+[node name="Slot2" type="Sprite2D" parent="UI"]
+visible = false
+position = Vector2(440, 203)
+scale = Vector2(0.1, 0.1)
+
+[node name="Slot3" type="Sprite2D" parent="UI"]
+visible = false
+position = Vector2(505, 203)
+scale = Vector2(0.1, 0.1)
+
+[node name="Slot4" type="Sprite2D" parent="UI"]
+visible = false
+position = Vector2(570, 203)
+scale = Vector2(0.098, 0.1)
 
 [node name="ItemSelect" type="Panel" parent="UI"]
 process_mode = 2
