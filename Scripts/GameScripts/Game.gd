@@ -175,6 +175,7 @@ func _player_damage(damage):
 		# game over
 		Global.result_time = get_node("UI")._result()
 		Global.result_score = score
+		Global.player_level = player_level
 		
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		queue_free()

@@ -37,9 +37,11 @@ func _on_register_btn_button_up():
 	print("NOPE")
 	
 	var data = {
+		"player_type": Global.player_type,
+		"player_level": Global.player_level,
 		"user_name": Global.player_name,
 		"user_time": Global.result_time,
-		"user_score": Global.result_score
+		"user_score": Global.result_score,
 	}
 	
 	var json = JSON.stringify(data)
