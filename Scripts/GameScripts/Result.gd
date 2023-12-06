@@ -4,6 +4,8 @@ var t1 = preload("res://assets/img/player1_right.png")
 var t2 = preload("res://assets/img/player2_right.png")
 var t3 = preload("res://assets/img/player3_right.png")
 
+var URL = "https://ws-back-e707b9ecccf2.herokuapp.com"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Bgm.stream = load("res://assets/sound/gameover.mp3")
@@ -46,8 +48,8 @@ func _on_register_btn_button_up():
 	
 	var json = JSON.stringify(data)
 	var headers = ["Content-Type: application/json"]
-	#$HTTPRequest.request("http://localhost:8000/addrank", headers, HTTPClient.METHOD_PUT, json)
-	$HTTPRequest.request("http://localhost:8000/ranking", headers, HTTPClient.METHOD_GET)
+	$HTTPRequest.request(URL + "/addrank", headers, HTTPClient.METHOD_PUT, json)
+	#$HTTPRequest.request(URL + "/ranking", headers, HTTPClient.METHOD_GET)
 	
 	pass # Replace with function body.
 
@@ -97,14 +99,14 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 	print(json)
 	
 	var holder = "@/*/@"
-	var length = int(json["length"])
+	#var length = int(json["length"])
 	var types = json["types"].split(holder)
 	var levels = json["levels"].split(holder)
 	var names = json["names"].split(holder)
 	var times = json["times"].split(holder)
 	var scores = json["scores"].split(holder)
 	
-	print(length)
+	#print(length)
 	print(types)
 	print(levels)
 	print(names)
