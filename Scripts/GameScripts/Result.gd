@@ -36,7 +36,6 @@ func _on_register_btn_mouse_exited():
 
 func _on_register_btn_button_up():
 	print(Global.player_name, Global.result_time, Global.result_score)
-	print("NOPE")
 	
 	var data = {
 		"player_type": Global.player_type,
@@ -90,27 +89,6 @@ func _on_quit_btn_button_up():
 
 
 func _on_http_request_request_completed(result, response_code, headers, body):
-	print(result)
-	print(response_code)
-	print(headers)
-	print(body)
-	
 	var json = JSON.parse_string(body.get_string_from_utf8())
-	print(json)
-	
-	var holder = "@/*/@"
-	#var length = int(json["length"])
-	var types = json["types"].split(holder)
-	var levels = json["levels"].split(holder)
-	var names = json["names"].split(holder)
-	var times = json["times"].split(holder)
-	var scores = json["scores"].split(holder)
-	
-	#print(length)
-	print(types)
-	print(levels)
-	print(names)
-	print(times)
-	print(scores)
-	
-	pass # Replace with function body.
+	if response_code == 200:
+		$Result2.init(json)

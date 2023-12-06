@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://dcwn7k5xpy10y"]
+
+[ext_resource type="Script" path="res://Scripts/GameScripts/Ranking.gd" id="1_5ubx4"]
+[ext_resource type="Texture2D" uid="uid://x8gwfmixkflv" path="res://assets/img/background.png" id="2_c4cju"]
+[ext_resource type="Texture2D" uid="uid://bctdrtqf8m318" path="res://assets/img/ranking.png" id="3_aa7n0"]
+[ext_resource type="Texture2D" uid="uid://12vhwbc85r20" path="res://assets/img/player1_right.png" id="4_u0o7p"]
+[ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="5_vty4a"]
+[ext_resource type="Texture2D" uid="uid://bhktpqd7g6tjn" path="res://assets/img/retry_button.png" id="7_0mgjn"]
+[ext_resource type="Texture2D" uid="uid://swd4a8qrfriu" path="res://assets/img/quit_button.png" id="8_pe8jt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghxuv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gv3w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_48il5"]
+
+[node name="Ranking" type="Node"]
+script = ExtResource("1_5ubx4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.341176, 0.341176, 0.341176, 1)
+position = Vector2(983, 533)
+scale = Vector2(1, 1.12524)
+texture = ExtResource("2_c4cju")
+
+[node name="Ranking" type="Sprite2D" parent="."]
+position = Vector2(960, 480)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("3_aa7n0")
+
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(779, 362)
+texture = ExtResource("4_u0o7p")
+
+[node name="RetryBtn" type="Button" parent="."]
+texture_repeat = 2
+offset_left = 660.0
+offset_top = 870.0
+offset_right = 1129.0
+offset_bottom = 1051.0
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("5_vty4a")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
+icon = ExtResource("7_0mgjn")
+icon_alignment = 1
+
+[node name="QuitBtn" type="Button" parent="."]
+texture_repeat = 2
+offset_left = 1100.0
+offset_top = 870.0
+offset_right = 1435.0
+offset_bottom = 1066.0
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("5_vty4a")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
+icon = ExtResource("8_pe8jt")
+icon_alignment = 1
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="button_up" from="RetryBtn" to="." method="_on_retry_btn_button_up"]
+[connection signal="mouse_entered" from="RetryBtn" to="." method="_on_retry_btn_mouse_entered"]
+[connection signal="mouse_exited" from="RetryBtn" to="." method="_on_retry_btn_mouse_exited"]
+[connection signal="button_up" from="QuitBtn" to="." method="_on_quit_btn_button_up"]
+[connection signal="mouse_entered" from="QuitBtn" to="." method="_on_quit_btn_mouse_entered"]
+[connection signal="mouse_exited" from="QuitBtn" to="." method="_on_quit_btn_mouse_exited"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

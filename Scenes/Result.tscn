@@ -1,13 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnnyyncd63rbf"]
+[gd_scene load_steps=15 format=3 uid="uid://dnnyyncd63rbf"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Result.gd" id="1_in7pe"]
 [ext_resource type="Texture2D" uid="uid://x8gwfmixkflv" path="res://assets/img/background.png" id="2_fjudi"]
 [ext_resource type="Texture2D" uid="uid://cg2ngk01qopan" path="res://assets/img/result.png" id="3_t7iv8"]
 [ext_resource type="Texture2D" uid="uid://12vhwbc85r20" path="res://assets/img/player1_right.png" id="6_8udmo"]
 [ext_resource type="Texture2D" uid="uid://c54ckrty52wyb" path="res://assets/img/resister_button.png" id="6_drjum"]
+[ext_resource type="Texture2D" uid="uid://bic1spe2qbr57" path="res://assets/img/ranking2.png" id="7_4misj"]
 [ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="7_gjm1l"]
 [ext_resource type="Texture2D" uid="uid://bhktpqd7g6tjn" path="res://assets/img/retry_button.png" id="7_srg5r"]
 [ext_resource type="Texture2D" uid="uid://swd4a8qrfriu" path="res://assets/img/quit_button.png" id="8_slepy"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/Result2.gd" id="8_vrr3m"]
+[ext_resource type="FontFile" uid="uid://bc25pwqaw4fap" path="res://assets/OldTown.ttf" id="9_1jwd5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghxuv"]
 
@@ -31,10 +34,12 @@ texture = ExtResource("3_t7iv8")
 
 [node name="Character" type="Sprite2D" parent="."]
 position = Vector2(779, 362)
+scale = Vector2(1, 1)
 texture = ExtResource("6_8udmo")
 
 [node name="RegisterBtn" type="Button" parent="."]
 texture_repeat = 2
+layout_direction = 1
 offset_left = 739.0
 offset_top = 740.0
 offset_right = 1795.0
@@ -45,34 +50,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
 icon = ExtResource("6_drjum")
-icon_alignment = 1
-
-[node name="RetryBtn" type="Button" parent="."]
-texture_repeat = 2
-offset_left = 660.0
-offset_top = 870.0
-offset_right = 1129.0
-offset_bottom = 1051.0
-scale = Vector2(0.4, 0.4)
-theme_override_fonts/font = ExtResource("7_gjm1l")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
-icon = ExtResource("7_srg5r")
-icon_alignment = 1
-
-[node name="QuitBtn" type="Button" parent="."]
-texture_repeat = 2
-offset_left = 1100.0
-offset_top = 870.0
-offset_right = 1435.0
-offset_bottom = 1066.0
-scale = Vector2(0.4, 0.4)
-theme_override_fonts/font = ExtResource("7_gjm1l")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
-icon = ExtResource("8_slepy")
 icon_alignment = 1
 
 [node name="PlayerName" type="Label" parent="."]
@@ -107,6 +84,245 @@ theme_override_font_sizes/font_size = 40
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Result2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 480)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("7_4misj")
+script = ExtResource("8_vrr3m")
+
+[node name="Rank1" type="Control" parent="Result2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -600.0
+offset_top = -820.0
+offset_right = 900.0
+offset_bottom = -420.0
+
+[node name="Player" type="Sprite2D" parent="Result2/Rank1"]
+position = Vector2(180, 200)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("6_8udmo")
+
+[node name="Name" type="Label" parent="Result2/Rank1"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 60.0
+offset_right = 1444.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "PLAYERNAMEWITHTWENTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="Result2/Rank1"]
+offset_left = 430.0
+offset_top = 200.0
+offset_right = 830.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "00:00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Result2/Rank1"]
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1303.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "10597"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rank2" type="Control" parent="Result2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -600.0
+offset_top = -400.0
+offset_right = 900.0
+
+[node name="Player" type="Sprite2D" parent="Result2/Rank2"]
+position = Vector2(180, 200)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("6_8udmo")
+
+[node name="Name" type="Label" parent="Result2/Rank2"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 60.0
+offset_right = 1444.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "PLAYERNAMEWITHTWENTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="Result2/Rank2"]
+offset_left = 430.0
+offset_top = 200.0
+offset_right = 830.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "00:00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Result2/Rank2"]
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1303.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "10597"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rank3" type="Control" parent="Result2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -600.0
+offset_top = -30.0
+offset_right = 900.0
+offset_bottom = 370.0
+
+[node name="Player" type="Sprite2D" parent="Result2/Rank3"]
+position = Vector2(180, 200)
+scale = Vector2(2, 2)
+texture = ExtResource("6_8udmo")
+
+[node name="Name" type="Label" parent="Result2/Rank3"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 60.0
+offset_right = 1444.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "PLAYERNAMEWITHTWENTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="Result2/Rank3"]
+offset_left = 430.0
+offset_top = 200.0
+offset_right = 830.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "00:00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Result2/Rank3"]
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1303.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "10597"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MyRank" type="Control" parent="Result2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -839.0
+offset_top = 511.0
+offset_right = 839.0
+offset_bottom = 911.0
+
+[node name="Player" type="Sprite2D" parent="Result2/MyRank"]
+position = Vector2(405, 200)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("6_8udmo")
+
+[node name="Name" type="Label" parent="Result2/MyRank"]
+layout_mode = 0
+offset_left = 575.0
+offset_top = 60.0
+offset_right = 1669.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "PLAYERNAMEWITHTWENTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="Result2/MyRank"]
+offset_left = 655.0
+offset_top = 200.0
+offset_right = 1055.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "00:00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Result2/MyRank"]
+offset_left = 1125.0
+offset_top = 200.0
+offset_right = 1528.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "10597"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Grade" type="Label" parent="Result2/MyRank"]
+layout_mode = 0
+offset_left = 36.2224
+offset_top = 94.5555
+offset_right = 219.222
+offset_bottom = 325.556
+theme_override_colors/font_color = Color(0.247059, 0.156863, 0.0941176, 1)
+theme_override_fonts/font = ExtResource("9_1jwd5")
+theme_override_font_sizes/font_size = 200
+text = "375"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryBtn" type="Button" parent="."]
+texture_repeat = 2
+offset_left = 660.0
+offset_top = 870.0
+offset_right = 1129.0
+offset_bottom = 1051.0
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("7_gjm1l")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
+icon = ExtResource("7_srg5r")
+icon_alignment = 1
+
+[node name="QuitBtn" type="Button" parent="."]
+texture_repeat = 2
+offset_left = 1100.0
+offset_top = 870.0
+offset_right = 1435.0
+offset_bottom = 1066.0
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("7_gjm1l")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_48il5")
+icon = ExtResource("8_slepy")
+icon_alignment = 1
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
