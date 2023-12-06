@@ -20,10 +20,10 @@ func _ready():
 	arr = []
 	
 	arr.append(
-		[preload("res://assets/img/attack_power.png"), 1.5, "총알", "\"강력해진 대화 수단\"\n\n\n\n공격력 1 증가"]
+		[preload("res://assets/img/attack_power.png"), 1.5, "총알", "\"강력해진 대화 수단\"\n\n\n\n공격력 2 증가"]
 	)
 	arr.append(
-		[preload("res://assets/img/speed_up.png"), 1.5, "장화", "\"가볍고 질긴 가죽부츠\"\n\n\n\n이동속도 0.2 증가"]
+		[preload("res://assets/img/speed_up.png"), 1.5, "장화", "\"가볍고 질긴 가죽부츠\"\n\n\n\n이동속도 0.3 증가"]
 	)
 	arr.append(
 		[preload("res://assets/img/stew.png"), 0.6, "스튜", "\"따뜻한 스튜 한 그릇\"\n\n\n\n최대 체력 20 증가"]

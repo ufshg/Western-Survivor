@@ -103,10 +103,10 @@ func _ready():
 	player_need_exp = 10
 	
 	# init about normal monster gen duration
-	#MonsterLv1GenTimer.wait_time = 3
-	MonsterLv1GenTimer.start(3)
-	#MonsterLv2GenTimer.wait_time = 7
-	MonsterLv2GenTimer.start(7)
+	#MonsterLv1GenTimer.wait_time = 2
+	MonsterLv1GenTimer.start(2)
+	#MonsterLv2GenTimer.wait_time = 6
+	MonsterLv2GenTimer.start(6)
 	#MonsterLv3GenTimer.wait_time = 5
 	MonsterLv3GenTimer.start(5)
 	#MonsterLv4GenTimer.wait_time = 3
@@ -139,14 +139,16 @@ func _on_monster_lv2_gen_timer_timeout():
 	add_child(enemy)
 	
 func _on_monster_lv_3_gen_timer_timeout():
-	if player_level % 5 == 0:
+	var temp = player_level / 5
+	if temp & 1:
 		var enemy = monster.instantiate()
 		enemy.init(3, self.player, self.player_level)
 		enemy.enemy_collide.connect(enemy_collide)
 		add_child(enemy)
 
 func _on_monster_lv_4_gen_timer_timeout():
-	if player_level % 10 == 0 :
+	var temp = player_level / 10
+	if temp & 1:
 		var enemy = monster.instantiate()
 		enemy.init(4, self.player, self.player_level)
 		enemy.enemy_collide.connect(enemy_collide)
@@ -276,10 +278,10 @@ func _on_damage_timer_timeout():
 func _item_select_handler(number):
 	if number == 0:
 		print("Atk Up")
-		player_atk += 1
+		player_atk += 2
 	elif number == 1:
 		print("Speed Up")
-		player_speed += 20
+		player_speed += 30
 		player.speed = player_speed
 	elif number == 2:
 		print("Hp Up")
@@ -287,7 +289,7 @@ func _item_select_handler(number):
 		player_hp += 20
 	elif number == 3:
 		print("duration Up")
-		fire_duration = max(fire_duration - 0.1, 0.1)
+		fire_duration = max(fire_duration - 0.2, 0.1)
 		FireTimer.start(fire_duration)
 	
 	$ItemSound.play()

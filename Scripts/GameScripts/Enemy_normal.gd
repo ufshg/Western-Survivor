@@ -33,44 +33,60 @@ func init(level, Player, player_level):
 	var temp = (player_level - 1) / 10
 	# rat
 	if level == 1:
-		atk = 3 + player_level/5 * 2
-		speed = 170
-		hp = 4 + player_level/5
-		exp = 1 + player_level/5
 		if temp & 1:
 			$Sprite2D.set_texture(monster_tex1_night)
+			atk = 5 + player_level/5 * 2
+			speed = 180
+			hp = 3 + player_level/5
+			exp = 4 + player_level/5
 		else:
 			$Sprite2D.set_texture(monster_tex1)
+			atk = 3 + player_level/5 * 2
+			speed = 170
+			hp = 3 + player_level/5
+			exp = 2 + player_level/5
 	# snake
 	elif level == 2:
-		atk = 5 + player_level/5 * 2
-		speed = 220
-		hp = 5 + player_level/5
-		exp = 2 + player_level/5
 		if temp & 1:
 			$Sprite2D.set_texture(monster_tex2_night)
+			atk = 7 + player_level/5 * 2
+			speed = 230
+			hp = 5 + player_level/5
+			exp = 6 + player_level/5
 		else:
 			$Sprite2D.set_texture(monster_tex2)
+			atk = 5 + player_level/5 * 2
+			speed = 220
+			hp = 5 + player_level/5
+			exp = 4 + player_level/5
 	# robber
 	elif level == 3:
-		atk = 20 + player_level/5 * 2
-		speed = 230
-		hp = 7 + player_level/5
-		exp = 5 + player_level/5
 		if temp & 1:
 			$Sprite2D.set_texture(monster_tex3_night)
+			atk = 25 + player_level/5 * 2
+			speed = 240
+			hp = 8 + player_level/5
+			exp = 15 + player_level/5
 		else:
 			$Sprite2D.set_texture(monster_tex3)
+			atk = 20 + player_level/5 * 2
+			speed = 230
+			hp = 8 + player_level/5
+			exp = 10 + player_level/5
 	# coyote
 	elif level == 4:
-		atk = 15 + player_level/5 * 2
-		speed = 250
-		hp = 6 + player_level/5
-		exp = 10 + player_level/5
 		if temp & 1:
 			$Sprite2D.set_texture(monster_tex4_night)
+			atk = 20 + player_level/5 * 2
+			speed = 280
+			hp = 6 + player_level/5
+			exp = 25 + player_level/5
 		else:
 			$Sprite2D.set_texture(monster_tex4)
+			atk = 15 + player_level/5 * 2
+			speed = 270
+			hp = 6 + player_level/5
+			exp = 20 + player_level/5
 
 
 func _enemy_move(delta):
