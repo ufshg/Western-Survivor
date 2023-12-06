@@ -6,6 +6,7 @@ var tmp
 var speed
 
 func _ready():
+	$NICKNAME.text = Global.player_name
 	pass
 
 # 플레이어 이동 제어 함수

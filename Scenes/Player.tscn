@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bntjaapovkpt8"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Player.gd" id="1_ivi22"]
-[ext_resource type="Texture2D" uid="uid://ctaukpmjbmgx4" path="res://assets/img/player1_right.png" id="2_mtoho"]
+[ext_resource type="Texture2D" uid="uid://12vhwbc85r20" path="res://assets/img/player1_right.png" id="2_mtoho"]
 [ext_resource type="Shader" path="res://Scenes/Player.gdshader" id="2_yq6ou"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f2rm2"]
@@ -51,7 +51,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(582, 458)
+position = Vector2(2.08165e-12, 2.08165e-12)
 collision_mask = 50
 script = ExtResource("1_ivi22")
 
@@ -68,3 +68,13 @@ shape = SubResource("CapsuleShape2D_rkorq")
 libraries = {
 "": SubResource("AnimationLibrary_5hyws")
 }
+
+[node name="NICKNAME" type="Label" parent="."]
+offset_left = -110.0
+offset_top = -70.0
+offset_right = 110.0
+offset_bottom = -43.0
+theme_override_font_sizes/font_size = 15
+text = "PLAYERNAMEWITHTWENTY"
+horizontal_alignment = 1
+vertical_alignment = 1

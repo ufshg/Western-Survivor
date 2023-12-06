@@ -19,6 +19,7 @@ var vector
 var hp
 var atk
 var exp
+var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,12 +40,14 @@ func init(level, Player, player_level):
 			speed = 180
 			hp = 3 + player_level/5
 			exp = 4 + player_level/5
+			score = 5
 		else:
 			$Sprite2D.set_texture(monster_tex1)
 			atk = 3 + player_level/5 * 2
 			speed = 170
 			hp = 3 + player_level/5
 			exp = 2 + player_level/5
+			score = 10
 	# snake
 	elif level == 2:
 		if temp & 1:
@@ -53,12 +56,14 @@ func init(level, Player, player_level):
 			speed = 230
 			hp = 5 + player_level/5
 			exp = 6 + player_level/5
+			score = 10
 		else:
 			$Sprite2D.set_texture(monster_tex2)
 			atk = 5 + player_level/5 * 2
 			speed = 220
 			hp = 5 + player_level/5
 			exp = 4 + player_level/5
+			score = 20
 	# robber
 	elif level == 3:
 		if temp & 1:
@@ -67,12 +72,14 @@ func init(level, Player, player_level):
 			speed = 240
 			hp = 8 + player_level/5
 			exp = 15 + player_level/5
+			score = 50
 		else:
 			$Sprite2D.set_texture(monster_tex3)
 			atk = 20 + player_level/5 * 2
 			speed = 230
 			hp = 8 + player_level/5
 			exp = 10 + player_level/5
+			score = 50
 	# coyote
 	elif level == 4:
 		if temp & 1:
@@ -81,12 +88,14 @@ func init(level, Player, player_level):
 			speed = 280
 			hp = 6 + player_level/5
 			exp = 25 + player_level/5
+			score = 30
 		else:
 			$Sprite2D.set_texture(monster_tex4)
 			atk = 15 + player_level/5 * 2
 			speed = 270
 			hp = 6 + player_level/5
 			exp = 20 + player_level/5
+			score = 60
 
 
 func _enemy_move(delta):

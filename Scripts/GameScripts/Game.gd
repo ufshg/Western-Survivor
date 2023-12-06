@@ -260,9 +260,9 @@ func _player_bullet_collide(bullet_id, target_id):
 	if temp_enemy.hp <= 0:
 		add_exp(temp_enemy.exp)
 		var temp_pos = temp_enemy.position
+		score += temp_enemy.score
 		remove_child(temp_enemy)
 		_drop_item(temp_pos)
-		score += 1
 		$MonsterSound.play()
 		print(player_exp, "/", player_need_exp)
 
