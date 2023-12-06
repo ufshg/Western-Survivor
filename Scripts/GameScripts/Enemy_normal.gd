@@ -30,43 +30,43 @@ func init(level, Player, player_level):
 	player = Player
 	$Sprite2D.set_scale(Vector2(0.4, 0.4))
 	position = player.position + Vector2(1200, 0).rotated(rng.randf_range(0, 360))	
-	var temp = (player_level - 1) / 5
+	var temp = (player_level - 1) / 10
 	# rat
 	if level == 1:
-		atk = 2
-		speed = 100
-		hp = 3
-		exp = 10
+		atk = 3 + player_level/5 * 2
+		speed = 170
+		hp = 4 + player_level/5
+		exp = 1 + player_level/5
 		if temp & 1:
 			$Sprite2D.set_texture(monster_tex1_night)
 		else:
 			$Sprite2D.set_texture(monster_tex1)
 	# snake
 	elif level == 2:
-		atk = 5
-		speed = 250
-		hp = 6
-		exp = 10
+		atk = 5 + player_level/5 * 2
+		speed = 220
+		hp = 5 + player_level/5
+		exp = 2 + player_level/5
 		if temp & 1:
 			$Sprite2D.set_texture(monster_tex2_night)
 		else:
 			$Sprite2D.set_texture(monster_tex2)
 	# robber
 	elif level == 3:
-		atk = 20
-		speed = 250
-		hp = 6
-		exp = 10
+		atk = 20 + player_level/5 * 2
+		speed = 230
+		hp = 7 + player_level/5
+		exp = 5 + player_level/5
 		if temp & 1:
 			$Sprite2D.set_texture(monster_tex3_night)
 		else:
 			$Sprite2D.set_texture(monster_tex3)
 	# coyote
 	elif level == 4:
-		atk = 20
+		atk = 15 + player_level/5 * 2
 		speed = 250
-		hp = 6
-		exp = 10
+		hp = 6 + player_level/5
+		exp = 10 + player_level/5
 		if temp & 1:
 			$Sprite2D.set_texture(monster_tex4_night)
 		else:
@@ -89,7 +89,7 @@ func _enemy_move(delta):
 	var collision_info = move_and_collide(vector * speed * delta)
 	if collision_info:
 		enemy_collide.emit(vector, atk)
-		position -= vector * 50
+		position -= vector * 150
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -69,6 +69,7 @@ icon_alignment = 1
 
 [node name="RankingBtn" type="Button" parent="."]
 texture_repeat = 2
+layout_mode = 0
 offset_left = 705.0
 offset_top = 881.0
 offset_right = 1011.0

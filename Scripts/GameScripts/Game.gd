@@ -63,20 +63,20 @@ func _init_player():
 	
 	if Global.player_type == 1:
 		player_hp = 100
-		player_atk = 5
-		player_speed = 200
+		player_atk = 6
+		player_speed = 250
 		fire_duration = float(2)
 	elif Global.player_type == 2:
-		player_hp = 50
+		player_hp = 20
 		player_atk = 4
-		player_speed = 300
+		player_speed = 350
 		PlayerShieldTimer.start(player_shield_timer_MAX)
 		fire_duration = float(1)
 		player.get_node("Sprite2D").set_texture(player_tex2)
 	elif Global.player_type == 3:
-		player_hp = 150
+		player_hp = 200
 		player_atk = 3
-		player_speed = 150
+		player_speed = 200
 		player3_bullet = true
 		fire_duration = float(3)
 		player.get_node("Sprite2D").set_texture(player_tex3)
@@ -103,12 +103,12 @@ func _ready():
 	player_need_exp = 10
 	
 	# init about normal monster gen duration
-	#MonsterLv1GenTimer.wait_time = 2
-	MonsterLv1GenTimer.start(2)
-	#MonsterLv2GenTimer.wait_time = 5
-	MonsterLv2GenTimer.start(5)
-	#MonsterLv3GenTimer.wait_time = 7
-	MonsterLv3GenTimer.start(7)
+	#MonsterLv1GenTimer.wait_time = 3
+	MonsterLv1GenTimer.start(3)
+	#MonsterLv2GenTimer.wait_time = 7
+	MonsterLv2GenTimer.start(7)
+	#MonsterLv3GenTimer.wait_time = 5
+	MonsterLv3GenTimer.start(5)
 	#MonsterLv4GenTimer.wait_time = 3
 	MonsterLv4GenTimer.start(3)
 	
@@ -139,16 +139,18 @@ func _on_monster_lv2_gen_timer_timeout():
 	add_child(enemy)
 	
 func _on_monster_lv_3_gen_timer_timeout():
-	var enemy = monster.instantiate()
-	enemy.init(3, self.player, self.player_level)
-	enemy.enemy_collide.connect(enemy_collide)
-	add_child(enemy)
+	if player_level % 5 == 0:
+		var enemy = monster.instantiate()
+		enemy.init(3, self.player, self.player_level)
+		enemy.enemy_collide.connect(enemy_collide)
+		add_child(enemy)
 
 func _on_monster_lv_4_gen_timer_timeout():
-	var enemy = monster.instantiate()
-	enemy.init(4, self.player, self.player_level)
-	enemy.enemy_collide.connect(enemy_collide)
-	add_child(enemy)
+	if player_level % 10 == 0 :
+		var enemy = monster.instantiate()
+		enemy.init(4, self.player, self.player_level)
+		enemy.enemy_collide.connect(enemy_collide)
+		add_child(enemy)
 
 
 func _player_damage(damage):
@@ -206,11 +208,13 @@ func add_exp(monster_exp):
 		player_exp -= player_need_exp
 		player_hp = player_max_hp
 		player_need_exp = player_level * 10
-		show_ItemSelect()
-		get_tree().paused = true
+		if player_level % 5 == 0:
+			show_ItemSelect()
+			get_tree().paused = true
+
 
 func change_tile():
-	var temp = (player_level - 1) / 5
+	var temp = (player_level - 1) / 10
 	if temp & 1:
 		$Sprite2D2.set_texture(sand_sunset)
 		$Sprite2D3.set_texture(sand_night)
@@ -229,7 +233,7 @@ func _drop_item(pos):
 	var prob = rng.randi_range(1, 10)
 	print("prob result :", str(prob))
 	# prob > 20%
-	if prob > 2:return
+	if prob > 1:return
 	print("success")
 	var item = Item.instantiate()
 	item.player_item_collide.connect(player_item_collide)
@@ -286,7 +290,7 @@ func _item_select_handler(number):
 		fire_duration = max(fire_duration - 0.1, 0.1)
 		FireTimer.start(fire_duration)
 	
-	
+	$ItemSound.play()
 	$UI._slot_set(number)
 	$UI/ItemSelect.visible = false
 	get_tree().paused = false
