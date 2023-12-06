@@ -46,7 +46,8 @@ func _on_register_btn_button_up():
 	
 	var json = JSON.stringify(data)
 	var headers = ["Content-Type: application/json"]
-	$HTTPRequest.request("http://localhost:8000/addrank", headers, HTTPClient.METHOD_PUT, json)
+	#$HTTPRequest.request("http://localhost:8000/addrank", headers, HTTPClient.METHOD_PUT, json)
+	$HTTPRequest.request("http://localhost:8000/ranking", headers, HTTPClient.METHOD_GET)
 	
 	pass # Replace with function body.
 
@@ -91,4 +92,23 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 	print(response_code)
 	print(headers)
 	print(body)
+	
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	print(json)
+	
+	var holder = "@/*/@"
+	var length = int(json["length"])
+	var types = json["types"].split(holder)
+	var levels = json["levels"].split(holder)
+	var names = json["names"].split(holder)
+	var times = json["times"].split(holder)
+	var scores = json["scores"].split(holder)
+	
+	print(length)
+	print(types)
+	print(levels)
+	print(names)
+	print(times)
+	print(scores)
+	
 	pass # Replace with function body.

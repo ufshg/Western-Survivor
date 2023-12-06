@@ -82,7 +82,7 @@ func _process(delta):
 
 
 func _result():
-	return MINUTE.text + " : " + SECOND.text
+	return MINUTE.text + ":" + SECOND.text
 	
 
 func _slot_set(number):
