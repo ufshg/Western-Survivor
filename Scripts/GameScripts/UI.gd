@@ -32,6 +32,9 @@ var slottex
 @onready var SLOT3 = $Slot3
 @onready var SLOT4 = $Slot4
 
+@onready var BOSS = $Boss_hp
+var boss
+
 func _ready():
 	await get_tree().get_root().get_node("World").ready
 	game = get_tree().get_root().get_node("World")
@@ -51,6 +54,9 @@ func _ready():
 	if Global.player_type == 2:
 		SHIELD.visible = true
 		SHIELD.max_value = game.player_shield_timer_MAX
+	
+	# boss check = False
+	boss = false
 	
 
 func _process(delta):
@@ -79,6 +85,9 @@ func _process(delta):
 	FIRE.value = game.fire_duration - game.FireTimer.get_time_left()
 	
 	SHIELD.value = game.player_shield_timer_MAX - game.PlayerShieldTimer.get_time_left()
+	
+	if boss:
+		BOSS.value = game.boss_instance.hp
 
 
 func _result():
@@ -103,3 +112,17 @@ func _slot_set(number):
 		temp[idx].position += Vector2(0, 1)
 	
 	temp[idx].visible = true
+
+
+func boss_init():
+	BOSS.max_value = game.boss_instance.hp_max
+	BOSS.value = game.boss_instance.hp
+	boss = true
+	BOSS.visible = true
+
+
+func boss_end():
+	BOSS.visible = false
+	BOSS.max_value = 1
+	BOSS.value = 1
+	boss = false

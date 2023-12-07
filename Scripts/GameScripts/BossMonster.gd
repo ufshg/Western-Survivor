@@ -127,3 +127,10 @@ func _on_fire_stop_timer_timeout():
 	$FireTimer.stop()
 	$PatternTimer.start(2)
 	pass # Replace with function body.
+
+
+func end():
+	$FireTimer.stop()
+	$MoveTimer.stop()
+	$PatternTimer.stop()
+	$FireStopTimer.stop()

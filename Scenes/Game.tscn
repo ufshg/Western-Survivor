@@ -1,30 +1,30 @@
-[gd_scene load_steps=43 format=3 uid="uid://n71pj44frlcy"]
+[gd_scene load_steps=44 format=3 uid="uid://n71pj44frlcy"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
-[ext_resource type="Texture2D" uid="uid://drtmsa1xt6qi" path="res://assets/img/sandtile.png" id="2_0dn8h"]
-[ext_resource type="Texture2D" uid="uid://bj35tq1brenx8" path="res://assets/img/sandtile_sunset.png" id="2_gutmf"]
+[ext_resource type="Texture2D" uid="uid://cqqpd4xug2w7v" path="res://assets/img/sandtile.png" id="2_0dn8h"]
+[ext_resource type="Texture2D" uid="uid://bt4boaadmposf" path="res://assets/img/sandtile_sunset.png" id="2_gutmf"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/UI.gd" id="3_2nbfl"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/Camera2D.gd" id="3_lcjqh"]
-[ext_resource type="Texture2D" uid="uid://vr60yx587bt3" path="res://assets/img/sandtile_night.png" id="4_36tto"]
-[ext_resource type="Texture2D" uid="uid://b6ykw7dkf3wel" path="res://assets/img/portrait1.png" id="4_bo6rq"]
-[ext_resource type="Texture2D" uid="uid://cqk7ctdyqbc4f" path="res://assets/img/aim.png" id="4_tu6ce"]
-[ext_resource type="Texture2D" uid="uid://b7w1qikfvnuhf" path="res://assets/img/warning.png" id="4_yqi3m"]
-[ext_resource type="AudioStream" uid="uid://mqefpd1c2mxm" path="res://assets/sound/gunfire.mp3" id="6_8i1q1"]
-[ext_resource type="Texture2D" uid="uid://biwf45hfgpgdv" path="res://assets/img/bullet.png" id="6_nvu4c"]
-[ext_resource type="AudioStream" uid="uid://b7abus5lh4s4w" path="res://assets/sound/damage.mp3" id="7_r0myw"]
-[ext_resource type="AudioStream" uid="uid://cs5ls8u0p6c2c" path="res://assets/sound/monster_death.mp3" id="7_rx1i3"]
+[ext_resource type="Texture2D" uid="uid://buth30dm7lqxb" path="res://assets/img/sandtile_night.png" id="4_36tto"]
+[ext_resource type="Texture2D" uid="uid://dd6tdgs2isbad" path="res://assets/img/portrait1.png" id="4_bo6rq"]
+[ext_resource type="Texture2D" uid="uid://cg8sf4swog66w" path="res://assets/img/aim.png" id="4_tu6ce"]
+[ext_resource type="Texture2D" uid="uid://4d0qrdrhayuy" path="res://assets/img/warning.png" id="4_yqi3m"]
+[ext_resource type="AudioStream" uid="uid://b3de5up7v6xs8" path="res://assets/sound/gunfire.mp3" id="6_8i1q1"]
+[ext_resource type="Texture2D" uid="uid://broly521y3grt" path="res://assets/img/bullet.png" id="6_nvu4c"]
+[ext_resource type="AudioStream" uid="uid://beg6qkh80budn" path="res://assets/sound/damage.mp3" id="7_r0myw"]
+[ext_resource type="AudioStream" uid="uid://b0ec1u0ytp2dn" path="res://assets/sound/monster_death.mp3" id="7_rx1i3"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/ItemSelect.gd" id="9_7d473"]
-[ext_resource type="Texture2D" uid="uid://bu0vdo3wqe4ag" path="res://assets/img/attack_power.png" id="10_8bso2"]
+[ext_resource type="Texture2D" uid="uid://bxv52e78a0gd5" path="res://assets/img/attack_power.png" id="10_8bso2"]
 [ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="10_fvdhx"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/Cursor.gd" id="10_ghl0c"]
-[ext_resource type="Texture2D" uid="uid://bc0ulfis2dg5e" path="res://assets/img/speed_up.png" id="11_giffw"]
-[ext_resource type="Texture2D" uid="uid://cxwpmh0hr766y" path="res://assets/img/pause_button.png" id="11_rg6wi"]
-[ext_resource type="Texture2D" uid="uid://df7xmgar1au5p" path="res://assets/img/item_whisky.png" id="12_4rj51"]
-[ext_resource type="AudioStream" uid="uid://cfrkxvkl5hhrs" path="res://assets/sound/item.mp3" id="15_m5wo0"]
+[ext_resource type="Texture2D" uid="uid://cr3u5xrkboc1x" path="res://assets/img/speed_up.png" id="11_giffw"]
+[ext_resource type="Texture2D" uid="uid://dixjnm7xc8mq0" path="res://assets/img/pause_button.png" id="11_rg6wi"]
+[ext_resource type="Texture2D" uid="uid://ckt3y2ls0ur1a" path="res://assets/img/item_whisky.png" id="12_4rj51"]
+[ext_resource type="AudioStream" uid="uid://iifk1epwqmff" path="res://assets/sound/item.mp3" id="15_m5wo0"]
 [ext_resource type="Script" path="res://Scenes/PauseMenu.gd" id="16_43sks"]
-[ext_resource type="Texture2D" uid="uid://vpy321a64j3i" path="res://assets/img/resume_button.png" id="17_d5mke"]
-[ext_resource type="Texture2D" uid="uid://cqssqgt2bvsbo" path="res://assets/img/goMain_button.png" id="18_g77fc"]
-[ext_resource type="AudioStream" uid="uid://ca4uxlsvuiflf" path="res://assets/sound/warningAlarm.wav" id="19_4r7ux"]
+[ext_resource type="Texture2D" uid="uid://cvhqaisaidms4" path="res://assets/img/resume_button.png" id="17_d5mke"]
+[ext_resource type="Texture2D" uid="uid://ehai1tgu3qdj" path="res://assets/img/goMain_button.png" id="18_g77fc"]
+[ext_resource type="AudioStream" uid="uid://cvqnqaehr5ygo" path="res://assets/sound/warningAlarm.wav" id="19_4r7ux"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6uark"]
 blend_mode = 4
@@ -76,6 +76,9 @@ corner_radius_bottom_left = 8
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8nsri"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4erpo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvri4"]
+bg_color = Color(0.603922, 0, 0.0901961, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsai3"]
 size = Vector2(9393, 537)
@@ -588,6 +591,15 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_8nsri")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_4erpo")
 icon = ExtResource("18_g77fc")
 icon_alignment = 1
+
+[node name="Boss_hp" type="ProgressBar" parent="UI"]
+visible = false
+offset_left = 210.0
+offset_top = 900.0
+offset_right = 1710.0
+offset_bottom = 930.0
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
+theme_override_styles/fill = SubResource("StyleBoxFlat_qvri4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)

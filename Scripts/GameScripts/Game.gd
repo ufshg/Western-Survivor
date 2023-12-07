@@ -67,7 +67,7 @@ func _init_player():
 	
 	if Global.player_type == 1:
 		player_hp = 100
-		player_atk = 8
+		player_atk = 100
 		player_speed = 250
 		fire_duration = float(2)
 	elif Global.player_type == 2:
@@ -232,8 +232,8 @@ func enemy_collide(vector, atk):
 func add_exp(monster_exp):
 	player_exp += monster_exp
 	if player_exp >= player_need_exp:
-		call_boss()
 		player_level += 1
+		if not player_level & 1:call_boss()
 		change_tile()
 		player_exp -= player_need_exp
 		player_hp = player_max_hp
@@ -288,8 +288,11 @@ func _player_bullet_collide(bullet_id, target_id):
 		instance_from_id(bullet_id).queue_free()
 	
 	var temp_enemy = instance_from_id(target_id)
-	temp_enemy.hp -= player_atk
+	if temp_enemy.name == "BossMonster":
+		_boss_damage()
+		return
 	
+	temp_enemy.hp -= player_atk
 	if temp_enemy.hp <= 0:
 		add_exp(temp_enemy.exp)
 		var temp_pos = temp_enemy.position
@@ -304,6 +307,24 @@ func _player_bullet_collide(bullet_id, target_id):
 	temp_enemy.anim()
 	temp_enemy.position -= temp_enemy.vector * 150
 	#temp_enemy.get_node("AnimationPlayer").play("damage")
+
+
+func _boss_damage():
+	boss_instance.hp -= player_atk
+	#############################
+	
+	####### Boss End Part #######
+	
+	#############################
+	if boss_instance.hp <= 0:
+		add_exp(player_level * 10)
+		score += boss_instance.score
+		boss_instance.end()
+		end_boss()
+		remove_child(boss_instance)
+		boss_instance.queue_free()
+		return
+	boss_instance.anim()
 
 
 func _on_player_shield_timer_timeout():
@@ -372,6 +393,7 @@ func _on_pause_btn_mouse_exited():
 
 
 func call_boss():
+	$UI/PauseBtn.visible = false
 	MonsterLv1GenTimer.stop()
 	MonsterLv2GenTimer.stop()
 	MonsterLv3GenTimer.stop()
@@ -389,4 +411,18 @@ func call_boss():
 	boss_instance.boss_bullet.connect(_boss_bullet)
 	add_child(boss_instance)
 	
+	$UI.boss_init()
 	#boss.position = Vector2(1200, 9400)
+
+
+func end_boss():
+	$UI/PauseBtn.visible = true
+	$UI.boss_end()
+	player.position = Vector2(960, 540)
+	MonsterLv1GenTimer.start(2)
+	MonsterLv2GenTimer.start(6)
+	MonsterLv3GenTimer.start(5)
+	MonsterLv4GenTimer.start(3)
+	Bgm.stop()
+	Bgm.stream = load("res://assets/sound/lost_saga.mp3")
+	Bgm.play()
