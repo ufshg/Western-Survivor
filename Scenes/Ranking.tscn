@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://cwdpaylhn3qph"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Ranking.gd" id="1_5ubx4"]
-[ext_resource type="Texture2D" uid="uid://j4qlfwskesix" path="res://assets/img/background.png" id="2_c4cju"]
-[ext_resource type="Texture2D" uid="uid://ba13l5mvttyrb" path="res://assets/img/ranking.png" id="3_aa7n0"]
-[ext_resource type="Texture2D" uid="uid://ctaukpmjbmgx4" path="res://assets/img/player1_right.png" id="4_u0o7p"]
+[ext_resource type="Texture2D" uid="uid://x8gwfmixkflv" path="res://assets/img/background.png" id="2_c4cju"]
+[ext_resource type="Texture2D" uid="uid://bctdrtqf8m318" path="res://assets/img/ranking.png" id="3_aa7n0"]
+[ext_resource type="Texture2D" uid="uid://12vhwbc85r20" path="res://assets/img/player1_right.png" id="4_u0o7p"]
 [ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="5_vty4a"]
-[ext_resource type="Texture2D" uid="uid://bfs385jq52jdj" path="res://assets/img/back_button.png" id="6_hj3vc"]
+[ext_resource type="Texture2D" uid="uid://5ps43o4pt68j" path="res://assets/img/back_button.png" id="6_hj3vc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghxuv"]
 

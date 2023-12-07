@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bntjaapovkpt8"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Player.gd" id="1_ivi22"]
-[ext_resource type="Texture2D" uid="uid://ctaukpmjbmgx4" path="res://assets/img/player1_right.png" id="2_mtoho"]
+[ext_resource type="Texture2D" uid="uid://12vhwbc85r20" path="res://assets/img/player1_right.png" id="2_mtoho"]
 [ext_resource type="Shader" path="res://Scenes/Player.gdshader" id="2_yq6ou"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f2rm2"]
@@ -52,7 +52,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
-collision_mask = 50
+collision_mask = 114
 script = ExtResource("1_ivi22")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

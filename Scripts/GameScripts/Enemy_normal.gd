@@ -36,18 +36,13 @@ func init(level, Player, player_level):
 	$Sprite2D.set_scale(Vector2(0.4, 0.4))
 	position = player.position + Vector2(1200, 0).rotated(rng.randf_range(0, 360))	
 	
-	collision = [
+	# collsion active
+	[
 		$ratCollision,
 		$snakeCollision,
 		$robberCollision,
 		$coyoteCollision
-	]
-	
-	for c in collision:
-		c.disabled = true
-	
-	# collision active
-	collision[level - 1].disabled = false
+	][level - 1].disabled = false
 	
 	var temp = (player_level - 1) / 10
 	# rat

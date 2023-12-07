@@ -20,13 +20,11 @@ func _on_resume_btn_button_up():
 
 func _on_resume_btn_mouse_entered():
 	$ResumeBtn.set_scale(Vector2(0.27, 0.27))
-	$ResumeBtn.position += Vector2(-12, -6)
 	pass # Replace with function body.
 
 
 func _on_resume_btn_mouse_exited():
 	$ResumeBtn.set_scale(Vector2(0.25, 0.25))
-	$ResumeBtn.position += Vector2(12, 6)
 	pass # Replace with function body.
 
 
@@ -41,11 +39,9 @@ func _on_go_main_btn_button_up():
 
 func _on_go_main_btn_mouse_entered():
 	$GoMainBtn.set_scale(Vector2(0.27, 0.27))
-	$GoMainBtn.position += Vector2(-12, -6)
 	pass # Replace with function body.
 
 
 func _on_go_main_btn_mouse_exited():
 	$GoMainBtn.set_scale(Vector2(0.25, 0.25))
-	$GoMainBtn.position += Vector2(12, 6)
 	pass # Replace with function body.
