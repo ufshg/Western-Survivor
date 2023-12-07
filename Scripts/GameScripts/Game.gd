@@ -130,12 +130,14 @@ func _on_monster_lv1_gen_timer_timeout():
 	# init( monster level, self.player )
 	enemy.init(1, self.player, self.player_level)
 	enemy.enemy_collide.connect(enemy_collide)
+	enemy.add_to_group("normalMonster")
 	add_child(enemy)
 
 func _on_monster_lv2_gen_timer_timeout():
 	var enemy = monster.instantiate()
 	enemy.init(2, self.player, self.player_level)
 	enemy.enemy_collide.connect(enemy_collide)
+	enemy.add_to_group("normalMonster")
 	add_child(enemy)
 	
 func _on_monster_lv_3_gen_timer_timeout():
@@ -144,6 +146,7 @@ func _on_monster_lv_3_gen_timer_timeout():
 		var enemy = monster.instantiate()
 		enemy.init(3, self.player, self.player_level)
 		enemy.enemy_collide.connect(enemy_collide)
+		enemy.add_to_group("normalMonster")
 		add_child(enemy)
 
 func _on_monster_lv_4_gen_timer_timeout():
@@ -152,6 +155,7 @@ func _on_monster_lv_4_gen_timer_timeout():
 		var enemy = monster.instantiate()
 		enemy.init(4, self.player, self.player_level)
 		enemy.enemy_collide.connect(enemy_collide)
+		enemy.add_to_group("normalMonster")
 		add_child(enemy)
 
 
@@ -248,12 +252,15 @@ func _drop_item(pos):
 
 func player_item_collide(id):
 	remove_child(instance_from_id(id))
+	instance_from_id(id).queue_free()
 	player_hp = min(player_hp + 20, player_max_hp)
 
 
 func _player_bullet_collide(bullet_id, target_id):
+	#_clear()
 	if not player3_bullet:
 		remove_child(instance_from_id(bullet_id))
+		instance_from_id(bullet_id).queue_free()
 	
 	var temp_enemy = instance_from_id(target_id)
 	temp_enemy.hp -= player_atk
@@ -265,6 +272,8 @@ func _player_bullet_collide(bullet_id, target_id):
 		var temp_pos = temp_enemy.position
 		score += temp_enemy.score
 		remove_child(temp_enemy)
+		temp_enemy.queue_free()
+		
 		_drop_item(temp_pos)
 		$MonsterSound.play()
 		print(player_exp, "/", player_need_exp)
@@ -301,6 +310,12 @@ func _item_select_handler(number):
 	get_tree().paused = false
 
 
+func _clear():
+	for obj in self.get_children():
+		if obj.is_in_group("normalMonster"):
+			remove_child(obj)
+			obj.remove_from_group("normalMonster")
+			obj.queue_free()
 
 
 
