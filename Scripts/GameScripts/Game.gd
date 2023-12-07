@@ -63,7 +63,7 @@ func _init_player():
 	
 	if Global.player_type == 1:
 		player_hp = 100
-		player_atk = 6
+		player_atk = 8
 		player_speed = 250
 		fire_duration = float(2)
 	elif Global.player_type == 2:
@@ -74,7 +74,7 @@ func _init_player():
 		fire_duration = float(1)
 		player.get_node("Sprite2D").set_texture(player_tex2)
 	elif Global.player_type == 3:
-		player_hp = 200
+		player_hp = 180
 		player_atk = 3
 		player_speed = 200
 		player3_bullet = true
