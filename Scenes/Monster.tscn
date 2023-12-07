@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cw1qjyympq0cs"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Enemy_normal.gd" id="1_4becm"]
-[ext_resource type="Texture2D" uid="uid://bnyfpsmle5atr" path="res://assets/img/monster_rat.png" id="2_kxpkn"]
+[ext_resource type="Texture2D" uid="uid://dr1rpp0n51nrn" path="res://assets/img/monster_rat.png" id="2_kxpkn"]
 [ext_resource type="Shader" path="res://Scenes/Monster.gdshader" id="2_upxjw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rsi8q"]
@@ -73,7 +73,6 @@ flip_h = true
 [node name="ratCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_oq87b")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -84,15 +83,12 @@ libraries = {
 visible = false
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_gb42d")
-disabled = true
 
 [node name="coyoteCollision" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_k6sth")
-disabled = true
 
 [node name="robberCollision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(2.08165e-12, 2.08165e-12)
 shape = SubResource("RectangleShape2D_iqg8s")
-disabled = true
