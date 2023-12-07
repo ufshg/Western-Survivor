@@ -34,6 +34,10 @@ var player_exp
 var player_need_exp
 var player_level
 
+var Boss
+var boss_instance
+var BossBullet
+
 # timer
 @onready var FireTimer = $FireTimer
 @onready var PlayerShieldTimer = $PlayerShieldTimer
@@ -115,6 +119,9 @@ func _ready():
 	monster = preload("res://Scenes/Monster.tscn")
 	Item = preload("res://Scenes/Item.tscn")
 	Bullet = preload("res://Scenes/Bullet.tscn")
+	
+	Boss = preload("res://Scenes/BossMonster.tscn")
+	BossBullet = preload("res://Scenes/BossBullet.tscn")
 	
 	Bgm.stop()
 	Bgm.stream = load("res://assets/sound/lost_saga.mp3")
@@ -201,6 +208,23 @@ func _on_fire_timer_timeout():
 	$GunSound.play()
 
 
+func _boss_bullet(vector):
+	var bullet = BossBullet.instantiate()
+	bullet.boss_bullet_collide.connect(_boss_bullet_collide)
+	bullet.velocity = vector * 800
+	bullet.position = boss_instance.position
+	add_child(bullet)
+
+
+func _boss_bullet_collide(id, vector):
+	remove_child(instance_from_id(id))
+	instance_from_id(id).queue_free()
+	player.position += vector * 50
+	# damage 10
+	_player_damage(10)
+	$HitSound.play()
+
+
 func enemy_collide(vector, atk):
 	player.position += vector * 50
 	_player_damage(atk)
@@ -210,6 +234,7 @@ func enemy_collide(vector, atk):
 func add_exp(monster_exp):
 	player_exp += monster_exp
 	if player_exp >= player_need_exp:
+		call_boss()
 		player_level += 1
 		change_tile()
 		player_exp -= player_need_exp
@@ -225,11 +250,13 @@ func change_tile():
 	if temp & 1:
 		$Sprite2D2.set_texture(sand_sunset)
 		$Sprite2D3.set_texture(sand_night)
-		$BossWarning.play("warning")
-		$WarningSound.play()
+		
+		#$BossWarning.play("warning")
+		#$WarningSound.play()
 	else:
 		$Sprite2D2.set_texture(sand_day)
 		$Sprite2D3.set_texture(sand_sunset)
+
 
 func show_ItemSelect():
 	# 4개중 제외할 아이템 번호 
@@ -344,3 +371,21 @@ func _on_pause_btn_mouse_exited():
 	$UI/PauseBtn.set_scale(Vector2(0.08, 0.08))
 	$UI/PauseBtn.position += Vector2(6, 3)
 	pass # Replace with function body.
+
+
+func call_boss():
+	MonsterLv1GenTimer.stop()
+	MonsterLv2GenTimer.stop()
+	MonsterLv3GenTimer.stop()
+	MonsterLv4GenTimer.stop()
+	_clear()
+	player.position = Vector2(600, 10200)
+	$BossWarning.play("warning")
+	$WarningSound.play()
+	
+	boss_instance = Boss.instantiate()
+	boss_instance.init(player, player_level)
+	boss_instance.boss_bullet.connect(_boss_bullet)
+	add_child(boss_instance)
+	
+	#boss.position = Vector2(1200, 9400)
