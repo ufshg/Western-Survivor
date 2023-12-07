@@ -71,14 +71,14 @@ func init(level, Player, player_level):
 			atk = 25 + player_level/5 * 2
 			speed = 240
 			hp = 8 + player_level/5
-			exp = 15 + player_level/5
+			exp = 25 + player_level/5
 			score = 20
 		else:
 			$Sprite2D.set_texture(monster_tex3)
 			atk = 20 + player_level/5 * 2
 			speed = 230
 			hp = 8 + player_level/5
-			exp = 10 + player_level/5
+			exp = 20 + player_level/5
 			score = 10
 	# coyote
 	elif level == 4:
@@ -87,14 +87,14 @@ func init(level, Player, player_level):
 			atk = 20 + player_level/5 * 2
 			speed = 280
 			hp = 6 + player_level/5
-			exp = 25 + player_level/5
+			exp = 20 + player_level/5
 			score = 10
 		else:
 			$Sprite2D.set_texture(monster_tex4)
 			atk = 15 + player_level/5 * 2
 			speed = 270
 			hp = 6 + player_level/5
-			exp = 20 + player_level/5
+			exp = 15 + player_level/5
 			score = 5
 
 
