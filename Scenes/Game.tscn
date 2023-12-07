@@ -1,10 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://n71pj44frlcy"]
+[gd_scene load_steps=43 format=3 uid="uid://n71pj44frlcy"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game.gd" id="1_x62no"]
 [ext_resource type="Texture2D" uid="uid://cqqpd4xug2w7v" path="res://assets/img/sandtile.png" id="2_0dn8h"]
 [ext_resource type="Texture2D" uid="uid://bt4boaadmposf" path="res://assets/img/sandtile_sunset.png" id="2_gutmf"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/UI.gd" id="3_2nbfl"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/Camera2D.gd" id="3_lcjqh"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://dd6tdgs2isbad" path="res://assets/img/portrait1.png" id="4_bo6rq"]
 [ext_resource type="Texture2D" uid="uid://cg8sf4swog66w" path="res://assets/img/aim.png" id="4_tu6ce"]
 [ext_resource type="Texture2D" uid="uid://4d0qrdrhayuy" path="res://assets/img/warning.png" id="4_yqi3m"]
@@ -12,6 +13,16 @@
 [ext_resource type="Texture2D" uid="uid://broly521y3grt" path="res://assets/img/bullet.png" id="6_nvu4c"]
 [ext_resource type="AudioStream" uid="uid://beg6qkh80budn" path="res://assets/sound/damage.mp3" id="7_r0myw"]
 [ext_resource type="AudioStream" uid="uid://b0ec1u0ytp2dn" path="res://assets/sound/monster_death.mp3" id="7_rx1i3"]
+=======
+[ext_resource type="Texture2D" uid="uid://vr60yx587bt3" path="res://assets/img/sandtile_night.png" id="4_36tto"]
+[ext_resource type="Texture2D" uid="uid://b6ykw7dkf3wel" path="res://assets/img/portrait1.png" id="4_bo6rq"]
+[ext_resource type="Texture2D" uid="uid://cqk7ctdyqbc4f" path="res://assets/img/aim.png" id="4_tu6ce"]
+[ext_resource type="Texture2D" uid="uid://b7w1qikfvnuhf" path="res://assets/img/warning.png" id="4_yqi3m"]
+[ext_resource type="AudioStream" uid="uid://mqefpd1c2mxm" path="res://assets/sound/gunfire.mp3" id="6_8i1q1"]
+[ext_resource type="Texture2D" uid="uid://biwf45hfgpgdv" path="res://assets/img/bullet.png" id="6_nvu4c"]
+[ext_resource type="AudioStream" uid="uid://b7abus5lh4s4w" path="res://assets/sound/damage.mp3" id="7_r0myw"]
+[ext_resource type="AudioStream" uid="uid://cs5ls8u0p6c2c" path="res://assets/sound/monster_death.mp3" id="7_rx1i3"]
+>>>>>>> Stashed changes
 [ext_resource type="Script" path="res://Scripts/GameScripts/ItemSelect.gd" id="9_7d473"]
 [ext_resource type="Texture2D" uid="uid://bxv52e78a0gd5" path="res://assets/img/attack_power.png" id="10_8bso2"]
 [ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="10_fvdhx"]
@@ -79,6 +90,12 @@ corner_radius_bottom_left = 8
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsai3"]
 size = Vector2(9393, 537)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cc8h"]
+size = Vector2(3835, 493.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dwwg"]
+size = Vector2(661.626, 3794)
+
 [sub_resource type="Animation" id="Animation_ntuva"]
 length = 0.001
 tracks/0/type = "value"
@@ -135,6 +152,25 @@ texture_repeat = 2
 position = Vector2(-2892, -3160)
 scale = Vector2(0.7633, 0.7709)
 texture = ExtResource("2_0dn8h")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 10000, 10000)
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_6uark")
+position = Vector2(-1126, 7804)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_gutmf")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 10000, 10000)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(-393, 8532)
+scale = Vector2(0.25, 0.253)
+texture = ExtResource("4_36tto")
 centered = false
 region_enabled = true
 region_rect = Rect2(2.08165e-12, 2.08165e-12, 10000, 10000)
@@ -588,6 +624,26 @@ shape = SubResource("RectangleShape2D_wsai3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(911, -3428)
 shape = SubResource("RectangleShape2D_wsai3")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(858, 11307)
+shape = SubResource("RectangleShape2D_2cc8h")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(863.5, 8284.75)
+shape = SubResource("RectangleShape2D_2cc8h")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-724, 9761)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_4dwwg")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2439, 9839)
+rotation = 1.46071e-05
+shape = SubResource("RectangleShape2D_4dwwg")
 
 [node name="FireTimer" type="Timer" parent="."]
 autostart = true
