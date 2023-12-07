@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpbmugmedxbwm"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/BossBullet.gd" id="1_vad4f"]
-[ext_resource type="Texture2D" uid="uid://daf1rbfbwkany" path="res://assets/img/boss_attack.png" id="2_48tqx"]
+[ext_resource type="Texture2D" uid="uid://c10feprd4l6lk" path="res://assets/img/boss_attack.png" id="2_48tqx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cy4sf"]
 radius = 5.0

@@ -30,7 +30,7 @@ func init(Player, player_level):
 	position = Vector2(500, 9900)
 	
 	# boss value
-	hp_max = 500
+	hp_max = 25 * player_level
 	hp = hp_max
 	atk = 30
 	score = 300

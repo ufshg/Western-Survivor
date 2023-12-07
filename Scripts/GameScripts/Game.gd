@@ -67,13 +67,13 @@ func _init_player():
 	
 	if Global.player_type == 1:
 		player_hp = 100
-		player_atk = 100
+		player_atk = 8
 		player_speed = 250
 		fire_duration = float(2)
 	elif Global.player_type == 2:
 		player_hp = 20
 		player_atk = 4
-		player_speed = 350
+		player_speed = 320
 		PlayerShieldTimer.start(player_shield_timer_MAX)
 		fire_duration = float(1)
 		player.get_node("Sprite2D").set_texture(player_tex2)
@@ -219,7 +219,7 @@ func _boss_bullet_collide(id, vector):
 	instance_from_id(id).queue_free()
 	player.position += vector * 50
 	# damage 10
-	_player_damage(10)
+	_player_damage(10 + player_level/10)
 	$HitSound.play()
 
 
@@ -233,7 +233,6 @@ func add_exp(monster_exp):
 	player_exp += monster_exp
 	if player_exp >= player_need_exp:
 		player_level += 1
-		if not player_level & 1:call_boss()
 		change_tile()
 		player_exp -= player_need_exp
 		player_hp = player_max_hp
@@ -317,7 +316,8 @@ func _boss_damage():
 	
 	#############################
 	if boss_instance.hp <= 0:
-		add_exp(player_level * 10)
+		#add_exp(player_level * 10)
+		add_exp(player_need_exp - player_exp)
 		score += boss_instance.score
 		boss_instance.end()
 		end_boss()
@@ -356,6 +356,10 @@ func _item_select_handler(number):
 	$UI._slot_set(number)
 	$UI/ItemSelect.visible = false
 	get_tree().paused = false
+	
+	# 20의 배수
+	if not player_level % 20:
+		call_boss() 
 
 
 func _clear():

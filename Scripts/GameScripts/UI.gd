@@ -33,6 +33,8 @@ var slottex
 @onready var SLOT4 = $Slot4
 
 @onready var BOSS = $Boss_hp
+@onready var BOSSNAME = $BossName
+@onready var BOSSHP = $BossHpText
 var boss
 
 func _ready():
@@ -88,6 +90,7 @@ func _process(delta):
 	
 	if boss:
 		BOSS.value = game.boss_instance.hp
+		BOSSHP.text = str(game.boss_instance.hp)
 
 
 func _result():
@@ -119,10 +122,14 @@ func boss_init():
 	BOSS.value = game.boss_instance.hp
 	boss = true
 	BOSS.visible = true
+	BOSSNAME.visible = true
+	BOSSHP.visible = true
 
 
 func boss_end():
 	BOSS.visible = false
+	BOSSNAME.visible = false
+	BOSSHP.visible = false
 	BOSS.max_value = 1
 	BOSS.value = 1
 	boss = false
