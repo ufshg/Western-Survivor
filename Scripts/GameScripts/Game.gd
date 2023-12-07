@@ -221,6 +221,8 @@ func change_tile():
 	if temp & 1:
 		$Sprite2D2.set_texture(sand_sunset)
 		$Sprite2D3.set_texture(sand_night)
+		$BossWarning.play("warning")
+		$WarningSound.play()
 	else:
 		$Sprite2D2.set_texture(sand_day)
 		$Sprite2D3.set_texture(sand_sunset)
