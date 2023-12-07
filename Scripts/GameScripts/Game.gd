@@ -264,8 +264,6 @@ func _player_bullet_collide(bullet_id, target_id):
 	
 	var temp_enemy = instance_from_id(target_id)
 	temp_enemy.hp -= player_atk
-	temp_enemy.position -= temp_enemy.vector * 150
-	#temp_enemy.get_node("AnimationPlayer").play("damage")
 	
 	if temp_enemy.hp <= 0:
 		add_exp(temp_enemy.exp)
@@ -277,6 +275,9 @@ func _player_bullet_collide(bullet_id, target_id):
 		_drop_item(temp_pos)
 		$MonsterSound.play()
 		print(player_exp, "/", player_need_exp)
+
+	temp_enemy.position -= temp_enemy.vector * 150
+	#temp_enemy.get_node("AnimationPlayer").play("damage")
 
 
 func _on_player_shield_timer_timeout():
