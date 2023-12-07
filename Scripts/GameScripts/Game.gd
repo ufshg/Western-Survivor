@@ -276,6 +276,7 @@ func _player_bullet_collide(bullet_id, target_id):
 		$MonsterSound.play()
 		print(player_exp, "/", player_need_exp)
 
+	temp_enemy.anim()
 	temp_enemy.position -= temp_enemy.vector * 150
 	#temp_enemy.get_node("AnimationPlayer").play("damage")
 

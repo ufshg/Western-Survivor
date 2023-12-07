@@ -9,6 +9,7 @@ var monster_tex2_night = preload("res://assets/img/monster_trace.png")
 var monster_tex3_night = preload("res://assets/img/monster_wraith.png")
 var monster_tex4_night = preload("res://assets/img/monster_shadow.png")
 
+
 signal enemy_collide(vector)
 
 var rng = RandomNumberGenerator.new()
@@ -20,6 +21,7 @@ var hp
 var atk
 var exp
 var score
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -121,3 +123,7 @@ func _enemy_move(delta):
 func _process(delta):
 	_enemy_move(delta)
 	pass
+
+
+func anim():
+	$AnimationPlayer.play("damage")
