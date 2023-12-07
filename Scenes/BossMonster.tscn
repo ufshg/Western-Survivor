@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://3oqu8xcbesdl"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/BossMonster.gd" id="1_y7t8c"]
-[ext_resource type="Texture2D" uid="uid://dls4qm1bbg5et" path="res://assets/img/boss_ancestor.png" id="2_bphpr"]
+[ext_resource type="Texture2D" uid="uid://dxubeuabbv26b" path="res://assets/img/boss_ancestor.png" id="2_bphpr"]
 [ext_resource type="Shader" path="res://Scenes/Monster.gdshader" id="2_c2ab5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rsi8q"]

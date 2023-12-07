@@ -27,7 +27,7 @@ func init(Player, player_level):
 	player = Player
 	$Sprite2D.set_scale(Vector2(0.75, 0.75))
 
-	position = Vector2(1200, 9400)
+	position = Vector2(500, 9900)
 	
 	# boss value
 	hp_max = 500

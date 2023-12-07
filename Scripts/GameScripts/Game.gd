@@ -148,8 +148,7 @@ func _on_monster_lv2_gen_timer_timeout():
 	add_child(enemy)
 	
 func _on_monster_lv_3_gen_timer_timeout():
-	var temp = player_level / 5
-	if temp & 1:
+	if player_level >= 5:
 		var enemy = monster.instantiate()
 		enemy.init(3, self.player, self.player_level)
 		enemy.enemy_collide.connect(enemy_collide)
@@ -157,8 +156,7 @@ func _on_monster_lv_3_gen_timer_timeout():
 		add_child(enemy)
 
 func _on_monster_lv_4_gen_timer_timeout():
-	var temp = player_level / 10
-	if temp & 1:
+	if player_level >= 10:
 		var enemy = monster.instantiate()
 		enemy.init(4, self.player, self.player_level)
 		enemy.enemy_collide.connect(enemy_collide)
@@ -379,7 +377,10 @@ func call_boss():
 	MonsterLv3GenTimer.stop()
 	MonsterLv4GenTimer.stop()
 	_clear()
-	player.position = Vector2(600, 10200)
+	player.position = Vector2(500, 10200)
+	Bgm.stop()
+	Bgm.stream = load("res://assets/sound/bossfight.mp3")
+	Bgm.play()
 	$BossWarning.play("warning")
 	$WarningSound.play()
 	
