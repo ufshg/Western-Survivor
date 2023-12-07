@@ -5,7 +5,6 @@
 [ext_resource type="Shader" path="res://Scenes/Monster.gdshader" id="2_upxjw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rsi8q"]
-resource_local_to_scene = true
 shader = ExtResource("2_upxjw")
 shader_parameter/quantity = 0.0
 
