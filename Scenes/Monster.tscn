@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cw1qjyympq0cs"]
+[gd_scene load_steps=12 format=3 uid="uid://cw1qjyympq0cs"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Enemy_normal.gd" id="1_4becm"]
-[ext_resource type="Texture2D" uid="uid://dr1rpp0n51nrn" path="res://assets/img/monster_rat.png" id="2_kxpkn"]
+[ext_resource type="Texture2D" uid="uid://bnyfpsmle5atr" path="res://assets/img/monster_rat.png" id="2_kxpkn"]
 [ext_resource type="Shader" path="res://Scenes/Monster.gdshader" id="2_upxjw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rsi8q"]
@@ -9,8 +9,8 @@ resource_local_to_scene = true
 shader = ExtResource("2_upxjw")
 shader_parameter/quantity = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_15rv0"]
-size = Vector2(65, 36)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oq87b"]
+size = Vector2(80, 40)
 
 [sub_resource type="Animation" id="Animation_ijuj3"]
 length = 0.001
@@ -50,6 +50,15 @@ _data = {
 "damage": SubResource("Animation_5ipux")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gb42d"]
+size = Vector2(70, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6sth"]
+size = Vector2(90, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqg8s"]
+size = Vector2(80, 90)
+
 [node name="Enemy_normal" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_4becm")
@@ -61,11 +70,25 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_kxpkn")
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(12.5, -2)
-shape = SubResource("RectangleShape2D_15rv0")
+[node name="ratCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_oq87b")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_squgn")
 }
+
+[node name="snakeCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_gb42d")
+
+[node name="coyoteCollision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_k6sth")
+
+[node name="robberCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(2.08165e-12, 2.08165e-12)
+shape = SubResource("RectangleShape2D_iqg8s")
