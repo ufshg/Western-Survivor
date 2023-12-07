@@ -48,7 +48,7 @@ func _on_register_btn_button_up():
 	var json = JSON.stringify(data)
 	var headers = ["Content-Type: application/json"]
 	$HTTPRequest.request(URL + "/addrank", headers, HTTPClient.METHOD_PUT, json)
-	#$HTTPRequest.request(URL + "/ranking", headers, HTTPClient.METHOD_GET)
+	#$HTTPRequest.request("https://ws-back-e707b9ecccf2.herokuapp.com/ranking", headers, HTTPClient.METHOD_GET)
 	
 	pass # Replace with function body.
 

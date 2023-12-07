@@ -36,13 +36,13 @@ func _on_texture_button_button_up():
 
 func _on_start_btn_mouse_entered():
 	$StartBtn.set_scale(Vector2(0.42, 0.42))
-	$StartBtn.position += Vector2(-6, -3)
+	
 	pass # Replace with function body.
 	
 	
 func _on_start_btn_mouse_exited():
 	$StartBtn.set_scale(Vector2(0.4, 0.4))
-	$StartBtn.position += Vector2(6, 3)
+	
 	pass # Replace with function body.
 
 
@@ -53,13 +53,13 @@ func _on_input_box_text_changed(new_text):
 
 func _on_quit_btn_mouse_entered():
 	$QuitBtn.set_scale(Vector2(0.42, 0.42))
-	$QuitBtn.position += Vector2(-6, -3)
+	
 	pass # Replace with function body.
 
 
 func _on_quit_btn_mouse_exited():
 	$QuitBtn.set_scale(Vector2(0.4, 0.4))
-	$QuitBtn.position += Vector2(6, 3)
+
 	pass # Replace with function body.
 
 
@@ -70,16 +70,22 @@ func _on_quit_btn_button_up():
 
 func _on_ranking_btn_mouse_entered():
 	$RankingBtn.set_scale(Vector2(0.42, 0.42))
-	$RankingBtn.position += Vector2(-6, -3)
+	
 	pass # Replace with function body.
 
 
 func _on_ranking_btn_mouse_exited():
 	$RankingBtn.set_scale(Vector2(0.4, 0.4))
-	$RankingBtn.position += Vector2(6, 3)
 	pass # Replace with function body.
 
 
 func _on_ranking_btn_button_up():
-	get_tree().change_scene_to_file("res://Scenes/Ranking.tscn")
+	var headers = ["Content-Type: application/json"]
+	$HTTPRequest.request("https://ws-back-e707b9ecccf2.herokuapp.com/ranking", headers, HTTPClient.METHOD_GET)
 	pass # Replace with function body.
+
+
+func _on_http_request_request_completed(result, response_code, headers, body):
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	if response_code == 200:
+		$Ranking.init(json)

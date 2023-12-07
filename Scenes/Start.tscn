@@ -1,12 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0xi2lfqb27ov"]
+[gd_scene load_steps=20 format=3 uid="uid://b0xi2lfqb27ov"]
 
 [ext_resource type="Script" path="res://Scripts/Start.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://j4qlfwskesix" path="res://assets/img/background.png" id="2_k55b5"]
+[ext_resource type="Texture2D" uid="uid://x8gwfmixkflv" path="res://assets/img/background.png" id="2_k55b5"]
 [ext_resource type="FontFile" path="res://assets/DynamicNotoSans.tres" id="3"]
-[ext_resource type="Texture2D" uid="uid://2ktq1qu8mdia" path="res://assets/img/ranking_button.png" id="7_v387s"]
-[ext_resource type="Texture2D" uid="uid://ujjylkuwckij" path="res://assets/img/start_button.png" id="8_fankt"]
-[ext_resource type="Texture2D" uid="uid://dh3wyl4jtb28u" path="res://assets/img/title.png" id="9_8kypq"]
-[ext_resource type="Texture2D" uid="uid://corkwk80pr74" path="res://assets/img/quit_button.png" id="9_k88v4"]
+[ext_resource type="Texture2D" uid="uid://5ogi3ki4dgb" path="res://assets/img/ranking_button.png" id="7_v387s"]
+[ext_resource type="Texture2D" uid="uid://bctdrtqf8m318" path="res://assets/img/ranking.png" id="8_8m0ow"]
+[ext_resource type="Texture2D" uid="uid://bn1jytrstcyxo" path="res://assets/img/start_button.png" id="8_fankt"]
+[ext_resource type="Texture2D" uid="uid://12vhwbc85r20" path="res://assets/img/player1_right.png" id="9_1sixe"]
+[ext_resource type="Texture2D" uid="uid://bwe3akhfgxqlp" path="res://assets/img/title.png" id="9_8kypq"]
+[ext_resource type="Texture2D" uid="uid://swd4a8qrfriu" path="res://assets/img/quit_button.png" id="9_k88v4"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/Ranking.gd" id="9_ppadn"]
+[ext_resource type="Texture2D" uid="uid://5ps43o4pt68j" path="res://assets/img/back_button.png" id="10_w3yk2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghxuv"]
 
@@ -18,6 +22,12 @@
 bg_color = Color(1, 1, 1, 0.6)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixu3j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vbb8u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1rlwi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kn0wp"]
 
 [node name="Start" type="Panel"]
 offset_right = 1920.0
@@ -40,11 +50,12 @@ texture = ExtResource("9_8kypq")
 [node name="StartBtn" type="Button" parent="."]
 texture_repeat = 2
 layout_mode = 0
-offset_left = 837.0
-offset_top = 745.0
-offset_right = 1452.0
-offset_bottom = 978.0
+offset_left = 653.0
+offset_top = 667.0
+offset_right = 1268.0
+offset_bottom = 900.0
 scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(307, 116)
 theme_override_fonts/font = ExtResource("3")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
@@ -55,11 +66,12 @@ icon_alignment = 1
 [node name="QuitBtn" type="Button" parent="."]
 texture_repeat = 2
 layout_mode = 0
-offset_left = 1080.0
-offset_top = 881.0
-offset_right = 1386.0
-offset_bottom = 1077.0
+offset_left = 963.0
+offset_top = 810.0
+offset_right = 1269.0
+offset_bottom = 1006.0
 scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(153, 98)
 theme_override_fonts/font = ExtResource("3")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
@@ -70,11 +82,12 @@ icon_alignment = 1
 [node name="RankingBtn" type="Button" parent="."]
 texture_repeat = 2
 layout_mode = 0
-offset_left = 705.0
-offset_top = 881.0
-offset_right = 1011.0
-offset_bottom = 1077.0
+offset_left = 591.0
+offset_top = 811.0
+offset_right = 979.0
+offset_bottom = 1007.0
 scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(194, 98)
 theme_override_fonts/font = ExtResource("3")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ghxuv")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0gv3w")
@@ -97,6 +110,278 @@ alignment = 1
 max_length = 20
 expand_to_text_length = true
 
+[node name="Ranking" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 480)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("8_8m0ow")
+script = ExtResource("9_ppadn")
+
+[node name="Rank1" type="Control" parent="Ranking"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -600.0
+offset_top = -820.0
+offset_right = 900.0
+offset_bottom = -420.0
+
+[node name="Player" type="Sprite2D" parent="Ranking/Rank1"]
+position = Vector2(180, 200)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("9_1sixe")
+
+[node name="Name" type="Label" parent="Ranking/Rank1"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 60.0
+offset_right = 1444.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "PLAYERNAMEWITHTWENTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="Ranking/Rank1"]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 200.0
+offset_right = 830.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "00:00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Ranking/Rank1"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1303.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "10597"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rank2" type="Control" parent="Ranking"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -600.0
+offset_top = -400.0
+offset_right = 900.0
+
+[node name="Player" type="Sprite2D" parent="Ranking/Rank2"]
+position = Vector2(180, 200)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("9_1sixe")
+
+[node name="Name" type="Label" parent="Ranking/Rank2"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 60.0
+offset_right = 1444.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "PLAYERNAMEWITHTWENTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="Ranking/Rank2"]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 200.0
+offset_right = 830.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "00:00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Ranking/Rank2"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1303.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "10597"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rank3" type="Control" parent="Ranking"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -600.0
+offset_top = -30.0
+offset_right = 900.0
+offset_bottom = 370.0
+
+[node name="Player" type="Sprite2D" parent="Ranking/Rank3"]
+position = Vector2(180, 200)
+scale = Vector2(2, 2)
+texture = ExtResource("9_1sixe")
+
+[node name="Name" type="Label" parent="Ranking/Rank3"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 60.0
+offset_right = 1444.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "PLAYERNAMEWITHTWENTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="Ranking/Rank3"]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 200.0
+offset_right = 830.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "00:00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Ranking/Rank3"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1303.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "10597"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rank4" type="Control" parent="Ranking"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -600.0
+offset_top = 340.0
+offset_right = 900.0
+offset_bottom = 740.0
+
+[node name="Player" type="Sprite2D" parent="Ranking/Rank4"]
+position = Vector2(180, 200)
+scale = Vector2(2, 2)
+texture = ExtResource("9_1sixe")
+
+[node name="Name" type="Label" parent="Ranking/Rank4"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 60.0
+offset_right = 1444.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "PLAYERNAMEWITHTWENTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="Ranking/Rank4"]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 200.0
+offset_right = 830.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "00:00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Ranking/Rank4"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1303.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "10597"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rank5" type="Control" parent="Ranking"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -600.0
+offset_top = 710.0
+offset_right = 900.0
+offset_bottom = 1110.0
+
+[node name="Player" type="Sprite2D" parent="Ranking/Rank5"]
+position = Vector2(180, 200)
+scale = Vector2(2, 2)
+texture = ExtResource("9_1sixe")
+
+[node name="Name" type="Label" parent="Ranking/Rank5"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 60.0
+offset_right = 1444.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "PLAYERNAMEWITHTWENTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="Ranking/Rank5"]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 200.0
+offset_right = 830.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "00:00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Ranking/Rank5"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1303.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "10597"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackBtn" type="Button" parent="Ranking"]
+texture_repeat = 2
+offset_left = -750.0
+offset_top = 1166.67
+offset_right = -406.0
+offset_bottom = 1362.67
+pivot_offset = Vector2(172, 98)
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vbb8u")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1rlwi")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kn0wp")
+icon = ExtResource("10_w3yk2")
+icon_alignment = 1
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="button_up" from="StartBtn" to="." method="_on_start_btn_button_up"]
 [connection signal="mouse_entered" from="StartBtn" to="." method="_on_start_btn_mouse_entered"]
 [connection signal="mouse_exited" from="StartBtn" to="." method="_on_start_btn_mouse_exited"]
@@ -107,3 +392,7 @@ expand_to_text_length = true
 [connection signal="mouse_entered" from="RankingBtn" to="." method="_on_ranking_btn_mouse_entered"]
 [connection signal="mouse_exited" from="RankingBtn" to="." method="_on_ranking_btn_mouse_exited"]
 [connection signal="text_changed" from="InputBox" to="." method="_on_input_box_text_changed"]
+[connection signal="button_up" from="Ranking/BackBtn" to="Ranking" method="_on_back_btn_button_up"]
+[connection signal="mouse_entered" from="Ranking/BackBtn" to="Ranking" method="_on_back_btn_mouse_entered"]
+[connection signal="mouse_exited" from="Ranking/BackBtn" to="Ranking" method="_on_back_btn_mouse_exited"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
