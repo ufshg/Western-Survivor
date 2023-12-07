@@ -9,7 +9,6 @@ var monster_tex2_night = preload("res://assets/img/monster_trace.png")
 var monster_tex3_night = preload("res://assets/img/monster_wraith.png")
 var monster_tex4_night = preload("res://assets/img/monster_shadow.png")
 
-
 signal enemy_collide(vector)
 
 var rng = RandomNumberGenerator.new()
@@ -21,11 +20,14 @@ var hp
 var atk
 var exp
 var score
+var collision
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	vector = Vector2.ZERO
+
+	
 	pass # Replace with function body.
 
 
@@ -33,6 +35,20 @@ func init(level, Player, player_level):
 	player = Player
 	$Sprite2D.set_scale(Vector2(0.4, 0.4))
 	position = player.position + Vector2(1200, 0).rotated(rng.randf_range(0, 360))	
+	
+	collision = [
+		$ratCollision,
+		$snakeCollision,
+		$robberCollision,
+		$coyoteCollision
+	]
+	
+	for c in collision:
+		c.disabled = true
+	
+	# collision active
+	collision[level - 1].disabled = false
+	
 	var temp = (player_level - 1) / 10
 	# rat
 	if level == 1:
