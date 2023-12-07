@@ -292,7 +292,7 @@ func _item_select_handler(number):
 		player_hp += 20
 	elif number == 3:
 		print("duration Up")
-		fire_duration = max(fire_duration - 0.2, 0.1)
+		fire_duration = max(fire_duration - 0.25, 0.1)
 		FireTimer.start(fire_duration)
 	
 	$ItemSound.play()
