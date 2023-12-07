@@ -320,4 +320,27 @@ func _clear():
 			obj.queue_free()
 
 
+func show_PauseMenu():
+	# pause 
+	$UI/PauseMenu.visible = true
+	
+func _Resume():
+	$UI/PauseMenu.visible = false
+	get_tree().paused = false
 
+func _on_pause_btn_button_up():
+	show_PauseMenu()
+	get_tree().paused = true
+	pass # Replace with function body.
+
+
+func _on_pause_btn_mouse_entered():
+	$UI/PauseBtn.set_scale(Vector2(0.1, 0.1))
+	$UI/PauseBtn.position += Vector2(-6, -3)
+	pass # Replace with function body.
+
+
+func _on_pause_btn_mouse_exited():
+	$UI/PauseBtn.set_scale(Vector2(0.08, 0.08))
+	$UI/PauseBtn.position += Vector2(6, 3)
+	pass # Replace with function body.
