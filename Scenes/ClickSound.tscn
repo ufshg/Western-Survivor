@@ -2,5 +2,5 @@
 
 [ext_resource type="AudioStream" uid="uid://dwln5kgrhna57" path="res://assets/sound/reload2.wav" id="1_1pk33"]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer"]
 stream = ExtResource("1_1pk33")

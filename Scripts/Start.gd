@@ -81,5 +81,5 @@ func _on_ranking_btn_mouse_exited():
 
 
 func _on_ranking_btn_button_up():
-	print("랭킹창")
+	get_tree().change_scene_to_file("res://Scenes/Ranking.tscn")
 	pass # Replace with function body.
