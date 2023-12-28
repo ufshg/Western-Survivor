@@ -214,9 +214,13 @@ func _boss_bullet(vector):
 	add_child(bullet)
 
 
-func _boss_bullet_collide(id, vector):
+func _boss_bullet_collide(id, target_id, vector):
 	remove_child(instance_from_id(id))
 	instance_from_id(id).queue_free()
+	
+	var temp = instance_from_id(target_id)
+	if temp.name == "BulletWall":return
+	
 	player.position += vector * 50
 	# damage 10
 	_player_damage(10 + player_level/10)
@@ -285,10 +289,14 @@ func _player_bullet_collide(bullet_id, target_id):
 	if not player3_bullet:
 		remove_child(instance_from_id(bullet_id))
 		instance_from_id(bullet_id).queue_free()
-	
+
 	var temp_enemy = instance_from_id(target_id)
 	if temp_enemy.name == "BossMonster":
 		_boss_damage()
+		return
+	
+	if temp_enemy.name == "BulletWall":
+		print("bye")
 		return
 	
 	temp_enemy.hp -= player_atk

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal boss_bullet_collide(bullet_id, vector)
+signal boss_bullet_collide(bullet_id, target_id, vector)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,4 +10,4 @@ func _ready():
 func _physics_process(delta):
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
-		boss_bullet_collide.emit(self.get_instance_id(), velocity.normalized())
+		boss_bullet_collide.emit(self.get_instance_id(), collision_info.get_collider_id(), velocity.normalized())

@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://dl0e310fkjgt5"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Bullet.gd" id="1_f7kyj"]
-[ext_resource type="Texture2D" uid="uid://biwf45hfgpgdv" path="res://assets/img/bullet.png" id="2_bn30b"]
+[ext_resource type="Texture2D" uid="uid://broly521y3grt" path="res://assets/img/bullet.png" id="2_bn30b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wx63n"]
 size = Vector2(9.33333, 4)
 
 [node name="Bullet" type="CharacterBody2D"]
 scale = Vector2(3, 3)
-collision_layer = 4
-collision_mask = 66
+collision_layer = 0
+collision_mask = 194
 script = ExtResource("1_f7kyj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

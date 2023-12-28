@@ -85,6 +85,7 @@ ui_down={
 2d_physics/layer_5="wall"
 2d_physics/layer_6="item"
 2d_physics/layer_7="boss"
+2d_physics/layer_8="bullet_wall"
 
 [physics]
 
